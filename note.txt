@@ -6,3 +6,14 @@ sudo pip install paho-mqtt
 	ref:https://blog.csdn.net/xukai871105/article/details/39255089
 
 
+#language
+	* python
+
+#protocol
+	* mqtt
+
+#Database
+	* MongoDB
+
+#other
+	* paho-mqtt
