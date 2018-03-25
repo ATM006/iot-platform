@@ -1,0 +1,8 @@
+
+
+安装paho-mqtt
+使用pip工具安装paho-mqtt，输入以下指令即可：
+sudo pip install paho-mqtt
+	ref:https://blog.csdn.net/xukai871105/article/details/39255089
+
+
