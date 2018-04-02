@@ -1,0 +1,29 @@
+#MongoDB相关资料
+
+1、安装MongoDB
+
+	* python安装pymongo模块
+		pip install pymongo
+		pip list #查看
+
+
+2、相关操作
+	show databases;
+	use sites;
+	show collections;
+	db.sites.find().pretty()
+
+3、连接MongoDB
+
+	from pymongo import MongoClient
+	conn = MongoClient('192.168.0.113', 27017)
+	db = conn.mydb  #连接mydb数据库，没有则自动创建
+	my_set = db.test_set　　#使用test_set集合，没有则自动创建
+	
+4、连接
+	http://api.mongodb.com/python/3.6.0/tutorial.html #官方文档
+	http://www.runoob.com/mongodb/mongodb-tutorial.html
+	https://www.cnblogs.com/melonjiang/p/6536876.html
+	https://www.yiibai.com/mongodb/mongodb_python.html
+	https://www.cnblogs.com/shhnwangjian/p/6247473.html
+	
