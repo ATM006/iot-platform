@@ -1,0 +1,25 @@
+#Nginx 
+
+1、Nginx安装
+	$ sudo apt-get install nginx
+	
+2、相关操作
+	$ nginx -t
+	修改nginx.conf
+
+3、nginx.conf
+	events {
+        	worker_connections 51200;
+	}
+
+	http {
+        	server{
+                	root /home/orchid/pro/iot/spi;
+        	}
+	}
+
+
+4、命令
+	$ service nginx restart
+
+
