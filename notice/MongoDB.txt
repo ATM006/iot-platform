@@ -2,9 +2,9 @@
 
 1、安装MongoDB
 
-	* python安装pymongo模块
-		pip install pymongo
-		pip list #查看
+	* python3安装pymongo模块
+		pip3 install pymongo
+		pip3 list #查看
 
 
 2、相关操作

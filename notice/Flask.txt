@@ -1,0 +1,40 @@
+
+pip3 install flask
+pip3 install flask_pymongo
+
+#例子
+
+@app.route('/api/<string:cate>',methods=['GET','POST','PATCH','PUT','DELET'])
+def api_cate(cate):
+	if request.method == 'GET':
+		return "GET\n"
+
+	elif request.method == 'POST':
+		
+		data = json.loads(request.get_data().decode('utf-8'))
+		if cate == 'led':
+			leds = mongo.db.test_led
+			leds.insert(data)
+		
+		
+		return "POST\n"
+		#data = {'led': request.json['led']}
+		#if cate == 'led':
+		#	leds = mongo.db.test_led
+		#	leds.insert(data)	
+
+	elif request.method == 'PATCH':
+		return "PATCH\n"
+
+	elif request.method == 'PUT':
+		return "PUT\n"
+		
+
+	elif request.method == 'DELET':
+		return "DELET\n"
+
+#请求
+curl -X POST http://127.0.0.1:5000/api/led -d '{"led":"false"}'
+
+curl -X POST http://127.0.0.1:5000/api/led -d {"led":"false"} #错误，找了一天
+
