@@ -1,0 +1,23 @@
+#iot api格式
+
+/api/v1/<string:cate>
+
+/api/v1/admin
+
+/api/v1/users
+
+/api/v1/devices
+	POST 	/devices			#创建设备
+	GET 	/devices
+	DELETE 	/devices/<int:hardwareId>
+	
+
+/api/v1/events
+	GET 	/events/<int:eventId>	#根据事件id获取事件
+	POST	/events
+
+/api/v1/authorities
+	
+/api/v1/commands
+
+

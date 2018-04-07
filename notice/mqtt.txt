@@ -1,0 +1,6 @@
+
+
+[topic]
+	iot:"iot/input/protobuf"
+	prox:"iot/input/json"
+

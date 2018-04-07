@@ -1,0 +1,8 @@
+port
+
+
+mongo	27017
+
+hiveMQ	1883
+
+

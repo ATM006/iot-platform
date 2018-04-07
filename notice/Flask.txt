@@ -2,6 +2,14 @@
 pip3 install flask
 pip3 install flask_pymongo
 
+
+资料：
+http://docs.jinkan.org/docs/flask/
+http://flask.pocoo.org/extensions/
+http://www.bjhee.com/flask-ext1.html
+https://wizardforcel.gitbooks.io/flask-extension-docs/content/flask-babel.html
+
+
 #例子
 
 @app.route('/api/<string:cate>',methods=['GET','POST','PATCH','PUT','DELET'])

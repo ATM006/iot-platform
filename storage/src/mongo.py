@@ -21,7 +21,13 @@ def index():
 @app.route('/api/<string:cate>',methods=['GET','POST','PATCH','PUT','DELET'])
 def api_cate(cate):
 	if request.method == 'GET':
-		return "GET\n"
+		if cate == 'led':
+			li = mongo.db.test_led.find()
+			out = []
+			for i in li:
+				out.append({'led':i['led']})
+			return jsonify({'result':out})
+			#return "GET\n"
 
 	elif request.method == 'POST':
 		
@@ -48,4 +54,4 @@ def api_cate(cate):
 
 
 if __name__ == '__main__': 
-    app.run(debug=False) 
+    app.run(debug=True) 
