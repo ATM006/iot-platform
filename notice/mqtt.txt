@@ -1,6 +1,12 @@
 
 
 [topic]
-	iot:"iot/input/protobuf"
 	prox:"iot/input/json"
+
+
+
+
+
+https://www.hivemq.com/blog/mqtt-client-library-paho-python
+https://blog.csdn.net/itas109/article/details/78873257
 

@@ -1,4 +1,5 @@
 
+sudo apt-get install python3-pip
 pip3 install flask
 pip3 install flask_pymongo
 
@@ -8,6 +9,12 @@ http://docs.jinkan.org/docs/flask/
 http://flask.pocoo.org/extensions/
 http://www.bjhee.com/flask-ext1.html
 https://wizardforcel.gitbooks.io/flask-extension-docs/content/flask-babel.html
+
+
+
+遇到问题：
+#pip install - locale.Error: unsupported locale setting
+https://blog.csdn.net/xsj_blog/article/details/77619209
 
 
 #例子

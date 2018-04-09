@@ -1,0 +1,11 @@
+
+项目重点问题：
+
+001:字符串非json格式
+json.decoder.JSONDecodeError: Expecting property name enclosed in double quotes: line 1 column 2 (char 1)
+https://blog.csdn.net/o1101574955/article/details/51355469
+
+002:在腾讯云服务器终端，出现如下错误
+#pip install - locale.Error: unsupported locale setting
+https://blog.csdn.net/xsj_blog/article/details/77619209
+
