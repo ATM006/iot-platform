@@ -5,4 +5,6 @@ mongo	27017
 
 hiveMQ	1883
 
+REST	512
+
 
