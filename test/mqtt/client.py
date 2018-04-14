@@ -2,6 +2,7 @@ import paho.mqtt.client as client
 import time
 
 HOST = "127.0.0.1"
+#HOST = "47.95.254.34"
 PORT = 1883
 
 def on_publish(client,userdata,mid):
