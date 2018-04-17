@@ -35,6 +35,13 @@ http://localhost:8080/iot/api/sites
   "metadata": {} 					//可选，站点元数据 
 }  
 
+根据token获取站点
+GET /iot/api/sites/<int:token>
+
+http://localhost:8080/iot/api/sites/<int:token>
+
+
+
 根据token删除站点
 DELETE /iot/api/sites/<int:token>
 
@@ -88,10 +95,16 @@ http://localhost:8080/iot/api/users
   "metadata": ""		//可选，元数据
 }
 
-根据用户名删除用户
-DELETE /iot/api/users/<int:username>
+根据username获取用户
+GET /iot/api/users/<string:username>
 
-http://127.0.0.1:8080/iot/api/users/<int:username>
+http://127.0.0.1:8080/iot/api/users/<string:username>
+
+
+根据用户名删除用户
+DELETE /iot/api/users/<string:username>
+
+http://127.0.0.1:8080/iot/api/users/<string:username>
 [body]
 
 [response]
@@ -134,17 +147,24 @@ http://localhost:8080/iot/api/devices
 {  
   "createdDate": "", 					//创建日期 
   "createdBy": "admin",  				//创建者
-  "deleted": false,  					//
-  "hardwareId": "test1234567",  		//
-  "siteToken": "",  					//
-  "comments": "Equipment tracker.",  	//
-  "metadata": {}  						//
+  "deleted": false,  					//是否被删除
+  "hardwareId": "test1234567",  		//设备ID
+  "siteToken": "",  					//token
+  "comments": "Equipment tracker.",  	//注释
+  "metadata": {}  						//元数据
 }  
 
-根据设备ID删除设备
-DELETE /sitewhere/api/devices/<int:hardwareId>
+根据设备ID获取设备信息
+GET /iot/api/devices/<int:hardwareId>
 
-http://127.0.0.1:8080/sitewhere/api/devices/<int:hardwareId>
+http://127.0.0.1:8080/iot/api/devices/<int:hardwareId>
+
+
+
+根据设备ID删除设备
+DELETE /iot/api/devices/<int:hardwareId>
+
+http://127.0.0.1:8080/iot/api/devices/<int:hardwareId>
 [body]
 
 [response]
@@ -158,13 +178,64 @@ http://127.0.0.1:8080/sitewhere/api/devices/<int:hardwareId>
   "metadata": {}                        //
 }
 
-根据设备ID获取数据
-GET  /sitewhere/api/devices/<int:hardwareId>
+
+事件
+============================================================
+存储设备数据###用户禁止调用
+POST /iot/api/devices/<int:hardwareId>/events/
+
+http://127.0.0.1:8080/iot/api/devices/<int:hardwareId>/events/
+
 [body]
+{
+    "hardwareId" : "test1234567",       //设备ID
+    "eventType" : "Measurements",       //事件类型
+    "siteToken" : "bb105f8d-3150-41f5-b9d1-db04965668d3",   //token
+    "eventDate" : ISODate("2018-03-22T05:45:40.499Z"),		//
+    "receivedDate" : ISODate("2018-03-22T07:40:56.884Z"),	//
+    "metadata" : { 
+    
+    },  
+    "measurements" : [                  //数据  
+        {
+            "name" : "engine.temperature",
+            "value" : 166.08
+        },
+        {
+            "name" : "fuel.level",
+            "value" : 82.94
+        }
+    ]   
+}
+[response]
+....
+
+
+获取设备数据
+GET /iot/api/devices/<int:hardwareId>/events/?resum=1
+
+http://127.0.0.1:8080/iot/api/devices/<int:hardwareId>/events/?resum=1
 
 [response]
+
 {
-
-
+	"hardwareId" : "test1234567",		//设备ID
+    "eventType" : "Measurements",		//事件类型
+    "siteToken" : "bb105f8d-3150-41f5-b9d1-db04965668d3",	//token
+    "eventDate" : ISODate("2018-03-22T05:45:40.499Z"),
+    "receivedDate" : ISODate("2018-03-22T07:40:56.884Z"),
+    "metadata" : { 
+    
+    },  
+    "measurements" : [					//数据 
+        {
+            "name" : "engine.temperature",
+            "value" : 166.08
+        },
+        {
+            "name" : "fuel.level",
+            "value" : 82.94
+        }
+    ]   
 }
 
