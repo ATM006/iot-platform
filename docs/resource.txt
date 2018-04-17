@@ -1,0 +1,17 @@
+
+sitewhere博客专栏
+https://blog.csdn.net/column/details/20812.html
+
+阿里云环境
+http://47.95.254.34:8080/sitewhere/admin/
+
+工一环境
+http://222.25.4.100:8080/sitewhere/admin/
+
+demo GET 数据
+http://47.95.254.34:5120/api/led
+
+demo mqtt topic :  test
+
+
+

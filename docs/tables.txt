@@ -3,7 +3,6 @@ admin
 
 2、用户
 {
-	"_id" : ObjectId("5ab35dfbc1b073b57f70f0b1"),
 	"username" : "admin",
 	"hashedPassword" : "5baa61e4c9b93f3f0682250b6cf8331b7ee68fd8",
 	"firstName" : "Admin",
@@ -32,7 +31,6 @@ admin
 
 3、设备
 {
-	"_id" : ObjectId("5ab35e0bc1b073b57f70fbf4"),
 	"hardwareId" : "119907f2-3eac-48bd-83cb-29a45fac2412",
 	"siteToken" : "bb105f8d-3150-41f5-b9d1-db04965668d3",
 	"specificationToken" : "82043707-9e3d-441f-bdcc-33cf0f4f7260",
@@ -50,14 +48,11 @@ admin
 
 
 4、事件
+事件类型：注册、数据、删除
+
 {
-	"_id" : ObjectId("5ab35e08c1b073b57f70f115"),
 	"eventType" : "Measurements",
 	"siteToken" : "bb105f8d-3150-41f5-b9d1-db04965668d3",
-	"deviceAssignmentToken" : "a4dac668-0eaf-40bf-ac82-9ce205289f8a",
-	"deviceAssignmentType" : "Associated",
-	"assetModuleId" : "fs-hardware",
-	"assetId" : "303",
 	"eventDate" : ISODate("2018-03-22T05:45:40.499Z"),
 	"receivedDate" : ISODate("2018-03-22T07:40:56.884Z"),
 	"metadata" : {
@@ -78,7 +73,6 @@ admin
 
 5、证书
 {
-	"_id" : ObjectId("5ab35dfbc1b073b57f70f0ae"),
 	"authority" : "GRP_SCHEDULES",
 	"description" : "Schedules",
 	"parent" : null,
@@ -87,7 +81,6 @@ admin
 
 6、命令
 {
-	"_id" : ObjectId("5ab35e08c1b073b57f70f0f7"),
 	"token" : "5a55cec6-51b8-4d0c-89e8-2cfa662aaab5",
 	"specificationToken" : "9f2426bd-46de-49d6-833e-385784a9dc1a",
 	"namespace" : "http://sitewhere/common",

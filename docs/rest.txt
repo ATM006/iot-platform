@@ -1,0 +1,170 @@
+
+
+资料：
+http://www.jikexueyuan.com/course/837.html
+http://www.cnblogs.com/vovlie/p/4178077.html
+https://blog.openshift.com/rest-web-services-with-python-mongodb-and-spatial-data-in-the-cloud-part-2/
+
+
+[REST api]
+
+0417 api 设计
+
+站点
+====================================
+创建一个新站点
+POST /iot/api/sites/
+
+http://localhost:8080/iot/api/sites  
+[body]
+{  
+  "token" : "",						//如果请求中不带token，系统生成唯一token  
+  "name" : "REST Site",  			//站点名字
+  "description" : "REST site ",		//站点描述  
+  "metadata" : { }					//可选，站点元数据 
+}
+  
+[response]
+{  
+  "createdDate": "",				//创建日期  
+  "createdBy": "admin",  			//创建者
+  "deleted": false,  				//是否被删除
+  "token": "",  					//返回token
+  "name": "REST Site",  			//站点名字
+  "description": "",  				//站点描述
+  "metadata": {} 					//可选，站点元数据 
+}  
+
+根据token删除站点
+DELETE /iot/api/sites/<int:token>
+
+http://localhost:8080/iot/api/sites/<int:token>
+[body]
+
+[response]
+{  
+  "createdDate": "",				//创建日期  
+  "createdBy": "admin",  			//创建者
+  "deleted": false,  				//是否被删除
+  "token": "",  					//token
+  "name": "12",  					//站点名字
+  "description": "12",  			//站点描述
+  "metadata": {} 					//可选，站点元数据 
+}   
+
+
+租户
+======================================================
+创建一个新租户
+POST /iot/api/tenants
+
+
+用户
+======================================================
+创建一个新用户
+POST /iot/api/users
+
+http://localhost:8080/iot/api/users
+[body]
+{
+  "username": "",	//用户名
+  "password": "",	//密码
+  "firstName": "",	//
+  "lastName": "",	//
+  "status": "",		//状态
+  "metadata": ""	//可选，元数据
+}
+[response]
+{
+  "createdDate": "",	//创建日期
+  "createdBy": "",		//创建者
+  "deleted": false,		//是否被删除
+  "username": "",		//用户名
+  "hashedPassword": "",	//密码hash
+  "firstName": "",		//
+  "lastName": "",		//
+  "lastLogin": "",		//最近登录时间
+  "status": "",			//状态
+  "metadata": ""		//可选，元数据
+}
+
+根据用户名删除用户
+DELETE /iot/api/users/<int:username>
+
+http://127.0.0.1:8080/iot/api/users/<int:username>
+[body]
+
+[response]
+{
+  "createdDate": "",    //创建日期
+  "createdBy": "",      //创建者
+  "deleted": false,     //是否被删除
+  "username": "",       //用户名
+  "hashedPassword": "", //密码hash
+  "firstName": "",      // 
+  "lastName": "",       // 
+  "lastLogin": "",      //最近登录时间
+  "status": "",         //状态
+  "metadata": ""        //可选，元数据
+}
+[error]
+{
+  "timestamp": 1523954254707,
+  "status": 404,
+  "error": "Not Found",
+  "message": "InvalidUsername:Username does not exist.",
+  "path": "/iot/api/users/111"
+}
+
+设备
+========================================================
+创建一个新设备
+POST /iot/api/devices/
+
+http://localhost:8080/iot/api/devices 
+[body]
+{  
+  "hardwareId" : "test1234567",  		//设备ID
+  "siteToken" : "",						//站点token   
+  "comments" : "Equipment tracker."  	//
+  "status": "",							//状态
+  "metadata": "object"					//
+}
+[response]
+{  
+  "createdDate": "", 					//创建日期 
+  "createdBy": "admin",  				//创建者
+  "deleted": false,  					//
+  "hardwareId": "test1234567",  		//
+  "siteToken": "",  					//
+  "comments": "Equipment tracker.",  	//
+  "metadata": {}  						//
+}  
+
+根据设备ID删除设备
+DELETE /sitewhere/api/devices/<int:hardwareId>
+
+http://127.0.0.1:8080/sitewhere/api/devices/<int:hardwareId>
+[body]
+
+[response]
+{
+  "createdDate": "",                    //创建日期
+  "createdBy": "admin",                 //创建者
+  "deleted": false,                     //
+  "hardwareId": "test1234567",          //
+  "siteToken": "",                      //            
+  "comments": "Equipment tracker.",     //
+  "metadata": {}                        //
+}
+
+根据设备ID获取数据
+GET  /sitewhere/api/devices/<int:hardwareId>
+[body]
+
+[response]
+{
+
+
+}
+
