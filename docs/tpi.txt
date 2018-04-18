@@ -1,0 +1,22 @@
+REST API 测试
+
+[led]
+curl -X GET http://127.0.0.1:5000/iot/api/led
+
+curl -X POST http://127.0.0.1:5000/iot/api/led -d '{"led":"true"}'
+
+[site]
+curl -X GET http://127.0.0.1:5000/iot/api/sites
+
+curl -X POST http://127.0.0.1:5000/iot/api/sites -d '{"token":"","name":"test","description":"test site","metadata" : { } }'
+
+[user]
+curl -X GET http://127.0.0.1:5000/iot/api/users
+[tenant]
+
+
+[event]
+
+
+[device]
+curl -X GET http://127.0.0.1:5000/iot/api/devices
