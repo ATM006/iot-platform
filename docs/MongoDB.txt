@@ -12,6 +12,9 @@
 	use sites;
 	show collections;
 	db.sites.find().pretty()
+	查询最近前10条记录
+	db.test_led.find().sort({_id:-1}).limit(10)
+
 
 3、连接MongoDB
 
@@ -20,10 +23,14 @@
 	db = conn.mydb  #连接mydb数据库，没有则自动创建
 	my_set = db.test_set　　#使用test_set集合，没有则自动创建
 	
-4、连接
+4、资料
 	http://api.mongodb.com/python/3.6.0/tutorial.html #官方文档
 	http://www.runoob.com/mongodb/mongodb-tutorial.html
 	https://www.cnblogs.com/melonjiang/p/6536876.html
 	https://www.yiibai.com/mongodb/mongodb_python.html
 	https://www.cnblogs.com/shhnwangjian/p/6247473.html
-	
+
+	MongoDb 命令查询所有数据库列表
+	https://blog.csdn.net/huxu981598436/article/details/47216493
+	MongoDB 查询文档
+	http://www.runoob.com/mongodb/mongodb-query.html

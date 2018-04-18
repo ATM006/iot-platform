@@ -17,6 +17,12 @@ https://wizardforcel.gitbooks.io/flask-extension-docs/content/flask-babel.html
 https://blog.csdn.net/xsj_blog/article/details/77619209
 
 
+flask 如何获取全部 GET 查询参数？
+https://segmentfault.com/q/1010000000449384
+使用python的Flask实现一个RESTful API服务器端[翻译]
+https://www.cnblogs.com/vovlie/p/4178077.html
+
+
 #例子
 
 @app.route('/api/<string:cate>',methods=['GET','POST','PATCH','PUT','DELET'])
