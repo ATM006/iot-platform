@@ -13,7 +13,10 @@ def site_get(mongo):
 
 def site_post(mongo,data):
 	sites = mongo.db.sites
-	
+	token =data["token"]
+	if token == '':
+		data["token"] = uuid.uuid1()
+	#print(data)
 	sites.insert(data)
 	return "POST sites"
 
