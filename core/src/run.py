@@ -29,16 +29,16 @@ def index():
 def api_cate(cate):
 	if request.method == 'GET':
 		if cate == 'led':
-			res = leds.led_get(mongo)
+			res = leds.led_get_all(mongo)
 
 		elif cate == 'sites':
-			res = sites.site_get(mongo)
+			res = sites.site_get_all(mongo)
 
 		elif cate == 'users':
-			res = users.user_get(mongo)
+			res = users.user_get_all(mongo)
 
 		elif cate == 'devices':
-			res = devices.device_get(mongo)
+			res = devices.device_get_all(mongo)
 
 		return res
 		
@@ -67,8 +67,30 @@ def api_cate(cate):
 		return "PUT\n"
 		
 	elif request.method == 'DELET':
+
+		return "DELETE\n"
+	
+
+@app.route('/iot/api/<string:cate>/<string:cateid>',methods=['GET','DELET'])
+def api_cate_id(cate,cateid):
+	if request.method == 'GET':
+		if cate == 'led':
+			res = leds.led_get(mongo)
+
+		elif cate == 'sites':
+			res = sites.site_get(mongo,cateid)
+
+		elif cate == 'users':
+			res = users.user_get(mongo)
+
+		elif cate == 'devices':
+			res = devices.device_get(mongo)
+
+		return res
+		
+	elif request.method == 'DELET':
 		if cate == 'sites':
-			res = sites.site_del(mongo)
+			res = sites.site_del(mongo,cateid)
 
 		elif cate == 'users':
 			res = users.user_del(mongo)
@@ -77,7 +99,6 @@ def api_cate(cate):
 			res = devices.device_del(mongo)
 
 		return res
-	
 
 
 @app.route('/iot/api/devices/<int:hardwareId>/events/',methods=['POST','GET'])

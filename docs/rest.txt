@@ -36,14 +36,14 @@ http://localhost:8080/iot/api/sites
 }  
 
 根据token获取站点
-GET /iot/api/sites/<int:token>
+GET /iot/api/sites/<string:token>
 
 http://localhost:8080/iot/api/sites/<int:token>
 
 
 
 根据token删除站点
-DELETE /iot/api/sites/<int:token>
+DELETE /iot/api/sites/<string:token>
 
 http://localhost:8080/iot/api/sites/<int:token>
 [body]

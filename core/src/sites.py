@@ -15,7 +15,7 @@ exp = '{\
 }'
 
 
-def site_get(mongo):
+def site_get_all(mongo):
 	sites = mongo.db.sites
 	s = sites.find()
 	out = []
@@ -26,6 +26,17 @@ def site_get(mongo):
 	
 	return jsonify({'result':out})
 
+
+def site_get(mongo,token):
+	sites = mongo.db.sites
+	res = sites.find_one({"token" : token})
+	if res == None:
+		return '{"site":"not exist!"}'
+	else:
+		res.pop("_id")
+		print(res)
+		return jsonify({'result':res})
+	#return "site test"
 
 def site_post(mongo,data):
 	sites = mongo.db.sites
@@ -39,12 +50,22 @@ def site_post(mongo,data):
 		ex["name"] = data["name"]
 		ex["description"] = data["description"]
 		ex["metadata"] = data["metadata"]
+	else:
+		return '{"site":"exist!"}'
 	print(ex)
 	sites.insert(ex)
-	return "POST sites"
+	ex.pop("_id")
+	return jsonify({'result':ex})
 
-def site_del(mongo):
-	
-	return "DELETE sites"
+def site_del(mongo,token):
+	sites = mongo.db.sites
+	res = sites.find_one({"token" : token})
+	if res == None:
+		return '{"site":"not exist!"}'
+	else:
+		sites.remove({"token" : token})
+		res.pop("_id")
+		print(res)
+		return jsonify({'result':res})
 
 

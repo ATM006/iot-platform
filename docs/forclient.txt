@@ -1,0 +1,12 @@
+
+服务端提供个服务：
+1、只提供GET
+	服务器给客户端提供site、user、device、event的GET方法
+	具体见详细文档
+
+2、mqtt协议服务
+	客户端对设备的操通过mqtt传输，格式：
+	topic+json
+	见详细文档
+
+
