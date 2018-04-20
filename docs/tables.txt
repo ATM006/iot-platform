@@ -23,7 +23,6 @@ admin
 {
   "createdDate": "",                    //创建日期
   "createdBy": "admin",                 //创建者
-  "deleted": false,                     //是否被删除
   "hardwareId": "test1234567",          //设备ID
   "siteToken": "",                      //token
   "comments": "Equipment tracker.",     //注释

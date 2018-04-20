@@ -1,11 +1,13 @@
 REST API 测试
 
 [led]
+====================================================
 curl -X GET http://127.0.0.1:5000/iot/api/led
 
 curl -X POST http://127.0.0.1:5000/iot/api/led -d '{"led":"true"}'
 
 [site]
+====================================================
 curl -X GET http://127.0.0.1:5000/iot/api/sites
 [R1]
 {
@@ -76,12 +78,71 @@ curl -X DELET http://127.0.0.1:5000/iot/api/sites/9f55bdc8-430c-11e8-a46b-002314
 
 
 [user]
+===================================================================
 curl -X GET http://127.0.0.1:5000/iot/api/users
-[tenant]
+[R1]
+{
+  "result": [
+    {
+      "createdBy": "admin", 
+      "createdDate": "2018-04-19 23:05:55", 
+      "hashedPassword": "123456", 
+      "lastLogin": "2018-04-19 23:05:55", 
+      "metadata": {}, 
+      "status": true, 
+      "username": "atm"
+    }
+  ]
+}
 
+curl -X POST http://127.0.0.1:5000/iot/api/users -d '{"username":"atm","hashedPassword":"123456","metadata":{}}'
+[R1]
+{
+  "result": {
+    "createdBy": "admin", 
+    "createdDate": "2018-04-19 23:05:55", 
+    "hashedPassword": "123456", 
+    "lastLogin": "2018-04-19 23:05:55", 
+    "metadata": {}, 
+    "status": true, 
+    "username": "atm"
+  }
+}
+
+curl -X DELET http://127.0.0.1:5000/iot/api/users/atm006
+[R1]
+{
+  "result": {
+    "createdBy": "admin", 
+    "createdDate": "2018-04-20 09:30:46", 
+    "hashedPassword": "123456", 
+    "lastLogin": "2018-04-20 09:30:46", 
+    "metadata": {}, 
+    "status": true, 
+    "username": "atm006"
+  }
+}
+
+[R2]
+{"user":"not exist"}
 
 [event]
+===============================================================
+curl -X GET http://127.0.0.1:5000/iot/api/devices/test1234560/events/
+
+
+curl -X POST http://127.0.0.1:5000/iot/api/devices/test1234560/events/ -d '{"eventType":"test","siteToken":"testtoken","hardwareId":"test123456","metadata":{},"eventbody":{}}'
+
 
 
 [device]
+==============================================================
 curl -X GET http://127.0.0.1:5000/iot/api/devices
+
+curl -X GET http://127.0.0.1:5000/iot/api/devices/test1234560
+
+curl -X POST  http://127.0.0.1:5000/iot/api/devices -d '{"hardwareId":"test123456","siteToken":"","comments":"","metadata": {}}'
+
+curl -X DELET http://127.0.0.1:5000/iot/api/devices/test1234560
+
+

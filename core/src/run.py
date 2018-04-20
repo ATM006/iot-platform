@@ -81,10 +81,10 @@ def api_cate_id(cate,cateid):
 			res = sites.site_get(mongo,cateid)
 
 		elif cate == 'users':
-			res = users.user_get(mongo)
+			res = users.user_get(mongo,cateid)
 
 		elif cate == 'devices':
-			res = devices.device_get(mongo)
+			res = devices.device_get(mongo,cateid)
 
 		return res
 		
@@ -93,15 +93,15 @@ def api_cate_id(cate,cateid):
 			res = sites.site_del(mongo,cateid)
 
 		elif cate == 'users':
-			res = users.user_del(mongo)
+			res = users.user_del(mongo,cateid)
 
 		elif cate == 'devices':
-			res = devices.device_del(mongo)
+			res = devices.device_del(mongo,cateid)
 
 		return res
 
 
-@app.route('/iot/api/devices/<int:hardwareId>/events/',methods=['POST','GET'])
+@app.route('/iot/api/devices/<string:hardwareId>/events/',methods=['POST','GET'])
 def api_events(hardwareId):
 	if request.method == 'POST':
 		data = json.loads(request.get_data().decode('utf-8'))

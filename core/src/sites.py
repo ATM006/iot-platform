@@ -51,7 +51,7 @@ def site_post(mongo,data):
 		ex["description"] = data["description"]
 		ex["metadata"] = data["metadata"]
 	else:
-		return '{"site":"exist!"}'
+		return '{"site":"exist"}'
 	print(ex)
 	sites.insert(ex)
 	ex.pop("_id")
