@@ -7,7 +7,7 @@ import json
 
 
 
-def led_get(mongo):
+def led_get_all(mongo):
 	li = mongo.db.test_led.find()
 	out = []
 	for i in li: 

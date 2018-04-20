@@ -9,130 +9,39 @@ curl -X POST http://127.0.0.1:5000/iot/api/led -d '{"led":"true"}'
 [site]
 ====================================================
 curl -X GET http://127.0.0.1:5000/iot/api/sites
-[R1]
-{
-  "result": [
-    {
-      "ofo": "1", 
-      "token": "de325f32-42d1-11e8-8f8b-00231487c7b4"
-    }, 
-    {
-      "description": "test site", 
-      "metadata": {}, 
-      "name": "test", 
-      "token": "4666676a-42d2-11e8-8f8b-00231487c7b4"
-    }, 
-    {
-      "description": "test site", 
-      "metadata": {}, 
-      "name": "test", 
-      "token": "c179bda6-4306-11e8-a46b-00231487c7b4"
-    }
-  ]
-}
 
 curl -X GET http://127.0.0.1:5000/iot/api/sites/7b0db932-43c2-11e8-a7b2-705ab6ad9cae
-[R1]
-{
-  "result": {
-    "createdBy": "admin", 
-    "createdDate": "2018-04-19 19:12:00", 
-    "description": "test site", 
-    "metadata": {}, 
-    "name": "test", 
-    "token": "7b0db932-43c2-11e8-a7b2-705ab6ad9cae"
-  }
-}
-
 
 curl -X POST http://127.0.0.1:5000/iot/api/sites -d '{"token":"","name":"test","description":"test site","metadata" : { } }'
-[R1]
-{
-  "result": {
-    "createdBy": "admin", 
-    "createdDate": "2018-04-19 19:04:54", 
-    "description": "test site", 
-    "metadata": {}, 
-    "name": "test", 
-    "token": "7d1bb7ca-43c1-11e8-a7b2-705ab6ad9cae"
-  }
-}
-[R2]
-
-
 
 curl -X DELET http://127.0.0.1:5000/iot/api/sites/9f55bdc8-430c-11e8-a46b-00231487c7b4
-[R1]
-{"site":"not exist!"}
-[R2]
-{
-  "result": {
-    "createdBy": "admin", 
-    "createdDate": "2018-04-18 21:30:12", 
-    "description": "test site", 
-    "metadata": {}, 
-    "name": "test", 
-    "token": "9f55bdc8-430c-11e8-a46b-00231487c7b4"
-  }
-}
-
 
 [user]
 ===================================================================
 curl -X GET http://127.0.0.1:5000/iot/api/users
-[R1]
-{
-  "result": [
-    {
-      "createdBy": "admin", 
-      "createdDate": "2018-04-19 23:05:55", 
-      "hashedPassword": "123456", 
-      "lastLogin": "2018-04-19 23:05:55", 
-      "metadata": {}, 
-      "status": true, 
-      "username": "atm"
-    }
-  ]
-}
+
+curl -X GET http://127.0.0.1:5000/iot/api/users/atm
 
 curl -X POST http://127.0.0.1:5000/iot/api/users -d '{"username":"atm","hashedPassword":"123456","metadata":{}}'
-[R1]
-{
-  "result": {
-    "createdBy": "admin", 
-    "createdDate": "2018-04-19 23:05:55", 
-    "hashedPassword": "123456", 
-    "lastLogin": "2018-04-19 23:05:55", 
-    "metadata": {}, 
-    "status": true, 
-    "username": "atm"
-  }
-}
 
 curl -X DELET http://127.0.0.1:5000/iot/api/users/atm006
-[R1]
-{
-  "result": {
-    "createdBy": "admin", 
-    "createdDate": "2018-04-20 09:30:46", 
-    "hashedPassword": "123456", 
-    "lastLogin": "2018-04-20 09:30:46", 
-    "metadata": {}, 
-    "status": true, 
-    "username": "atm006"
-  }
-}
 
-[R2]
-{"user":"not exist"}
+
+[tenant]
+====================================================================
+curl -X GET http://127.0.0.1:5000/iot/api/tenants
+
+curl -X GET http://127.0.0.1:5000/iot/api/tenants/test1
+
+curl -X POST http://127.0.0.1:5000/iot/api/tenants -d '{"id":"test","name":"test tenant","authenticationToken":"","authorizedUserIds":["admin"],"metadata" : {}}'
+
+curl -X DELET http://127.0.0.1:5000/iot/api/tenants
 
 [event]
 ===============================================================
 curl -X GET http://127.0.0.1:5000/iot/api/devices/test1234560/events/
 
-
 curl -X POST http://127.0.0.1:5000/iot/api/devices/test1234560/events/ -d '{"eventType":"test","siteToken":"testtoken","hardwareId":"test123456","metadata":{},"eventbody":{}}'
-
 
 
 [device]

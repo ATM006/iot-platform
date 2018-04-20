@@ -8,6 +8,7 @@ import json
 import leds
 import sites
 import users
+import tenants
 import events
 import devices
 
@@ -37,6 +38,9 @@ def api_cate(cate):
 		elif cate == 'users':
 			res = users.user_get_all(mongo)
 
+		elif cate == 'tenants':
+			res = tenants.tenant_get_all(mongo)
+
 		elif cate == 'devices':
 			res = devices.device_get_all(mongo)
 
@@ -52,6 +56,9 @@ def api_cate(cate):
 	
 		elif cate == 'users':
 			res = users.user_post(mongo,data)
+		
+		elif cate == 'tenants':
+			res = tenants.tenant_post(mongo,data)
 		
 		elif cate == 'devices':
 			res = devices.device_post(mongo,data)
@@ -83,6 +90,9 @@ def api_cate_id(cate,cateid):
 		elif cate == 'users':
 			res = users.user_get(mongo,cateid)
 
+		elif cate == 'tenants':
+			res = tenants.tenant_get(mongo,cateid)
+
 		elif cate == 'devices':
 			res = devices.device_get(mongo,cateid)
 
@@ -94,6 +104,9 @@ def api_cate_id(cate,cateid):
 
 		elif cate == 'users':
 			res = users.user_del(mongo,cateid)
+
+		elif cate == 'tenants':
+			res = tenants.tenant_del(mongo,cateid)
 
 		elif cate == 'devices':
 			res = devices.device_del(mongo,cateid)

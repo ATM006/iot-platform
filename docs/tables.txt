@@ -1,5 +1,15 @@
-1、管理员用户表
-admin
+1、租户
+
+{
+  "createdDate" : "",
+  "createdBy" : "",
+  "id" : "",
+  "name" : "",
+  "authenticationToken" : "",
+  "authorizedUserIds" : [ "admin" ],
+  "metadata" : { }
+}
+
 
 2、用户
 
