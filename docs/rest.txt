@@ -18,21 +18,21 @@ POST /iot/api/sites/
 http://localhost:8080/iot/api/sites  
 [body]
 {  
-  "token" : "",						//如果请求中不带token，系统生成唯一token  
-  "name" : "REST Site",  			//站点名字
+  "token" : "",				//如果请求中不带token，系统生成唯一token  
+  "name" : "REST Site",  		//站点名字
   "description" : "REST site ",		//站点描述  
-  "metadata" : { }					//可选，站点元数据 
+  "metadata" : { }			//可选，站点元数据 
 }
   
 [response]
 {  
-  "createdDate": "",				//创建日期  
-  "createdBy": "admin",  			//创建者
-  "deleted": false,  				//是否被删除
-  "token": "",  					//返回token
-  "name": "REST Site",  			//站点名字
-  "description": "",  				//站点描述
-  "metadata": {} 					//可选，站点元数据 
+  "createdDate": "",			//创建日期  
+  "createdBy": "admin",  		//创建者
+  "deleted": false,  			//是否被删除
+  "token": "",  			//返回token
+  "name": "REST Site",  		//站点名字
+  "description": "",  			//站点描述
+  "metadata": {} 			//可选，站点元数据 
 }  
 
 根据token获取站点
@@ -50,13 +50,13 @@ http://localhost:8080/iot/api/sites/<int:token>
 
 [response]
 {  
-  "createdDate": "",				//创建日期  
-  "createdBy": "admin",  			//创建者
-  "deleted": false,  				//是否被删除
-  "token": "",  					//token
-  "name": "12",  					//站点名字
-  "description": "12",  			//站点描述
-  "metadata": {} 					//可选，站点元数据 
+  "createdDate": "",			//创建日期  
+  "createdBy": "admin",  		//创建者
+  "deleted": false,  			//是否被删除
+  "token": "",  			//token
+  "name": "12",  			//站点名字
+  "description": "12",  		//站点描述
+  "metadata": {} 			//可选，站点元数据 
 }   
 
 
@@ -64,6 +64,15 @@ http://localhost:8080/iot/api/sites/<int:token>
 ======================================================
 创建一个新租户
 POST /iot/api/tenants
+
+curl -X GET http://127.0.0.1:5000/iot/api/tenants
+
+curl -X GET http://127.0.0.1:5000/iot/api/tenants/test1
+
+curl -X POST http://127.0.0.1:5000/iot/api/tenants -d '{"id":"test","name":"test tenant","authenticationToken":"","authorizedUserIds":["admin"],"metadata" : {}}'
+
+curl -X DELET http://127.0.0.1:5000/iot/api/tenants
+
 
 
 用户
@@ -74,25 +83,25 @@ POST /iot/api/users
 http://localhost:8080/iot/api/users
 [body]
 {
-  "username": "",	//用户名
-  "password": "",	//密码
-  "firstName": "",	//
-  "lastName": "",	//
-  "status": "",		//状态
-  "metadata": ""	//可选，元数据
+  "username": "",			//用户名
+  "password": "",			//密码
+  "firstName": "",			//
+  "lastName": "",			//
+  "status": "",				//状态
+  "metadata": ""			//可选，元数据
 }
 [response]
 {
-  "createdDate": "",	//创建日期
-  "createdBy": "",		//创建者
-  "deleted": false,		//是否被删除
-  "username": "",		//用户名
-  "hashedPassword": "",	//密码hash
-  "firstName": "",		//
-  "lastName": "",		//
-  "lastLogin": "",		//最近登录时间
-  "status": "",			//状态
-  "metadata": ""		//可选，元数据
+  "createdDate": "",			//创建日期
+  "createdBy": "",			//创建者
+  "deleted": false,			//是否被删除
+  "username": "",			//用户名
+  "hashedPassword": "",			//密码hash
+  "firstName": "",			//
+  "lastName": "",			//
+  "lastLogin": "",			//最近登录时间
+  "status": "",				//状态
+  "metadata": ""			//可选，元数据
 }
 
 根据username获取用户
@@ -138,20 +147,20 @@ http://localhost:8080/iot/api/devices
 [body]
 {  
   "hardwareId" : "test1234567",  		//设备ID
-  "siteToken" : "",						//站点token   
-  "comments" : "Equipment tracker."  	//
-  "status": "",							//状态
-  "metadata": "object"					//
+  "siteToken" : "",				//站点token   
+  "comments" : "Equipment tracker."  		//
+  "status": "",					//状态
+  "metadata": "object"				//
 }
 [response]
 {  
-  "createdDate": "", 					//创建日期 
-  "createdBy": "admin",  				//创建者
-  "deleted": false,  					//是否被删除
+  "createdDate": "", 				//创建日期 
+  "createdBy": "admin",  			//创建者
+  "deleted": false,  				//是否被删除
   "hardwareId": "test1234567",  		//设备ID
-  "siteToken": "",  					//token
-  "comments": "Equipment tracker.",  	//注释
-  "metadata": {}  						//元数据
+  "siteToken": "",  				//token
+  "comments": "Equipment tracker.",  		//注释
+  "metadata": {}  				//元数据
 }  
 
 根据设备ID获取设备信息
@@ -188,15 +197,15 @@ http://127.0.0.1:8080/iot/api/devices/<int:hardwareId>/events/
 
 [body]
 {
-    "hardwareId" : "test1234567",       //设备ID
-    "eventType" : "Measurements",       //事件类型
-    "siteToken" : "bb105f8d-3150-41f5-b9d1-db04965668d3",   //token
+    "hardwareId" : "test1234567",       			//设备ID
+    "eventType" : "Measurements",      				//事件类型
+    "siteToken" : "bb105f8d-3150-41f5-b9d1-db04965668d3",   	//token
     "eventDate" : ISODate("2018-03-22T05:45:40.499Z"),		//
     "receivedDate" : ISODate("2018-03-22T07:40:56.884Z"),	//
     "metadata" : { 
     
     },  
-    "measurements" : [                  //数据  
+    "measurements" : [                	  			//数据  
         {
             "name" : "engine.temperature",
             "value" : 166.08
@@ -219,15 +228,15 @@ http://127.0.0.1:8080/iot/api/devices/<int:hardwareId>/events/?resum=1
 [response]
 
 {
-	"hardwareId" : "test1234567",		//设备ID
-    "eventType" : "Measurements",		//事件类型
+	"hardwareId" : "test1234567",				//设备ID
+    "eventType" : "Measurements",				//事件类型
     "siteToken" : "bb105f8d-3150-41f5-b9d1-db04965668d3",	//token
     "eventDate" : ISODate("2018-03-22T05:45:40.499Z"),
     "receivedDate" : ISODate("2018-03-22T07:40:56.884Z"),
     "metadata" : { 
     
     },  
-    "measurements" : [					//数据 
+    "measurements" : [						//数据 
         {
             "name" : "engine.temperature",
             "value" : 166.08

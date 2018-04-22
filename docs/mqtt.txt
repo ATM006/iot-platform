@@ -1,14 +1,24 @@
 
 
 [topic]
-	prox:"iot/input/json"
+	统一接入topic：
+		"/iot/input/json"
+	统一出口topic：
+		"/iot/output/json"
 
+	单独接入topic：
+		"/iot/input/<deviceId>"
+	单独出口topic：
+		"/iot/output/<deviceId>"
+	
+		
 
 
 
 
 https://www.hivemq.com/blog/mqtt-client-library-paho-python
 https://blog.csdn.net/itas109/article/details/78873257
+https://github.com/eclipse/paho.mqtt.python/blob/master/examples/client_mqtt_clear_retain.py
 
 
 注册设备：
