@@ -5,12 +5,15 @@ from flask import request,jsonify
 from flask_pymongo import PyMongo
 import json
 
+import log
+
 app = Flask(__name__)
 
 
 
 
 def led_get_all(mongo):
+	log.logger.info("call led_get_all()")
 	li = mongo.db.test_led.find()
 	out = []
 	for i in li: 
