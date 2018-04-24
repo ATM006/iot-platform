@@ -17,14 +17,20 @@ exp = '{\
 
 def event_get(mongo,hardwareId):
 	events = mongo.db.events
-	#res = events.find().sort({_id:-1}).limit(1)
-	res = events.find_one()
+	devices = mongo.db.devices
+	res = devices.find()
+	#res = events.find_one()
 	if res == None:
 		return '{"event":"not exist"}'
 	else:
-		res.pop("_id")
-		print(res)
-		return jsonify({'result':res})
+		e = events.find({"hardwareId":hardwareId})
+		out = []
+		for item in e:
+			item.pop("_id")
+			print(item)
+			out.append(item)
+
+		return jsonify({'result':out})
 
 
 

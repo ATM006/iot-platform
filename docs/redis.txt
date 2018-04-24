@@ -1,0 +1,40 @@
+
+
+
+[安装Redis]
+
+1.安装构建工具
+sudo apt-get update
+sudo apt-get install make gcc python-dev
+
+2.安装redis
+#用从上步复制到的源码下载地址
+wget -q http://download.redis.io/releases/redis-4.0.7.tar.gz 
+tar -xzf redis-4.0.7.tar.gz
+cd redis-4.0.7/
+make
+sudo make install
+
+3.安装pyhton的redis客户端库
+sudo apt install python-pip
+pip install redis
+
+4.检查
+redis-server &         #后台启动redis-server  要按两下回车键
+pyhon                     #启动python
+>>> import redis
+>>> con = redis.Redis()
+>>> con.set('hello','world')
+True
+>>> con.get('hello')
+'world'
+
+[问题]
+MISCONF Redis is configured to save RDB snapshots, but is currently not able to persist
+https://lvtao.net/database/598.html
+
+
+
+[资料]
+ubuntu16上安装redis和python-redis
+https://blog.csdn.net/github_35751574/article/details/79160075

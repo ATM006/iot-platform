@@ -23,10 +23,10 @@ mongo = PyMongo(app,config_prefix='MONGO1')
  
 @app.route('/') 
 def index(): 
-	return 'The IoT '
+	return 'The IoT SPI'
 
 
-@app.route('/iot/api/<string:cate>',methods=['GET','POST','PATCH','PUT','DELET'])
+@app.route('/iot/spi/<string:cate>',methods=['GET','POST','PATCH','PUT','DELET'])
 def api_cate(cate):
 	if request.method == 'GET':
 		if cate == 'led':
@@ -78,7 +78,7 @@ def api_cate(cate):
 		return "DELETE\n"
 	
 
-@app.route('/iot/api/<string:cate>/<string:cateid>',methods=['GET','DELET'])
+@app.route('/iot/spi/<string:cate>/<string:cateid>',methods=['GET','DELET'])
 def api_cate_id(cate,cateid):
 	if request.method == 'GET':
 		if cate == 'led':
@@ -114,7 +114,7 @@ def api_cate_id(cate,cateid):
 		return res
 
 
-@app.route('/iot/api/devices/<string:hardwareId>/events/',methods=['POST','GET'])
+@app.route('/iot/spi/devices/<string:hardwareId>/events/',methods=['POST','GET'])
 def api_events(hardwareId):
 	if request.method == 'POST':
 		data = json.loads(request.get_data().decode('utf-8'))
@@ -128,4 +128,4 @@ def api_events(hardwareId):
 
 
 if __name__ == '__main__': 
-    app.run(debug=False) 
+    app.run(host='0.0.0.0',port=5120,debug=False) 
