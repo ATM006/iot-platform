@@ -1,0 +1,31 @@
+
+
+
+安装influxdb-python
+
+Installation
+Install, upgrade and uninstall influxdb-python with these commands:
+
+$ pip install influxdb
+$ pip install --upgrade influxdb
+$ pip uninstall influxdb
+On Debian/Ubuntu, you can install it with this command:
+
+$ sudo apt-get install python-influxdb
+
+
+安装InfluxDB
+
+1、下载Ubuntu系统下的安装介质，之后直接解压安装
+wget https://dl.influxdata.com/influxdb/releases/influxdb_1.2.4_amd64.deb
+sudo dpkg -i influxdb_1.2.4_amd64.deb
+2、启动
+influxd run
+
+
+InfluxDB-Python
+https://influxdb-python.readthedocs.io/en/latest/include-readme.html
+Ubuntu安装Influxdb
+https://blog.csdn.net/kangkanglou/article/details/74012310
+
+
