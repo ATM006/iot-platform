@@ -1,0 +1,69 @@
+
+	租户、用户、站点和设备管理接口设计
+
+1、租户：多个家庭场景的管理员
+	curl -X POST http://127.0.0.1:8080/iot/api/tenants 
+		-d 
+		'{
+			"id":"test",
+			"name":"test tenant",
+			"authenticationToken":"",		#验证token
+			"authorizedUserIds":["admin"],#用户列表
+			"metadata" : {}
+		}'
+
+	curl -X DELET http://127.0.0.1:8080/iot/api/tenants/<string:siteId>
+	待实现
+
+	curl -X 修改租户，待实现
+
+	curl -X GET http://127.0.0.1:8080/iot/api/tenants/<string:siteId>
+	待实现
+
+2、用户:家庭场景是实际操作者
+	curl -X POST http://127.0.0.1:8080/iot/api/users 
+		-d 
+		'{
+			"username":"atm",
+			"hashedPassword":"123456",
+			"metadata":{}	
+		}'
+
+	curl -X DELET http://127.0.0.1:8080/iot/api/users/<string:username>
+
+	curl -X
+
+	curl -X GET http://127.0.0.1:8080/iot/api/users/<string:username>
+
+3、站点：家庭事件场景，可以使一个家庭、房间
+	curl -X POST http://127.0.0.1:8080/iot/api/sites 
+	-d 
+	'{
+		"token":"", 
+		"name":"test",
+		"description":"test site",
+		"metadata" : { }
+	}'
+	
+	curl -X DELET http://127.0.0.1:8080/iot/api/sites/<string:sitetoken>
+
+	curl -X
+
+	curl -X GET http://127.0.0.1:8080/iot/api/sites/<string:sitetoken>
+
+4、设备：实际的设备
+	curl -X POST  http://127.0.0.1:8080/iot/api/devices 
+	-d 
+	'{
+		"hardwareId":"test123456",
+		"siteToken":"",
+		"comments":"",
+		"metadata": {}
+	}'
+
+	curl -X DELET http://127.0.0.1:8080/iot/api/devices/<string:hardwareId>
+
+	curl -X
+
+	curl -X GET http://127.0.0.1:8080/iot/api/devices/<string:hardwareId>
+	

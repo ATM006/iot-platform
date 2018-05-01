@@ -21,7 +21,7 @@ wget https://dl.influxdata.com/influxdb/releases/influxdb_1.2.4_amd64.deb
 sudo dpkg -i influxdb_1.2.4_amd64.deb
 2、启动
 influxd run
-
+service influxdb restart
 
 InfluxDB-Python
 https://influxdb-python.readthedocs.io/en/latest/include-readme.html
