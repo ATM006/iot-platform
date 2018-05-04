@@ -11,7 +11,8 @@ sudo service mongod restart
 #启动Influx
 sudo service influxdb restart
 #启动hiveMQ
-
+cd /opt/hivemq-3.0.2/bin/
+./run.sh &
 
 #启动redis
 redis-server &

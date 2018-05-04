@@ -51,22 +51,18 @@ def api_cate(cate):
 		return "DELETE\n"
 	
 
-@app.route('/iot/api/<string:cate>/<string:cateid>',methods=['GET','DELET'])
+@app.route('/iot/api/<string:cate>/<string:cateid>',methods=['GET','DELETE'])
 def api_cate_id(cate,cateid):
 	if request.method == 'GET':
 		res = requests.get(urlt + cate + "/" + cateid)
-		res = res.json()
-		log.logger.info(res)
-		return jsonify(res)
 
-	elif request.method == 'DELET':
+	elif request.method == 'DELETE':
 		res = requests.delete(urlt + cate + "/" + cateid)
-		print(res.text)
-		#res = res.json()
-		#log.logger.info(res)
-		#return jsonify(res)
-		return  "TEST\n"
+		#res = requests.delete('http://127.0.0.1:5120/iot/spi/devices/test1234561')
 
+	res = res.json()
+	log.logger.info(res)
+	return jsonify(res)
 
 
 if __name__ == '__main__': 

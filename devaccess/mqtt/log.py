@@ -5,13 +5,13 @@ logger = logging.getLogger()
 logger.setLevel(logging.INFO)    # Log等级总开关  
   
 # 第二步，创建一个handler，用于写入日志文件  
-logfile = '../../logs/inbound.log'  
+logfile = '../../logs/data_access.log'
 fh = logging.FileHandler(logfile, mode='w')  
-fh.setLevel(logging.DEBUG)   # 输出到file的log等级的开关  
+fh.setLevel(logging.INFO)   # 输出到file的log等级的开关
   
 # 第三步，再创建一个handler，用于输出到控制台  
 ch = logging.StreamHandler()  
-ch.setLevel(logging.WARNING)   # 输出到console的log等级的开关  
+ch.setLevel(logging.INFO)   # 输出到console的log等级的开关
   
 # 第四步，定义handler的输出格式  
 formatter = logging.Formatter("%(asctime)s - %(filename)s[line:%(lineno)d] - %(levelname)s: %(message)s")  

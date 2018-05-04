@@ -94,7 +94,7 @@ def api_cate(cate):
 		return "DELETE\n"
 	
 
-@app.route('/iot/spi/<string:cate>/<string:cateid>',methods=['GET','DELET'])
+@app.route('/iot/spi/<string:cate>/<string:cateid>',methods=['GET','DELETE'])
 def api_cate_id(cate,cateid):
 	if request.method == 'GET':
 		if cate == 'led':
@@ -114,7 +114,7 @@ def api_cate_id(cate,cateid):
 
 		return res
 		
-	elif request.method == 'DELET':
+	elif request.method == 'DELETE':
 		if cate == 'sites':
 			res = sites.site_del(mongo,cateid)
 

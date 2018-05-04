@@ -1,5 +1,5 @@
 import paho.mqtt.client as mqtt
-import time
+import time,json
 
 HOST = "127.0.0.1"
 PORT = 1883
@@ -18,7 +18,18 @@ def on_connect(client, userdata, flags, rc):
     client.subscribe("test")
 
 def on_message(client, userdata, msg):
-    print(msg.topic+" "+msg.payload.decode("utf-8"))
+    data = json.loads(msg.payload.decode("utf-8"))
+    if data["type"] == "RegisterDevice":
+        print("1")
+    elif data["type"] == "DeviceData":
+        print("2")
+    elif data["type"] == "DeviceAlert":
+        print("3")
+    elif data["type"] == "Acknowledge":
+        print("4")
+    print(data)
+
+	
 
 if __name__ == '__main__':
     client_loop()
