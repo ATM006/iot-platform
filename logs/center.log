@@ -1,7 +1,28 @@
-2018-04-24 15:49:41,600 - _internal.py[line:88] - INFO:  * Running on http://0.0.0.0:5120/ (Press CTRL+C to quit)
-2018-04-24 15:49:43,598 - _internal.py[line:88] - INFO: 127.0.0.1 - - [24/Apr/2018 15:49:43] "GET /iot/spi/devices/test1234560/events/ HTTP/1.1" 200 -
-2018-04-24 15:49:55,968 - _internal.py[line:88] - INFO: 127.0.0.1 - - [24/Apr/2018 15:49:55] "GET /iot/spi/devices/test123456/events/ HTTP/1.1" 200 -
-2018-04-24 15:50:02,626 - _internal.py[line:88] - INFO: 127.0.0.1 - - [24/Apr/2018 15:50:02] "GET /iot/spi/devices/test1234561/events/ HTTP/1.1" 200 -
-2018-04-24 15:50:06,799 - _internal.py[line:88] - INFO: 127.0.0.1 - - [24/Apr/2018 15:50:06] "GET /iot/spi/devices/test1234562/events/ HTTP/1.1" 200 -
-2018-04-24 15:50:11,859 - _internal.py[line:88] - INFO: 127.0.0.1 - - [24/Apr/2018 15:50:11] "GET /iot/spi/devices/test123456/events/ HTTP/1.1" 200 -
-2018-04-24 15:51:43,304 - _internal.py[line:88] - INFO: 127.0.0.1 - - [24/Apr/2018 15:51:43] "GET /iot/spi/devices/test123456/events/ HTTP/1.1" 200 -
+2018-05-04 12:28:39,422 - _internal.py[line:88] - INFO:  * Running on http://0.0.0.0:5120/ (Press CTRL+C to quit)
+2018-05-04 12:28:50,776 - _internal.py[line:88] - INFO: 127.0.0.1 - - [04/May/2018 12:28:50] "DELETE /iot/spi/sites/1 HTTP/1.1" 405 -
+2018-05-04 12:28:58,059 - _internal.py[line:88] - INFO: 127.0.0.1 - - [04/May/2018 12:28:58] "DELETE /iot/spi/devices/test123456 HTTP/1.1" 405 -
+2018-05-04 12:29:47,272 - _internal.py[line:88] - INFO: 127.0.0.1 - - [04/May/2018 12:29:47] "GET /iot/spi/sites HTTP/1.1" 200 -
+2018-05-04 12:30:09,071 - _internal.py[line:88] - INFO: 127.0.0.1 - - [04/May/2018 12:30:09] "GET /iot/spi/devices HTTP/1.1" 200 -
+2018-05-04 12:31:06,557 - _internal.py[line:88] - INFO: 127.0.0.1 - - [04/May/2018 12:31:06] "DELETE /iot/spi/devices/test1234560 HTTP/1.1" 405 -
+2018-05-04 12:31:06,567 - _internal.py[line:88] - INFO: 127.0.0.1 - - [04/May/2018 12:31:06] "DELETE /iot/spi/devices/test1234560 HTTP/1.1" 405 -
+2018-05-04 12:31:08,743 - _internal.py[line:88] - INFO: 127.0.0.1 - - [04/May/2018 12:31:08] "POST /iot/spi/devices HTTP/1.1" 200 -
+2018-05-04 12:31:11,120 - _internal.py[line:88] - INFO: 127.0.0.1 - - [04/May/2018 12:31:11] "POST /iot/spi/devices HTTP/1.1" 200 -
+2018-05-04 12:31:17,224 - _internal.py[line:88] - INFO: 127.0.0.1 - - [04/May/2018 12:31:17] "POST /iot/spi/devices HTTP/1.1" 200 -
+2018-05-04 12:31:22,770 - _internal.py[line:88] - INFO: 127.0.0.1 - - [04/May/2018 12:31:22] "POST /iot/spi/devices HTTP/1.1" 200 -
+2018-05-04 12:31:28,143 - _internal.py[line:88] - INFO: 127.0.0.1 - - [04/May/2018 12:31:28] "POST /iot/spi/devices HTTP/1.1" 200 -
+2018-05-04 12:31:31,195 - _internal.py[line:88] - INFO: 127.0.0.1 - - [04/May/2018 12:31:31] "GET /iot/spi/devices HTTP/1.1" 200 -
+2018-05-04 12:31:49,775 - _internal.py[line:88] - INFO: 127.0.0.1 - - [04/May/2018 12:31:49] "DELETE /iot/spi/devices/test1234561 HTTP/1.1" 405 -
+2018-05-04 12:31:49,786 - _internal.py[line:88] - INFO: 127.0.0.1 - - [04/May/2018 12:31:49] "GET /iot/spi/devices HTTP/1.1" 200 -
+2018-05-04 12:31:51,013 - _internal.py[line:88] - INFO: 127.0.0.1 - - [04/May/2018 12:31:51] "GET /iot/spi/devices HTTP/1.1" 200 -
+2018-05-04 12:31:51,217 - _internal.py[line:88] - INFO: 127.0.0.1 - - [04/May/2018 12:31:51] "GET /iot/spi/devices HTTP/1.1" 200 -
+2018-05-04 12:31:52,916 - _internal.py[line:88] - INFO: 127.0.0.1 - - [04/May/2018 12:31:52] "GET /iot/spi/devices HTTP/1.1" 200 -
+2018-05-04 12:31:53,149 - _internal.py[line:88] - INFO: 127.0.0.1 - - [04/May/2018 12:31:53] "GET /iot/spi/devices HTTP/1.1" 200 -
+2018-05-04 12:32:15,805 - _internal.py[line:88] - INFO: 127.0.0.1 - - [04/May/2018 12:32:15] "DELETE /iot/spi/devices/test1234561 HTTP/1.1" 405 -
+2018-05-04 12:32:24,499 - _internal.py[line:88] - INFO: 127.0.0.1 - - [04/May/2018 12:32:24] "GET /iot/spi/devices HTTP/1.1" 200 -
+2018-05-04 12:33:05,890 - _internal.py[line:88] - INFO: 127.0.0.1 - - [04/May/2018 12:33:05] "GET /iot/spi/devices HTTP/1.1" 200 -
+2018-05-04 12:33:06,075 - _internal.py[line:88] - INFO: 127.0.0.1 - - [04/May/2018 12:33:06] "GET /iot/spi/devices HTTP/1.1" 200 -
+2018-05-04 12:33:06,461 - _internal.py[line:88] - INFO: 127.0.0.1 - - [04/May/2018 12:33:06] "GET /iot/spi/devices HTTP/1.1" 200 -
+2018-05-04 12:33:18,430 - _internal.py[line:88] - INFO: 127.0.0.1 - - [04/May/2018 12:33:18] "DELET /iot/spi/devices/test1234561 HTTP/1.1" 200 -
+2018-05-04 12:33:23,187 - _internal.py[line:88] - INFO: 127.0.0.1 - - [04/May/2018 12:33:23] "GET /iot/spi/devices HTTP/1.1" 200 -
+2018-05-04 12:36:04,140 - _internal.py[line:88] - INFO: 127.0.0.1 - - [04/May/2018 12:36:04] "DELETE /iot/spi/devices/test1234561 HTTP/1.1" 405 -
+2018-05-04 12:36:14,048 - _internal.py[line:88] - INFO: 127.0.0.1 - - [04/May/2018 12:36:14] "DELETE /iot/spi/devices/test1234561 HTTP/1.1" 405 -
