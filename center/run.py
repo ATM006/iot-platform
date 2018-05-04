@@ -1,5 +1,6 @@
 #! /usr/lib/python
 
+
 from flask import Flask
 from flask import request,jsonify
 from flask_pymongo import PyMongo 
@@ -18,9 +19,9 @@ app = Flask(__name__)
 app.config['MONGO1_HOST']='127.0.0.1'
 app.config['MONGO1_PORT']=27017
 app.config['MONGO1_DBNAME']='iot'
-mongo = PyMongo(app,config_prefix='MONGO1') 
- 
- 
+mongo = PyMongo(app,config_prefix='MONGO1')
+
+
 @app.route('/') 
 def index(): 
 	return 'The IoT SPI'

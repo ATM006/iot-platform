@@ -1,0 +1,27 @@
+
+	设备数据和用户命令管理接口
+
+
+curl -X GET http://127.0.0.1:8080/iot/api/devices/<string:hardwareId>/events/
+
+
+curl -X POST http://127.0.0.1:8080/iot/api/devices/<string:hardwareId>/events/ 
+	-d 
+	'{
+		"eventType":"test",			#事件类型
+		"siteToken":"testtoken",
+		"hardwareId":"test123456",
+		"metadata":{},
+		"eventbody":{}
+	}'
+
+事件类型：设备数据（DevicesData）、设备命令（UserCommands）
+
+DevicesData:
+curl POST ...
+
+
+UserCommands:
+curl POST
+
+

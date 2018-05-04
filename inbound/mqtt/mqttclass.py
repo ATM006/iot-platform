@@ -1,10 +1,12 @@
 #! /usr/bin/python3
 
+
 import paho.mqtt.client as mqtt
-import log,get,post
+import log,requests
 
 
-class MyMQTTClass(mqtt.Client):
+class MyMQTTClass(m
+                  qtt.Client):
     
 	def on_connect(self, mqttc, obj, flags, rc):
 		print("rc: "+str(rc))
