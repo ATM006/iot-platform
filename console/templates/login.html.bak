@@ -1,0 +1,73 @@
+{% extends "bootstrap/base.html" %}
+{% block title %}服务联网服务平台{% endblock %}
+{% block navbar %}
+<div class="navbar navbar-inverse" role="navigation">
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle"
+                    data-toggle="collapse" data-target=".navbar-collapse">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="/">首页</a>
+        </div>
+        <div class="navbar-collapse collapse">
+            <div class="navbar-collapse collapse" style="height:30; width:50; margin-left:0px; margin-top:0px; float:left">
+                <ul class="nav navbar-nav">
+                    <li><a href="/">平台介绍</a></li>
+                </ul>
+            </div>
+            <div class="navbar-collapse collapse" style="height:30; width:50; margin-right:0px; margin-top:0px; float:right">
+                <ul class="nav navbar-nav">
+                    <li><a href="/">关于我们</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block content %}
+<div class="container">
+ {% block page_content %}
+
+ <body class="sw-body">
+	<div class="sw-container">
+		<div class="k-content container sw-content">
+			<div>
+				<div class="login-wrapper k-header" style="width: 550px; margin-left: auto; margin-right: auto; text-align: center; margin-top: 10px;">
+					<img class="logo-image" src="./SiteWhere - Login_files/admin_console.png">
+					<form id="login-form" class="form-horizontal" style="padding-top: 20px; padding-left: 20px;" method="POST" action="http://47.95.254.34:8080/sitewhere/admin/login.html">
+						<div class="control-group">
+							<label class="control-label" for="login-username" data-i18n="public.Username">Username</label>
+							<div class="controls">
+								<input type="text" id="login-username" name="username" class="input-large" title="Username">
+							</div>
+						</div>
+						<div class="control-group">
+							<label class="control-label" for="login-password" data-i18n="public.Password">Password</label>
+							<div class="controls">
+								<input type="password" id="login-password" name="password" class="input-large" title="Password">
+							</div>
+						</div>
+						<div class="control-group">
+							<label class="control-label"></label>
+							<div class="controls">
+								<a id="login-submit" href="javascript:void(0)" class="btn btn-sw-red login-submit-button" data-i18n="login.LogIn">Log In</a>
+							</div>
+						</div>
+						<div style="text-align: center; font-size: 16pt; color: #c00">
+
+						</div>
+					</form>
+				</div>
+			</div>
+		</div>
+		<div style="height: 10px;"></div>
+	</div>
+</body>
+ {% endblock %}
+</div>
+{% endblock %}

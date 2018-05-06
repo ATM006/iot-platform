@@ -3,8 +3,18 @@ port
 
 mongo	27017
 
-hiveMQ	1883
 
-REST	512
+center
+8088
+
+admin	process		console
+8080	5120		80
+
+devaccess	datapublish
+1883		1883
+
+
+
+
 
 

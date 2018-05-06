@@ -9,7 +9,7 @@
 #启动MongoDB
 sudo service mongod restart
 #启动Influx
-sudo service influxdb restart
+sudo influxd run &
 #启动hiveMQ
 cd /opt/hivemq-3.0.2/bin/
 ./run.sh &

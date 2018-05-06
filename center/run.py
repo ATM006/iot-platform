@@ -134,9 +134,13 @@ def api_cate_id(cate,cateid):
 def api_events(hardwareId):
 	if request.method == 'POST':
 		data = json.loads(request.get_data().decode('utf-8'))
+
+		'''MongoDB服务接口'''
 		res = events.event_post(mongo,data,hardwareId)
 		return res
 	elif request.method == 'GET':
+
+		'''MongoDB服务接口'''
 		res = events.event_get(mongo,hardwareId)
 		return res
 
