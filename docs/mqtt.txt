@@ -21,13 +21,14 @@ https://blog.csdn.net/itas109/article/details/78873257
 https://github.com/eclipse/paho.mqtt.python/blob/master/examples/client_mqtt_clear_retain.py
 
 
+================================================================
+
 注册设备：
 {
 "hardwareId": "123-TEST-4567890",
 "type": "RegisterDevice",
 "request": {
 "hardwareId": "123-TEST-4567890",
-"specificationToken": "964e7613-dab3-4fb3-8919-266a91370884",
 "siteToken": "bb105f8d-3150-41f5-b9d1-db04965668d3"
 }
 }
@@ -35,10 +36,9 @@ https://github.com/eclipse/paho.mqtt.python/blob/master/examples/client_mqtt_cle
 测量事件：
 {
 "hardwareId": "123-TEST-4567890",
-"type": "DeviceMeasurements",
+"type": "DeviceData",
 "request": {
-"measurements": { 
-},
+"metadata": { },
 "eventDate": "2016-02-10T19:40:03.391Z"
 }
 }
@@ -48,15 +48,8 @@ https://github.com/eclipse/paho.mqtt.python/blob/master/examples/client_mqtt_cle
 "hardwareId": "123-TEST-4567890",
 "type":"DeviceAlert",
 "request": {
-"type": "engine.overheat",
-"level": "Warning",
-"message": "The engine is about to overheat! Turn the machine off!",
-"updateState": false,
 "eventDate": "2016-02-10T19:40:03.391Z",
-"metadata": { 
-"name1": "value1",
-"name2": "value2"
-}
+"metadata": {}
 }
 }
 
@@ -66,105 +59,16 @@ https://github.com/eclipse/paho.mqtt.python/blob/master/examples/client_mqtt_cle
 "hardwareId": "123-TEST-4567890",
 "type": "Acknowledge",
 "request": {
-"response": "Pinged Me!",
-"originatingEventId": "56bf72cba76cfa4ff7901e8d",
-"updateState": false,
+"metadata": {},
 "eventDate": "2016-02-13T18:15:39.563Z"
 }
 }
 
+
+======================================================================
 注册响应：
-{
-"systemCommand": {
-"type": "RegistrationAck",
-"reason": "NewRegistration"
-},
-"nestingContext": {
-"gateway": {
-"createdDate": "2016-02-13T11:00:39.465-0500",
-"createdBy": "system",
-"deleted": false,
-"hardwareId": "123-TEST-4567890",
-"siteToken": "bb105f8d-3150-41f5-b9d1-db04965668d3",
-"specificationToken": "964e7613-dab3-4fb3-8919-266a91370884",
-"deviceElementMappings": [],
-"comments": "Device created by on-demand registration.",
-"assignmentToken": "aefecc20-2eb3-41f1-a52e-b5dc17557f67",
-"metadata": {}
-},
-"nested": null,
-"path": null
-},
-"assignment": {
-"createdDate": "2016-02-13T11:00:39.467-0500",
-"createdBy": "system",
-"deleted": false,
-"token": "aefecc20-2eb3-41f1-a52e-b5dc17557f67",
-"deviceHardwareId": "123-TEST-4567890",
-"assignmentType": "Unassociated",
-"siteToken": "bb105f8d-3150-41f5-b9d1-db04965668d3",
-"status": "Active",
-"activeDate": "2016-02-13T11:00:39.467-0500",
-"state": {},
-"metadata": {}
-}
-}
+
 
 
 命令：
-{
-"command": {
-"command": {
-"createdDate": "2016-02-13T13:50:12.352-0500",
-"createdBy": "admin",
-"updatedDate": null,
-"updatedBy": null,
-"deleted": false,
-"token": "b24ce333-b1a1-4de5-9ca0-cc1d09d697f1",
-"specificationToken": "964e7613-dab3-4fb3-8919-266a91370884",
-"namespace": "http://www.test.com",
-"name": "blinkLed",
-"description": "Blinks an LED on the device.",
-"parameters":[
-{
-"name":"color",
-"type":"String",
-"required":true
-},
-{
-"name":"count",
-"type":"Int32",
-"required":false
-}],
-"metadata":{}
-},
-"invocation": {
-"id": "56bf7c84a76cfa4ff7901e94",
-"eventType": "CommandInvocation",
-"siteToken": "bb105f8d-3150-41f5-b9d1-db04965668d3",
-"deviceAssignmentToken": "aefecc20-2eb3-41f1-a52e-b5dc17557f67",
-"assignmentType": "Unassociated",
-"eventDate": "2016-02-13T13:57:08.274-0500",
-"receivedDate": "2016-02-13T13:57:08.274-0500",
-"initiator": "REST",
-"initiatorId": "admin",
-"target": "Assignment",
-"commandToken": "b24ce333-b1a1-4de5-9ca0-cc1d09d697f1",
-"parameterValues": {
-"color":"#ff0000",
-"count":"3"
-},
-"status": "Pending",
-"metadata": {}
-},
-"parameters": {
-"color": "#ff0000",
-"count": 3
-}
-},
-"nestingContext":{
-...
-},"assignment":{
-...
-}
-}
+

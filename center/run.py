@@ -14,7 +14,7 @@ import events
 import devices
 
 
- 
+
 app = Flask(__name__) 
 app.config['MONGO1_HOST']='127.0.0.1'
 app.config['MONGO1_PORT']=27017
@@ -46,7 +46,8 @@ def api_cate(cate):
 			res = devices.device_get_all(mongo)
 
 		return res
-		
+    
+
 	elif request.method == 'POST':
 		data = json.loads(request.get_data().decode('utf-8'))
 		if cate == 'led':
@@ -54,13 +55,13 @@ def api_cate(cate):
 
 		elif cate == 'sites':
 			res = sites.site_post(mongo,data)
-	
+
 		elif cate == 'users':
 			res = users.user_post(mongo,data)
-		
+
 		elif cate == 'tenants':
 			res = tenants.tenant_post(mongo,data)
-		
+
 		elif cate == 'devices':
 			res = devices.device_post(mongo,data)
 
@@ -71,15 +72,30 @@ def api_cate(cate):
 		return "PATCH\n"
 
 	elif request.method == 'PUT':
+		data = json.loads(request.get_data().decode('utf-8'))
+		if cate == 'led':
+			res = leds.led_put(mongo,data)
 
-		return "PUT\n"
+		elif cate == 'sites':
+			res = sites.site_put(mongo,data)
+
+		elif cate == 'users':
+			res = users.user_put(mongo,data)
+
+		elif cate == 'tenants':
+			res = tenants.tenant_put(mongo,data)
+
+		elif cate == 'devices':
+			res = devices.device_put(mongo,data)
+
+		return res
 		
 	elif request.method == 'DELET':
 
 		return "DELETE\n"
 	
 
-@app.route('/iot/spi/<string:cate>/<string:cateid>',methods=['GET','DELET'])
+@app.route('/iot/spi/<string:cate>/<string:cateid>',methods=['GET','DELETE'])
 def api_cate_id(cate,cateid):
 	if request.method == 'GET':
 		if cate == 'led':
@@ -99,7 +115,7 @@ def api_cate_id(cate,cateid):
 
 		return res
 		
-	elif request.method == 'DELET':
+	elif request.method == 'DELETE':
 		if cate == 'sites':
 			res = sites.site_del(mongo,cateid)
 
@@ -119,9 +135,13 @@ def api_cate_id(cate,cateid):
 def api_events(hardwareId):
 	if request.method == 'POST':
 		data = json.loads(request.get_data().decode('utf-8'))
+
+		'''MongoDB服务接口'''
 		res = events.event_post(mongo,data,hardwareId)
 		return res
 	elif request.method == 'GET':
+
+		'''MongoDB服务接口'''
 		res = events.event_get(mongo,hardwareId)
 		return res
 

@@ -2,7 +2,7 @@
 
 from flask import Flask
 from flask import request,jsonify
-from flask_pymongo import PyMongo
+#from flask_pymongo import PyMongo
 import json
 
 import log
@@ -26,3 +26,6 @@ def led_post(mongo,data):
 	leds.insert(data)
 	return "POST led"
 
+
+def led_put(mongo,data):
+	return "led not put\n"

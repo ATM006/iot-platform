@@ -59,6 +59,29 @@ def device_post(mongo,data):
 		return '{"device":"exist"}'
 		
 
+def device_put(mongo,data):
+	devices = mongo.db.devices
+	date = datetime.datetime.now()
+	#ex = json.loads(exp)
+	devid = data["hardwareId"]
+	res = devices.find_one({"hardwareId":devid})
+	if res != None:
+		devices.remove({"hardwareId": devid})
+		res["createdDate"] 	= date.strftime("%Y-%m-%d %H:%M:%S")
+		res["createdBy"] 	= "admin"
+		res["hardwareId"] 	= devid
+		res["siteToken"] 	= data["siteToken"]
+		res["comments"] 	= data["comments"]
+		res["metadata"] 	= data["metadata"]
+		print(res)
+		devices.insert(res)
+		res.pop("_id")
+		return jsonify({'result':res})
+	else:
+		return '{"device":"not exist"}'
+
+
+
 def device_del(mongo,devid):
 	devices = mongo.db.devices
 	res = devices.find_one({"hardwareId":devid})

@@ -16,9 +16,11 @@ curl -X POST http://127.0.0.1:5000/iot/api/sites -d '{"token":"","name":"test","
 
 curl -X DELET http://127.0.0.1:5000/iot/api/sites/9f55bdc8-430c-11e8-a46b-00231487c7b4
 
+curl -X PUT http://127.0.0.1:5120/iot/spi/sites -d '{"token":"7b0db932-43c2-11e8-a7b2-705ab6ad9cae","name":"test","description":"test site","metadata" : {"type":"test"} }'
+
 [user]
 ===================================================================
-curl -X GET http://127.0.0.1:5000/iot/api/users
+curl -X GET http://127.0.0.1:5120/iot/spi/users
 
 curl -X GET http://127.0.0.1:5000/iot/api/users/atm
 
@@ -26,16 +28,20 @@ curl -X POST http://127.0.0.1:5000/iot/api/users -d '{"username":"atm","hashedPa
 
 curl -X DELET http://127.0.0.1:5000/iot/api/users/atm006
 
+curl -X PUT http://127.0.0.1:5120/iot/spi/users -d '{"username":"atm","hashedPassword":"1234561","metadata":{}}'
+
 
 [tenant]
 ====================================================================
-curl -X GET http://127.0.0.1:5000/iot/api/tenants
+curl -X GET http://127.0.0.1:5120/iot/spi/tenants
 
 curl -X GET http://127.0.0.1:5000/iot/api/tenants/test1
 
 curl -X POST http://127.0.0.1:5000/iot/api/tenants -d '{"id":"test","name":"test tenant","authenticationToken":"","authorizedUserIds":["admin"],"metadata" : {}}'
 
 curl -X DELET http://127.0.0.1:5000/iot/api/tenants
+
+curl -X PUT http://127.0.0.1:5120/iot/spi/tenants -d '{"id":"test","name":"test tenant","authenticationToken":"123","authorizedUserIds":["admin"],"metadata" : {}}'
 
 [event]
 ===============================================================
@@ -54,4 +60,5 @@ curl -X POST  http://127.0.0.1:5000/iot/api/devices -d '{"hardwareId":"test12345
 
 curl -X DELET http://127.0.0.1:5000/iot/api/devices/test1234560
 
+curl -X PUT http://127.0.0.1:5120/iot/spi/devices -d '{"hardwareId":"test123456","siteToken":"1234","comments":"","metadata": {}}'
 

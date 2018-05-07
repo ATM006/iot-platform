@@ -57,6 +57,30 @@ def site_post(mongo,data):
 	ex.pop("_id")
 	return jsonify({'result':ex})
 
+#更新站点操作
+def site_put(mongo,data):
+	sites = mongo.db.sites
+	date = datetime.datetime.now()
+	#ex = json.loads(exp)
+	token = data["token"]
+	res = sites.find_one({"token" : token})
+	if res != None:
+		sites.remove({"token" : token})
+		res["createdDate"] = date.strftime("%Y-%m-%d %H:%M:%S")
+		res["createdBy"] = "admin"
+		#res["token"] = str(uuid.uuid1())
+		res["name"] = data["name"]
+		res["description"] = data["description"]
+		res["metadata"] = data["metadata"]
+		print(res)
+		sites.insert(res)
+		res.pop("_id")
+		return jsonify({'result': res})
+	else:
+		return '{"site":"not exist"}'
+
+
+
 def site_del(mongo,token):
 	sites = mongo.db.sites
 	res = sites.find_one({"token" : token})

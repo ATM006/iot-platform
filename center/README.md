@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 /***
   * @file   README.md
   *
@@ -17,3 +18,11 @@ https://www.cnblogs.com/MikeZhang/p/InfluxDBPythonOpt20170312.html
 InfluxDB-Python
 http://influxdb-python.readthedocs.io/en/latest/include-readme.html
 
+=======
+
+	物联网服务平台核心存储模块
+
+
+三层存储模型：
+	redis + MongoDB + InfluxDB
+>>>>>>> origin/dev

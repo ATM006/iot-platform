@@ -4,7 +4,7 @@ from flask import Flask
 from flask import request,jsonify
 from flask_pymongo import PyMongo
 import json,uuid,datetime
-
+import log
 
 exp = '{\
 "createdDate": "",\
@@ -59,7 +59,32 @@ def user_post(mongo,data):
 		return jsonify({'result':ex})
 	else:
 		return '{"user":"exist"}'
-		
+
+#创建新用户
+def user_put(mongo,data):
+	log.logger.info("call : user_post(mongo,data)")
+	users = mongo.db.users
+	date = datetime.datetime.now()
+	#ex = json.loads(exp)
+	name = data["username"]
+	res = users.find_one({"username":name})
+	if res != None:
+		users.remove({"username":name})
+		res["createdDate"] = date.strftime("%Y-%m-%d %H:%M:%S")
+		res["createdBy"] = "admin"
+		res["username"] = data["username"]
+		res["hashedPassword"] = data["hashedPassword"]
+		res["lastLogin"] = date.strftime("%Y-%m-%d %H:%M:%S")
+		res["status"] = True
+		res["metadata"] = data["metadata"]
+		#print(res)
+		log.logger.info(res)
+		users.insert(res)
+		res.pop("_id")
+		return jsonify({'result':res})
+	else:
+		return '{"user":"not exist"}'
+
 
 def user_del(mongo,name):
 	users = mongo.db.users
