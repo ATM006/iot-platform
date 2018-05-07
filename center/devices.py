@@ -18,9 +18,10 @@ exp = '{\
 
 def device_get(mongo,devid):
 	devices = mongo.db.devices
+	ex = json.loads(exp)
 	res = devices.find_one({'hardwareId':devid})
 	if res == None:
-		return '{"device":"not exist!"}'
+		return jsonify({'result': ex})
 	else:
 		res.pop("_id")
 		print(res)
@@ -56,13 +57,13 @@ def device_post(mongo,data):
 		ex.pop("_id")
 		return jsonify({'result':ex})
 	else:
-		return '{"device":"exist"}'
+		return jsonify({'result': ex})
 		
 
 def device_put(mongo,data):
 	devices = mongo.db.devices
 	date = datetime.datetime.now()
-	#ex = json.loads(exp)
+	ex = json.loads(exp)
 	devid = data["hardwareId"]
 	res = devices.find_one({"hardwareId":devid})
 	if res != None:
@@ -78,15 +79,16 @@ def device_put(mongo,data):
 		res.pop("_id")
 		return jsonify({'result':res})
 	else:
-		return '{"device":"not exist"}'
+		return jsonify({'result': ex})
 
 
 
 def device_del(mongo,devid):
 	devices = mongo.db.devices
+	ex = json.loads(exp)
 	res = devices.find_one({"hardwareId":devid})
 	if res == None:
-		return '{"device":"not exist"}'
+		return jsonify({'result': ex})
 	else:
 		devices.remove({"hardwareId":devid})
 		res.pop("_id")

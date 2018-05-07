@@ -29,9 +29,10 @@ def site_get_all(mongo):
 
 def site_get(mongo,token):
 	sites = mongo.db.sites
+	ex = json.loads(exp)
 	res = sites.find_one({"token" : token})
 	if res == None:
-		return '{"site":"not exist!"}'
+		return jsonify({'result': ex})
 	else:
 		res.pop("_id")
 		print(res)
@@ -51,7 +52,8 @@ def site_post(mongo,data):
 		ex["description"] = data["description"]
 		ex["metadata"] = data["metadata"]
 	else:
-		return '{"site":"exist"}'
+		#return '{"site":"exist"}'
+		return jsonify({'result':ex})
 	print(ex)
 	sites.insert(ex)
 	ex.pop("_id")
@@ -60,6 +62,7 @@ def site_post(mongo,data):
 #更新站点操作
 def site_put(mongo,data):
 	sites = mongo.db.sites
+	ex = json.loads(exp)
 	date = datetime.datetime.now()
 	#ex = json.loads(exp)
 	token = data["token"]
@@ -77,15 +80,16 @@ def site_put(mongo,data):
 		res.pop("_id")
 		return jsonify({'result': res})
 	else:
-		return '{"site":"not exist"}'
+		return jsonify({'result': ex})
 
 
 
 def site_del(mongo,token):
 	sites = mongo.db.sites
+	ex = json.loads(exp)
 	res = sites.find_one({"token" : token})
 	if res == None:
-		return '{"site":"not exist!"}'
+		return jsonify({'result': ex})
 	else:
 		sites.remove({"token" : token})
 		res.pop("_id")

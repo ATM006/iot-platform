@@ -22,9 +22,10 @@ exp = '{\
 
 def tenant_get(mongo,tenantId):
 	tenants = mongo.db.tenants
+	ex = json.loads(exp)
 	res = tenants.find_one({"id":tenantId})
 	if res == None:
-		return '{"tenant":"not exist!"}'
+		return jsonify({'result': ex})
 	else:
 		res.pop("_id")
 		print(res)
@@ -62,13 +63,13 @@ def tenant_post(mongo,data):
 		ex.pop("_id")
 		return jsonify({'result':ex})
 	else:
-		return '{"tenant":"exist"}'
+		return jsonify({'result':ex})
 		
 #创建新租户
 def tenant_put(mongo,data):
 	tenants = mongo.db.tenants
 	date = datetime.datetime.now()
-	#ex = json.loads(exp)
+	ex = json.loads(exp)
 	tenantId = data["id"]
 	res = tenants.find_one({"id":tenantId})
 	if res != None:
@@ -86,13 +87,14 @@ def tenant_put(mongo,data):
 		res.pop("_id")
 		return jsonify({'result':res})
 	else:
-		return '{"tenant":"not exist"}'
+		return jsonify({'result': res})
 
 def tenant_del(mongo,tenantId):
 	tenants = mongo.db.tenants
+	ex = json.loads(exp)
 	res = tenants.find_one({"id":tenantId})
 	if res == None:
-		return '{"tenant":"not exist"}'
+		return jsonify({'result': ex})
 	else:
 		tenants.remove({"id":tenantId})
 		res.pop("_id")

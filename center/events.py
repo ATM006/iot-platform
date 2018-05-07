@@ -65,10 +65,11 @@ def event_post(mongo,data,hardwareId):
 def event_get(mongo,hardwareId):
 	events = mongo.db.events
 	devices = mongo.db.devices
+	ex = json.loads(exp)
 	res = devices.find()
 	#res = events.find_one()
 	if res == None:
-		return '{"event":"not exist"}'
+		return jsonify({'result': ex})
 	else:
 		e = events.find({"hardwareId":hardwareId})
 		out = []
@@ -89,7 +90,7 @@ def event_post(mongo,data,hardwareId):
 	ex = json.loads(exp)
 	hardwareId = data["hardwareId"]
 	if devices.find_one({"hardwareId":hardwareId}) == None:
-		return '{"hardwareId":"not exist"}'
+		return jsonify({'result': ex})
 	else:
 		ex["eventType"] = data["eventType"]
 		ex["siteToken"] = data["siteToken"]

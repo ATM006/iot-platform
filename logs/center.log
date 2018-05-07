@@ -1,28 +1,4 @@
-2018-05-06 14:11:58,264 - _internal.py[line:88] - INFO:  * Running on http://0.0.0.0:5120/ (Press CTRL+C to quit)
-2018-05-06 14:12:29,292 - _internal.py[line:88] - INFO: 127.0.0.1 - - [06/May/2018 14:12:29] "GET /iot/spi/users/admin HTTP/1.1" 200 -
-2018-05-06 14:12:37,913 - _internal.py[line:88] - INFO: 127.0.0.1 - - [06/May/2018 14:12:37] "GET /iot/spi/users/atm001 HTTP/1.1" 200 -
-2018-05-06 14:15:22,600 - _internal.py[line:88] - INFO: 127.0.0.1 - - [06/May/2018 14:15:22] "GET /iot/spi/users/atm001 HTTP/1.1" 200 -
-2018-05-06 14:17:53,325 - _internal.py[line:88] - INFO: 127.0.0.1 - - [06/May/2018 14:17:53] "GET /iot/spi/users/atm001 HTTP/1.1" 200 -
-2018-05-06 14:19:06,902 - _internal.py[line:88] - INFO: 127.0.0.1 - - [06/May/2018 14:19:06] "GET /iot/spi/users/atm001 HTTP/1.1" 200 -
-2018-05-06 14:19:13,310 - _internal.py[line:88] - INFO: 127.0.0.1 - - [06/May/2018 14:19:13] "GET /iot/spi/users/atm001 HTTP/1.1" 200 -
-2018-05-06 14:20:35,311 - _internal.py[line:88] - INFO: 127.0.0.1 - - [06/May/2018 14:20:35] "GET /iot/spi/users/atm001 HTTP/1.1" 200 -
-2018-05-06 14:21:29,800 - _internal.py[line:88] - INFO: 127.0.0.1 - - [06/May/2018 14:21:29] "GET /iot/spi/users/atm001 HTTP/1.1" 200 -
-2018-05-06 14:22:55,645 - _internal.py[line:88] - INFO: 127.0.0.1 - - [06/May/2018 14:22:55] "GET /iot/spi/users/atm001 HTTP/1.1" 200 -
-2018-05-06 14:23:30,551 - _internal.py[line:88] - INFO: 127.0.0.1 - - [06/May/2018 14:23:30] "GET /iot/spi/users/atm001 HTTP/1.1" 200 -
-2018-05-06 14:25:56,556 - _internal.py[line:88] - INFO: 127.0.0.1 - - [06/May/2018 14:25:56] "GET /iot/spi/users/atm001 HTTP/1.1" 200 -
-2018-05-06 14:25:59,530 - _internal.py[line:88] - INFO: 127.0.0.1 - - [06/May/2018 14:25:59] "GET /iot/spi/users/atm001 HTTP/1.1" 200 -
-2018-05-06 14:28:37,350 - _internal.py[line:88] - INFO: 127.0.0.1 - - [06/May/2018 14:28:37] "GET /iot/spi/users/atm001 HTTP/1.1" 200 -
-2018-05-06 14:29:59,030 - _internal.py[line:88] - INFO: 127.0.0.1 - - [06/May/2018 14:29:59] "GET /iot/spi/users/atm001 HTTP/1.1" 200 -
-2018-05-06 14:30:47,431 - _internal.py[line:88] - INFO: 127.0.0.1 - - [06/May/2018 14:30:47] "GET /iot/spi/users/atm001 HTTP/1.1" 200 -
-2018-05-06 14:31:54,910 - _internal.py[line:88] - INFO: 127.0.0.1 - - [06/May/2018 14:31:54] "GET /iot/spi/users/atm001 HTTP/1.1" 200 -
-2018-05-06 14:32:39,524 - _internal.py[line:88] - INFO: 127.0.0.1 - - [06/May/2018 14:32:39] "GET /iot/spi/users/atm001 HTTP/1.1" 200 -
-2018-05-06 14:33:28,678 - _internal.py[line:88] - INFO: 127.0.0.1 - - [06/May/2018 14:33:28] "GET /iot/spi/users/atm001 HTTP/1.1" 200 -
-2018-05-06 14:35:01,319 - _internal.py[line:88] - INFO: 127.0.0.1 - - [06/May/2018 14:35:01] "GET /iot/spi/users/atm001 HTTP/1.1" 200 -
-2018-05-06 14:38:05,538 - _internal.py[line:88] - INFO: 127.0.0.1 - - [06/May/2018 14:38:05] "GET /iot/spi/users/atm001 HTTP/1.1" 200 -
-2018-05-06 14:38:46,414 - _internal.py[line:88] - INFO: 127.0.0.1 - - [06/May/2018 14:38:46] "GET /iot/spi/users/atm001 HTTP/1.1" 200 -
-2018-05-06 14:39:19,257 - _internal.py[line:88] - INFO: 127.0.0.1 - - [06/May/2018 14:39:19] "GET /iot/spi/users/atm001 HTTP/1.1" 200 -
-2018-05-06 14:45:52,653 - _internal.py[line:88] - INFO: 127.0.0.1 - - [06/May/2018 14:45:52] "GET /iot/spi/users/atm001 HTTP/1.1" 200 -
-2018-05-06 14:46:46,818 - _internal.py[line:88] - INFO: 127.0.0.1 - - [06/May/2018 14:46:46] "GET /iot/spi/users/atm001 HTTP/1.1" 200 -
-2018-05-06 14:47:53,329 - _internal.py[line:88] - INFO: 127.0.0.1 - - [06/May/2018 14:47:53] "GET /iot/spi/users/atm001 HTTP/1.1" 200 -
-2018-05-06 14:49:40,623 - _internal.py[line:88] - INFO: 127.0.0.1 - - [06/May/2018 14:49:40] "GET /iot/spi/users/atm001 HTTP/1.1" 200 -
-2018-05-06 14:50:12,309 - _internal.py[line:88] - INFO: 127.0.0.1 - - [06/May/2018 14:50:12] "GET /iot/spi/users/atm001 HTTP/1.1" 200 -
+2018-05-07 12:18:07,674 - _internal.py[line:88] - INFO:  * Running on http://0.0.0.0:5120/ (Press CTRL+C to quit)
+2018-05-07 12:18:10,071 - _internal.py[line:88] - INFO: 127.0.0.1 - - [07/May/2018 12:18:10] "GET /iot/spi/sites/57e5d58c-4f4f-11e8-ae75-705ab6ad9cae1 HTTP/1.1" 200 -
+2018-05-07 12:18:16,779 - _internal.py[line:88] - INFO: 127.0.0.1 - - [07/May/2018 12:18:16] "GET /iot/spi/sites/57e5d58c-4f4f-11e8-ae75-705ab6ad9cae HTTP/1.1" 200 -
+2018-05-07 12:18:18,961 - _internal.py[line:88] - INFO: 127.0.0.1 - - [07/May/2018 12:18:18] "GET /iot/spi/sites/4666676a-42d2-11e8-8f8b-00231487c7b4 HTTP/1.1" 200 -

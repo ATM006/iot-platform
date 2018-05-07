@@ -19,9 +19,10 @@ exp = '{\
 
 def user_get(mongo,name):
 	users = mongo.db.users
+	ex = json.loads(exp)
 	res = users.find_one({"username":name})
 	if res == None:
-		return '{"user":"not exist!"}'
+		return jsonify({'result': ex})
 	else:
 		res.pop("_id")
 		print(res)
@@ -58,14 +59,14 @@ def user_post(mongo,data):
 		ex.pop("_id")
 		return jsonify({'result':ex})
 	else:
-		return '{"user":"exist"}'
+		return jsonify({'result': ex})
 
 #创建新用户
 def user_put(mongo,data):
 	log.logger.info("call : user_post(mongo,data)")
 	users = mongo.db.users
 	date = datetime.datetime.now()
-	#ex = json.loads(exp)
+	ex = json.loads(exp)
 	name = data["username"]
 	res = users.find_one({"username":name})
 	if res != None:
@@ -83,14 +84,15 @@ def user_put(mongo,data):
 		res.pop("_id")
 		return jsonify({'result':res})
 	else:
-		return '{"user":"not exist"}'
+		return jsonify({'result': ex})
 
 
 def user_del(mongo,name):
 	users = mongo.db.users
+	ex = json.loads(exp)
 	res = users.find_one({"username":name})
 	if res == None:
-		return '{"user":"not exist"}'
+		return jsonify({'result': ex})
 	else:
 		users.remove({"username":name})
 		res.pop("_id")
