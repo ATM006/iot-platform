@@ -10,22 +10,19 @@ class MyMQTTClass(mqtt.Client):
 		print("rc: "+str(rc))
 
 	def on_message(self, mqttc, obj, msg):
-		#print(msg.topic+" "+str(msg.qos)+" "+str(msg.payload))
-		#log.logger.info()
+		log.logger.info("call : on_message(self, mqttc, obj, msg)")
 		data = json.loads(msg.payload.decode("utf-8"))
-		if data["type"] == "RegisterDevice":
-			print("1")
-			devaccess.register_device()
-		elif data["type"] == "DeviceData":
-			print("2")
-			devaccess.device_data()
-		elif data["type"] == "DeviceAlert":
-			print("3")
-			devaccess.device_alert()
-		elif data["type"] == "Acknowledge":
-			print("4")
-			devaccess.acknowledge()
-		print(data)
+		log.logger.info(data["eventType"])
+		if data["eventType"] == "RegisterDevice":
+			devaccess.register_device(data)
+		elif data["eventType"] == "DevicesData":
+			devaccess.device_data(data)
+		elif data["eventType"] == "DeviceAlert":
+			devaccess.device_alert(data)
+		elif data["eventType"] == "Acknowledge":
+			devaccess.acknowledge(data)
+
+		log.logger.info(data)
 
 	def on_publish(self, mqttc, obj, mid):
 		print("mid: "+str(mid))

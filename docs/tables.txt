@@ -1,68 +1,68 @@
-1、租户
+0、站点
+exp = '{\
+"createdDate": "",\
+"createdBy": "",\
+"token":"",\
+"name":"",\
+"description":"",\
+"metadata": {}\
+}'
 
-{
-  "createdDate" : "",
-  "createdBy" : "",
-  "id" : "",
-  "name" : "",
-  "authenticationToken" : "",
-  "authorizedUserIds" : [ "admin" ],
-  "metadata" : { }
-}
+
+1、租户
+exp = '{\
+"createdDate":"",\
+"createdBy":"",\
+"id":"",\
+"name":"",\
+"authenticationToken":"",\
+"authorizedUserIds":[],\
+"metadata":{}\
+}'
 
 
 2、用户
 
-{
-  "createdDate": "",    //创建日期
-  "createdBy": "",      //创建者
-  "deleted": false,     //是否被删除
-  "username": "",       //用户名
-  "hashedPassword": "", //密码hash
-  "firstName": "",      //  
-  "lastName": "",       //
-  "lastLogin": "",      //最近登录时间
-  "status": "",         //状态
-  "metadata": ""        //可选，元数据
-}
+exp = '{\
+"createdDate": "",\
+"createdBy": "",\
+"username": "",\
+"hashedPassword": "",\
+"lastLogin": "",\
+"status": "",\
+"metadata": {}\
+}'
 
 
 
 
 3、设备
-{
-  "createdDate": "",                    //创建日期
-  "createdBy": "admin",                 //创建者
-  "hardwareId": "test1234567",          //设备ID
-  "siteToken": "",                      //token
-  "comments": "Equipment tracker.",     //注释
-  "metadata": {}                        //元数据
-}
+exp = '{\
+"createdDate": "",\
+"createdBy": "",\
+"hardwareId": "",\
+"siteToken":"",\
+"comments":"",\
+"metadata": {}\
+}'
+
+
 
 
 4、事件
 事件类型：注册、数据、删除
 
-{
-	"eventType" : "Measurements",
-	"siteToken" : "bb105f8d-3150-41f5-b9d1-db04965668d3",
-	"eventDate" : ISODate("2018-03-22T05:45:40.499Z"),
-	"receivedDate" : ISODate("2018-03-22T07:40:56.884Z"),
-	"metadata" : {
-		
-	},
-	"measurements" : [
-		{
-			"name" : "engine.temperature",
-			"value" : 166.08
-		},
-		{
-			"name" : "fuel.level",
-			"value" : 82.94
-		}
-	]
-}
+exp = '{\
+"eventType":"",\
+"siteToken":"",\
+"eventDate":"",\
+"receivedDate":"",\
+"hardwareId":"",\
+"metadata":{},\
+"eventbody":[]\
+}'
 
+w
 
 5、证书##暂无
 {

@@ -14,7 +14,7 @@ exp = '{\
 "id":"",\
 "name":"",\
 "authenticationToken":"",\
-"authorizedUserIds":{},\
+"authorizedUserIds":[],\
 "metadata":{}\
 }'
 

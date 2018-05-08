@@ -10,6 +10,7 @@ import requests
 urlt = 'http://127.0.0.1:5120/iot/spi/'
 urls = 'http://127.0.0.1:5120/iot/spi/devices'
 
+
 app = Flask(__name__) 
  
  
@@ -66,4 +67,4 @@ def api_cate_id(cate,cateid):
 
 
 if __name__ == '__main__': 
-	app.run(host='0.0.0.0',port=8080,debug=False)
+	app.run(host='0.0.0.0',port=5122,debug=False)

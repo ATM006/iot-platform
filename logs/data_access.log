@@ -1,2 +1,20 @@
-2018-05-04 17:45:04,162 - devaccess.py[line:18] - INFO: acknowledge()
-2018-05-04 17:45:04,307 - devaccess.py[line:18] - INFO: acknowledge()
+2018-05-08 19:20:23,263 - mqttclass.py[line:13] - INFO: call : on_message(self, mqttc, obj, msg)
+2018-05-08 19:20:23,263 - mqttclass.py[line:15] - INFO: DevicesData
+2018-05-08 19:20:23,263 - devaccess.py[line:39] - INFO: call : device_data(data)
+2018-05-08 19:20:23,263 - devaccess.py[line:77] - INFO: call : data_publish(data)
+2018-05-08 19:20:23,350 - mqttclass.py[line:25] - INFO: {'eventbody': [], 'eventDate': 'xx', 'eventType': 'DevicesData', 'hardwareId': 'test1234560z', 'receivedDate': 'xx', 'metadata': {'xyx': 'zzz'}, 'siteToken': 'testtoken'}
+2018-05-08 19:20:33,385 - mqttclass.py[line:13] - INFO: call : on_message(self, mqttc, obj, msg)
+2018-05-08 19:20:33,385 - mqttclass.py[line:15] - INFO: DevicesData
+2018-05-08 19:20:33,386 - devaccess.py[line:39] - INFO: call : device_data(data)
+2018-05-08 19:20:33,386 - devaccess.py[line:77] - INFO: call : data_publish(data)
+2018-05-08 19:20:33,469 - mqttclass.py[line:25] - INFO: {'eventbody': [], 'eventDate': 'xx', 'eventType': 'DevicesData', 'hardwareId': 'test1234560z', 'receivedDate': 'xx', 'metadata': {'xyx': 'zzz'}, 'siteToken': 'testtoken'}
+2018-05-08 19:20:43,528 - mqttclass.py[line:13] - INFO: call : on_message(self, mqttc, obj, msg)
+2018-05-08 19:20:43,528 - mqttclass.py[line:15] - INFO: DevicesData
+2018-05-08 19:20:43,528 - devaccess.py[line:39] - INFO: call : device_data(data)
+2018-05-08 19:20:43,529 - devaccess.py[line:77] - INFO: call : data_publish(data)
+2018-05-08 19:20:43,626 - mqttclass.py[line:25] - INFO: {'eventbody': [], 'eventDate': 'xx', 'eventType': 'DevicesData', 'hardwareId': 'test1234560z', 'receivedDate': 'xx', 'metadata': {'xyx': 'zzz'}, 'siteToken': 'testtoken'}
+2018-05-08 19:20:53,641 - mqttclass.py[line:13] - INFO: call : on_message(self, mqttc, obj, msg)
+2018-05-08 19:20:53,641 - mqttclass.py[line:15] - INFO: DevicesData
+2018-05-08 19:20:53,641 - devaccess.py[line:39] - INFO: call : device_data(data)
+2018-05-08 19:20:53,642 - devaccess.py[line:77] - INFO: call : data_publish(data)
+2018-05-08 19:20:53,765 - mqttclass.py[line:25] - INFO: {'eventbody': [], 'eventDate': 'xx', 'eventType': 'DevicesData', 'hardwareId': 'test1234560z', 'receivedDate': 'xx', 'metadata': {'xyx': 'zzz'}, 'siteToken': 'testtoken'}

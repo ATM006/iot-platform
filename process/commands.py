@@ -21,9 +21,10 @@ urlt = 'http://127.0.0.1:5120/iot/spi/devices/'
 def commands_get_process(hardwareId):
     log.logger.info("call : commands_get_process()")
     rpool = rediser.redis_pool
-    res = rpool.get(hardwareId)
+    res = rpool.get(hardwareId+'cmd')
     if res != None:
-        return res
+        res = res.decode('utf-8')
+        return jsonify({'result': res})
     else:
         res = requests.get(urlt + hardwareId + "/events/")
         res = res.json()
@@ -34,7 +35,7 @@ def commands_get_process(hardwareId):
 def commands_post_process(hardwareId,data):
     log.logger.info("call : commands_post_process()")
     rpool = rediser.redis_pool
-    rpool.set(hardwareId, data)
+    rpool.set(hardwareId+'cmd', data)
     res = requests.post(urlt + hardwareId + "/events/", request.get_data())
     res = res.json()
     return jsonify({'result': res})

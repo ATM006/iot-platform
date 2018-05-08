@@ -19,31 +19,30 @@ def index():
 	return 'The IoT API'
 
 
-@app.route('/iot/api/devices/<string:hardwareId>/events/',methods=['POST','GET'])
-def api_events(hardwareId):
-	log.logger.info("call : api_events()")
-	#rpool = rediser.redis_pool
+@app.route('/iot/api/devices/<string:hardwareId>/events/',methods=['POST'])
+def api_events_post(hardwareId):
+	log.logger.info("call : api_events_post()")
 
-	if request.method == 'POST':
-		data = json.loads(request.get_data().decode('utf-8'))
-		if data["eventType"] == "DevicesData":
-			res = data.data_post_process(hardwareId,data)
-			return res
-		elif data["DevicesData"] == "UserCommands":
-			res = commands.commands_post_process(hardwareId,data)
-			return res
+	dat = json.loads(request.get_data().decode('utf-8'))
+	if dat["eventType"] == "DevicesData":
+		res = data.data_post_process(hardwareId,dat)
+		return res
+	elif dat["eventType"] == "UserCommands":
+		res = commands.commands_post_process(hardwareId,dat)
+		return res
 
-	elif request.method == 'GET':
-		#待定
-		rpool = rediser.redis_pool
-		res = rpool.get(hardwareId)
-		if res != None:
-			return res
-		else:
-			res = requests.get(urlt + hardwareId + "/events/")
-			res = res.json()
-			return jsonify({'result':res})
+@app.route('/iot/api/devices/<string:hardwareId>/events/<string:type>/', methods=['GET'])
+def api_events_get(hardwareId,type):
+	log.logger.info("call : api_events_get()")
+
+	if type == "DevicesData":
+		res = data.data_get_process(hardwareId)
+		return res
+
+	elif type == "UserCommands":
+		res = commands.commands_get_process(hardwareId)
+		return res
 
 
 if __name__ == '__main__': 
-    app.run(host='0.0.0.0',port=8080,debug=False) 
+	app.run(host='0.0.0.0',port=5121,debug=False)

@@ -18,21 +18,22 @@ def on_message(client, userdata, msg):
 def pub_loop(topic,data):
 	while True:
 		publish.single(topic,data, qos = 1,hostname=HOST,port=PORT, client_id=client_id)
-		time.sleep(5)
+		time.sleep(10)
 
 if __name__ == '__main__':
 	client_id = time.strftime('%Y%m%d%H%M%S',time.localtime(time.time()))
 	
-	topic = "test"    
+	topic = "/iot/input/json"
 	#data = '{"led":"true"}'
-
+	
 	data = '{\
-"hardwareId": "123-TEST-4567890",\
-"type": "DeviceMeasurements",\
-"request": {\
-"measurements":{ },\
-"eventDate": "2016-02-10T19:40:03.391Z"\
-}\
+"eventType":"DevicesData",\
+"siteToken":"testtoken",\
+"eventDate":"xx",\
+"receivedDate":"xx",\
+"hardwareId":"test1234560z",\
+"metadata":{"xyx":"zzz"},\
+"eventbody":[]\
 }'
 
 	pub_loop(topic,data)
