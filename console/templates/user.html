@@ -25,6 +25,24 @@
 
 {% block content %}
     <div class="container">
-        {% block page_content %}{% endblock %}
+        {% block page_content %}
+            <table>
+                <thead>
+                <th>书名</th>
+                <th>作者</th>
+                <th>价钱</th>
+                </thead>
+                <tbody>
+                  <meta charset="UTF-8">
+                  {% for i in name %}
+                    <tr>
+                        <td>{{ i.name}}</td>
+                        <td>{{ i.author}}</td>
+                        <td>{{ i.price}}</td>
+                    </tr>
+                  {% endfor %}
+                </tbody>
+            </table>
+        {% endblock %}
     </div>
 {% endblock %}

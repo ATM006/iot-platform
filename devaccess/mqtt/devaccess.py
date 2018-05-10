@@ -4,8 +4,8 @@ import requests,log,json,datetime
 from flask import request,jsonify
 import paho.mqtt.publish as publish
 
-url = 'http://127.0.0.1:5121/iot/api/devices/test1234560/events/DevicesData/'
-urlt = 'http://127.0.0.1:5121/iot/api/devices/'
+url = 'http://127.0.0.1:5211/iot/api/devices/test1234560/events/DevicesData/'
+urlt = 'http://127.0.0.1:5211/iot/api/devices/'
 
 #curl -X POST  http://127.0.0.1:5000/iot/api/devices -d '{"hardwareId":"test123456","siteToken":"","comments":"","metadata": {}}'
 
@@ -37,7 +37,6 @@ def register_device(data):
 
 def device_data(data):
     log.logger.info("call : device_data(data)")
-    print (data)
     #发布数据
     data_publish(data)
     res = requests.post(urlt + data["hardwareId"] + "/events/",json.dumps(data)).json()
@@ -58,6 +57,19 @@ def device_alert(data):
 def acknowledge(data):
     log.logger.info("call : acknowledge(data)")
     pass
+
+
+
+def user_command(data):
+    log.logger.info("call : user_command(data)")
+    log.logger.info(data)
+    requests.post(urlt + data["hardwareId"] + "/events/", json.dumps(data))
+
+
+def registration_ack(data):
+    log.logger.info("call : registration_ack(data)")
+    pass
+
 
 '''发布实时数据'''
 topic = "/iot/output/json"

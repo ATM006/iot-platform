@@ -14,7 +14,7 @@ MQTT协议设计
 
 接口协议：
 1、MQTT主题：/iot/input/json
-2、接入格式：
+接入格式：
 data = '{\ 
 "eventType":"DevicesData",\		#事件类型：必填（目前只支持DevicesData）
 "siteToken":"testtoken",\		#站点token（网关填写）：必填
@@ -29,8 +29,8 @@ data = '{\
 注:填 (只支持DevicesData)
 
 
-3、订阅格式
-见: iot/publish/README.md
+2、订阅主题:/iot/output/json
+订阅格式
 
 
 

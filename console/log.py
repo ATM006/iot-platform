@@ -5,7 +5,7 @@ logger = logging.getLogger()
 logger.setLevel(logging.INFO)    # Log等级总开关  
   
 # 第二步，创建一个handler，用于写入日志文件  
-logfile = 'console.log'
+logfile = '../logs/console.log'
 fh = logging.FileHandler(logfile, mode='w')
 fh.setLevel(logging.INFO)   # 输出到file的log等级的开关
   

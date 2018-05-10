@@ -40,14 +40,49 @@ def login():
 def console():
     return render_template('console.html')
 
+@app.route('/site')
+def site():
+    return render_template('site.html')
+
+@app.route('/tenant')
+def tenant():
+    return render_template('tenant.html')
+
+@app.route('/device')
+def device():
+    return render_template('device.html')
+
+@app.route('/user/<name>')
+def get_user(name):
+    name = [
+        {
+            'name': u'红楼梦',
+            'author': u'曹雪芹',
+            'price': 200
+        },
+        {
+            'name': u'水浒传',
+            'author': u'施耐庵',
+            'price': 100
+        },
+        {
+            'name': u'三国演义',
+            'author': u'罗贯中',
+            'price': 120
+        },
+        {
+            'name': u'西游记',
+            'author': u'吴承恩',
+            'price': 230
+        }
+    ]
+    return render_template('user.html', name=name)
 
 @app.route('/logout')
 def logout():
     return render_template('index.html')
 
-@app.route('/user/<name>')
-def get_user(name):
-    return render_template('user.html', name=name)
+
 
 
 

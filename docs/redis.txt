@@ -16,8 +16,12 @@ make
 sudo make install
 
 3.安装pyhton的redis客户端库
+sudo apt install python3-pip
+sudo pip3 install redis
+或
 sudo apt install python-pip
-pip install redis
+sudo pip install redis
+
 
 4.检查
 redis-server &         #后台启动redis-server  要按两下回车键
