@@ -12,7 +12,7 @@
 from flask import Flask
 from flask import request,jsonify
 #from flask_pymongo import PyMongo
-import json,log,rediser
+import json,log,rediser,epublish
 import requests
 
 urlt = 'http://127.0.0.1:5120/iot/spi/devices/'
@@ -21,22 +21,26 @@ urlt = 'http://127.0.0.1:5120/iot/spi/devices/'
 def commands_get_process(hardwareId):
     log.logger.info("call : commands_get_process()")
     rpool = rediser.redis_pool
-    res = rpool.get(hardwareId+'cmd')
+    ##res = rpool.get(hardwareId+'cmd')
+    res = None
     if res != None:
         res = res.decode('utf-8')
-        return jsonify({'result': res})
+        return jsonify({'result': res,'code':200})
     else:
-        res = requests.get(urlt + hardwareId + "/events/")
+        res = requests.get(urlt + hardwareId + "/events/UserCommands")
         res = res.json()
-        return jsonify({'result': res})
+        return jsonify(res)
     #return "call commands_get_process()\n"
 
 
 def commands_post_process(hardwareId,data):
     log.logger.info("call : commands_post_process()")
     rpool = rediser.redis_pool
-    rpool.set(hardwareId+'cmd', data)
-    res = requests.post(urlt + hardwareId + "/events/", request.get_data())
+    #redis缓存
+    ##rpool.set(hardwareId+'cmd', data)
+    #mqtt发布
+    epublish.data_publish(data)
+    res = requests.post(urlt + hardwareId + "/events/UserCommands", request.get_data())
     res = res.json()
-    return jsonify({'result': res})
+    return jsonify(res)
     #return "call commands_post_process()\n"

@@ -72,7 +72,7 @@ def event_get(mongo,hardwareId,etype):
 		if res == None:
 			return jsonify({'result': ex, 'code': 404})
 		else:
-			e = edata.find({"hardwareId": hardwareId})
+			e = edata.find({"hardwareId": hardwareId,"eventType":"DevicesData"})
 			out = []
 			for item in e:
 				item.pop("_id")
@@ -86,7 +86,7 @@ def event_get(mongo,hardwareId,etype):
 		if res == None:
 			return jsonify({'result': ex, 'code': 404})
 		else:
-			e = ecommands.find({"hardwareId": hardwareId})
+			e = ecommands.find({"hardwareId": hardwareId,"eventType":"UserCommands"})
 			out = []
 			for item in e:
 				item.pop("_id")

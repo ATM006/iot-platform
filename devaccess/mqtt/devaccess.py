@@ -33,19 +33,20 @@ def register_device(data):
     ex["siteToken"] = data["siteToken"]
     ex["comments"] = ''
     ex["metadata"] = ''
+    ex["ext"] = ''
     res = requests.post(reg, json.dumps(ex)).json()
     log.logger.info(res)
 
 def device_data(data):
     log.logger.info("call : device_data(data)")
     #发布数据
-    data_publish(data)
-    res = requests.post(urlt + data["hardwareId"] + "/events/",json.dumps(data)).json()
+    #data_publish(data)
+    res = requests.post(urlt + data["hardwareId"] + "/events/DevicesData",json.dumps(data)).json()
     print(res)
     if res["result"]["hardwareId"] == '':
         #注册设备
         register_device(data)
-        requests.post(urlt + data["hardwareId"] + "/events/", json.dumps(data)).json()
+        requests.post(urlt + data["hardwareId"] + "/events/DevicesData", json.dumps(data)).json()
 
 
 
@@ -64,7 +65,8 @@ def acknowledge(data):
 def user_command(data):
     log.logger.info("call : user_command(data)")
     log.logger.info(data)
-    requests.post(urlt + data["hardwareId"] + "/events/", json.dumps(data))
+    requests.post(urlt + data["hardwareId"] + "/events/UserCommands", json.dumps(data))
+    log.logger.info(urlt + data["hardwareId"] + "/events/UserCommands")
 
 
 def registration_ack(data):
@@ -72,7 +74,7 @@ def registration_ack(data):
     pass
 
 
-'''发布实时数据'''
+'''
 topic = "/iot/output/json"
 HOST = "127.0.0.1"
 PORT = 1883
@@ -90,4 +92,4 @@ def data_publish(data):
     client_id = time.strftime('%Y%m%d%H%M%S',time.localtime(time.time()))
     publish.single(topic, json.dumps(data), qos=1, hostname=HOST, port=PORT, client_id=client_id)
 
-
+'''

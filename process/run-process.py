@@ -18,31 +18,63 @@ app = Flask(__name__)
 def index(): 
 	return 'The IoT API'
 
-
-@app.route('/iot/api/devices/<string:hardwareId>/events/',methods=['POST'])
-def api_events_post(hardwareId):
+'''
+@app.route('/iot/api/devices/<string:hardwareId>/events/<string:etype>',methods=['POST'])
+def api_events_post(hardwareId,etpye):
 	log.logger.info("call : api_events_post()")
-
 	dat = json.loads(request.get_data().decode('utf-8'))
+
+	if etpye != dat["eventType"]:
+		return jsonify({'result': None, 'code': 403})
+
 	if dat["eventType"] == "DevicesData":
 		res = data.data_post_process(hardwareId,dat)
-		return res
+
 	elif dat["eventType"] == "UserCommands":
 		res = commands.commands_post_process(hardwareId,dat)
+
+	else:
+		res = jsonify({'result': None, 'code': 403})
+
+	return res
+'''
+
+
+@app.route('/iot/api/devices/<string:hardwareId>/events/<string:etype>', methods=['GET','POST'])
+def api_events_get(hardwareId,etype):
+	if request.method == 'GET':
+		if etype == "DevicesData":
+			res = data.data_get_process(hardwareId)
+
+		elif etype == "UserCommands":
+			res = commands.commands_get_process(hardwareId)
+
+		else:
+			res = jsonify({'result': None, 'code': 403})
+
 		return res
 
-@app.route('/iot/api/devices/<string:hardwareId>/events/<string:type>/', methods=['GET'])
-def api_events_get(hardwareId,type):
-	log.logger.info("call : api_events_get()")
+	elif request.method == 'POST':
+		dat = json.loads(request.get_data().decode('utf-8'))
 
-	if type == "DevicesData":
-		res = data.data_get_process(hardwareId)
+		if etype != dat["eventType"]:
+			return jsonify({'result': None, 'code': 403})
+
+		if dat["eventType"] == "DevicesData":
+			res = data.data_post_process(hardwareId, dat)
+
+		elif dat["eventType"] == "UserCommands":
+			res = commands.commands_post_process(hardwareId, dat)
+
+		else:
+			res = jsonify({'result': None, 'code': 403})
+
 		return res
 
-	elif type == "UserCommands":
-		res = commands.commands_get_process(hardwareId)
-		return res
 
 
 if __name__ == '__main__': 
-	app.run(host='0.0.0.0',port=5211,debug=False)
+	#app.run(host='0.0.0.0',port=5211,debug=False)
+	from werkzeug.contrib.fixers import ProxyFix
+	app.wsgi_app = ProxyFix(app.wsgi_app)
+	app.run()

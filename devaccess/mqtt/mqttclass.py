@@ -21,7 +21,7 @@ class MyMQTTClass(mqtt.Client):
 			devaccess.device_alert(data)
 		elif data["eventType"] == "Acknowledge":
 			devaccess.acknowledge(data)
-		elif data["eventType"] == "UserCommand":
+		elif data["eventType"] == "UserCommands":
 			devaccess.user_command(data)
 		elif data["eventType"] == "RegistrationAck":
 			devaccess.registration_ack(data)
