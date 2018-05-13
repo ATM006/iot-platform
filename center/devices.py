@@ -12,6 +12,7 @@ exp = '{\
 "hardwareId": "",\
 "siteToken":"",\
 "comments":"",\
+"ext":{},\
 "metadata": {}\
 }'
 
@@ -21,11 +22,23 @@ def device_get(mongo,devid):
 	ex = json.loads(exp)
 	res = devices.find_one({'hardwareId':devid})
 	if res == None:
-		return jsonify({'result': ex})
+		return jsonify({'result': ex,'code':404})
 	else:
 		res.pop("_id")
 		print(res)
-		return jsonify({'result':res})
+		return jsonify({'result':res,'code':200})
+
+def device_get_by_sitetoken(mongo,typetoken):
+	devices = mongo.db.devices
+	ex = json.loads(exp)
+	res = devices.find({'siteToken':typetoken})
+	out = []
+	for item in res:
+		item.pop("_id")
+		print(item)
+		out.append(item)
+
+	return jsonify({'result': out, 'code': 200})
 
 
 def device_get_all(mongo):
@@ -37,7 +50,7 @@ def device_get_all(mongo):
 		print(item)
 		out.append(item)
 
-	return jsonify({'result':out})
+	return jsonify({'result':out,'code':200})
 
 
 def device_post(mongo,data):
@@ -52,12 +65,14 @@ def device_post(mongo,data):
 		ex["siteToken"] 	= data["siteToken"]
 		ex["comments"] 		= data["comments"]
 		ex["metadata"] 		= data["metadata"]
+		ex["ext"] = data["ext"]
+
 		print(ex)
 		devices.insert(ex)
 		ex.pop("_id")
-		return jsonify({'result':ex})
+		return jsonify({'result':ex,'code':200})
 	else:
-		return jsonify({'result': ex})
+		return jsonify({'result': ex,'code':403})
 		
 
 def device_put(mongo,data):
@@ -74,12 +89,14 @@ def device_put(mongo,data):
 		res["siteToken"] 	= data["siteToken"]
 		res["comments"] 	= data["comments"]
 		res["metadata"] 	= data["metadata"]
+		ex["ext"] = data["ext"]
+
 		print(res)
 		devices.insert(res)
 		res.pop("_id")
-		return jsonify({'result':res})
+		return jsonify({'result':res,'code':200})
 	else:
-		return jsonify({'result': ex})
+		return jsonify({'result': ex,'code':403})
 
 
 
@@ -88,12 +105,12 @@ def device_del(mongo,devid):
 	ex = json.loads(exp)
 	res = devices.find_one({"hardwareId":devid})
 	if res == None:
-		return jsonify({'result': ex})
+		return jsonify({'result': ex,'code':404})
 	else:
 		devices.remove({"hardwareId":devid})
 		res.pop("_id")
 		print(res)
-		return jsonify({'result':res})
+		return jsonify({'result':res,'code':200})
 
 
 

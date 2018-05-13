@@ -15,6 +15,7 @@ exp = '{\
 "name":"",\
 "authenticationToken":"",\
 "authorizedUserIds":[],\
+"ext":{},\
 "metadata":{}\
 }'
 
@@ -25,11 +26,11 @@ def tenant_get(mongo,tenantId):
 	ex = json.loads(exp)
 	res = tenants.find_one({"id":tenantId})
 	if res == None:
-		return jsonify({'result': ex})
+		return jsonify({'result': ex,'code':404})
 	else:
 		res.pop("_id")
 		print(res)
-		return jsonify({'result':res})
+		return jsonify({'result':res,'code':200})
 
 
 def tenant_get_all(mongo):
@@ -41,7 +42,7 @@ def tenant_get_all(mongo):
 		print(item)
 		out.append(item)
 
-	return jsonify({'result':out})
+	return jsonify({'result':out,'code':200})
 
 
 def tenant_post(mongo,data):
@@ -57,13 +58,15 @@ def tenant_post(mongo,data):
 		ex["authenticationToken"] = data["authenticationToken"]
 		ex["authorizedUserIds"] = data["authorizedUserIds"]
 		ex["metadata"] = data["metadata"]
+		ex["ext"] = data["ext"]
+
 		#print(ex)
 		log.logger.info(ex)
 		tenants.insert(ex)
 		ex.pop("_id")
-		return jsonify({'result':ex})
+		return jsonify({'result':ex,'code':200})
 	else:
-		return jsonify({'result':ex})
+		return jsonify({'result':ex,'code':403})
 		
 #创建新租户
 def tenant_put(mongo,data):
@@ -81,24 +84,26 @@ def tenant_put(mongo,data):
 		res["authenticationToken"] = data["authenticationToken"]
 		res["authorizedUserIds"] = data["authorizedUserIds"]
 		res["metadata"] = data["metadata"]
+		ex["ext"] = data["ext"]
+
 		#print(res)
 		log.logger.info(res)
 		tenants.insert(res)
 		res.pop("_id")
-		return jsonify({'result':res})
+		return jsonify({'result':res,'code':200})
 	else:
-		return jsonify({'result': res})
+		return jsonify({'result': res,'code':403})
 
 def tenant_del(mongo,tenantId):
 	tenants = mongo.db.tenants
 	ex = json.loads(exp)
 	res = tenants.find_one({"id":tenantId})
 	if res == None:
-		return jsonify({'result': ex})
+		return jsonify({'result': ex,'code':404})
 	else:
 		tenants.remove({"id":tenantId})
 		res.pop("_id")
 		print(res)
-		return jsonify({'result':res})
+		return jsonify({'result':res,'code':200})
 
 

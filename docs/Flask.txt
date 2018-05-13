@@ -21,6 +21,8 @@ flask 如何获取全部 GET 查询参数？
 https://segmentfault.com/q/1010000000449384
 使用python的Flask实现一个RESTful API服务器端[翻译]
 https://www.cnblogs.com/vovlie/p/4178077.html
+nginx+Gunicorn部署你的Flask项目
+https://blog.csdn.net/qq_32198277/article/details/52432890
 
 
 #例子

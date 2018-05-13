@@ -13,6 +13,7 @@ exp = '{\
 "hashedPassword": "",\
 "lastLogin": "",\
 "status": "",\
+"ext":{},\
 "metadata": {}\
 }'
 
@@ -22,11 +23,11 @@ def user_get(mongo,name):
 	ex = json.loads(exp)
 	res = users.find_one({"username":name})
 	if res == None:
-		return jsonify({'result': ex})
+		return jsonify({'result': ex,'code':404})
 	else:
 		res.pop("_id")
 		print(res)
-		return jsonify({'result':res})
+		return jsonify({'result':res,'code':200})
 
 
 def user_get_all(mongo):
@@ -38,7 +39,7 @@ def user_get_all(mongo):
 		print(item)
 		out.append(item)
 
-	return jsonify({'result':out})
+	return jsonify({'result':out,'code':200})
 
 
 def user_post(mongo,data):
@@ -54,12 +55,14 @@ def user_post(mongo,data):
 		ex["lastLogin"] = date.strftime("%Y-%m-%d %H:%M:%S")
 		ex["status"] = True
 		ex["metadata"] = data["metadata"]
+		ex["ext"] = data["ext"]
+
 		print(ex)
 		users.insert(ex)
 		ex.pop("_id")
-		return jsonify({'result':ex})
+		return jsonify({'result':ex,'code':200})
 	else:
-		return jsonify({'result': ex})
+		return jsonify({'result': ex,'code':403})
 
 #创建新用户
 def user_put(mongo,data):
@@ -77,14 +80,15 @@ def user_put(mongo,data):
 		res["hashedPassword"] = data["hashedPassword"]
 		res["lastLogin"] = date.strftime("%Y-%m-%d %H:%M:%S")
 		res["status"] = True
+		ex["ext"] = data["ext"]
 		res["metadata"] = data["metadata"]
 		#print(res)
 		log.logger.info(res)
 		users.insert(res)
 		res.pop("_id")
-		return jsonify({'result':res})
+		return jsonify({'result':res,'code':200})
 	else:
-		return jsonify({'result': ex})
+		return jsonify({'result': ex,'code':403})
 
 
 def user_del(mongo,name):
@@ -92,11 +96,11 @@ def user_del(mongo,name):
 	ex = json.loads(exp)
 	res = users.find_one({"username":name})
 	if res == None:
-		return jsonify({'result': ex})
+		return jsonify({'result': ex,'code':404})
 	else:
 		users.remove({"username":name})
 		res.pop("_id")
 		print(res)
-		return jsonify({'result':res})
+		return jsonify({'result':res,'code':200})
 
 

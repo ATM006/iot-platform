@@ -49,12 +49,23 @@ curl -X GET http://127.0.0.1:5000/iot/api/devices/test1234560/events/
 
 curl -X POST http://127.0.0.1:5000/iot/api/devices/test1234560/events/ -d '{"eventType":"test","siteToken":"testtoken","hardwareId":"test123456","metadata":{},"eventbody":{}}'
 
+修改#
+curl -X GET http://127.0.0.1:5120/iot/spi/devices/test1234560z/events/DevicesData
+
+curl -X GET http://127.0.0.1:5120/iot/spi/devices/test1234560z/events/UserCommands
+
+ curl -X POST http://127.0.0.1:5120/iot/spi/devices/test1234560z/events/UserCommands -d '{"eventType":"test","siteToken":"testtoken","hardwareId":"test1234560z","metadata":{},"eventbody":{},"ext":{"test":"test"}}'
+
 
 [device]
 ==============================================================
 curl -X GET http://127.0.0.1:5000/iot/api/devices
 
 curl -X GET http://127.0.0.1:5000/iot/api/devices/test1234560
+
+#按照sitetoken查询type=all查询所有
+curl -X GET http://127.0.0.1:5000/iot/spi/devices?type=0001
+
 
 curl -X POST  http://127.0.0.1:5000/iot/api/devices -d '{"hardwareId":"test123456","siteToken":"","comments":"","metadata": {}}'
 

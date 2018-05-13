@@ -24,10 +24,123 @@
 
 [v-1.0]
 
-/api/user/<int:user_id>
+站点：
+curl-X GET http://47.95.254.34:5122/iot/api/sites
 
-/api/user/<int:user_id>/device/<int:device_id>
 
-/api/user/<int:user_id>/device/<int:device_id>/result/<int:result_id>
+
+curl-X GEThttp://47.95.254.34:5122/iot/api/sites/7b0db932-43c2-11e8-a7b2-705ab6ad9cae
+
+
+
+curl-X POST http://47.95.254.34:5122/iot/api/sites -d'{"token":"","name":"test","description":"testsite","metadata" : { } }'
+
+
+
+curl-X DELEThttp://47.95.254.34:5122/iot/api/sites/9f55bdc8-430c-11e8-a46b-00231487c7b4
+
+
+
+curl-X PUT http://47.95.254.34:5122/iot/api/sites -d'{"token":"7b0db932-43c2-11e8-a7b2-705ab6ad9cae","name":"test","description":"testsite","metadata" : {"type":"test"}}'
+
+
+
+租户：
+curl-X GET http://47.95.254.34:5122/iot/api/tenants
+
+
+
+curl-X GET http://47.95.254.34:5122/iot/api/tenants/test1
+
+
+
+curl-X POST http://47.95.254.34:5122/iot/api/tenants -d'{"id":"test","name":"testtenant","authenticationToken":"","authorizedUserIds":["admin"],"metadata": {}}'
+
+
+
+curl-X DELET http://47.95.254.34:5122/iot/api/tenants
+
+
+
+curl-X PUT http://47.95.254.34:5122/iot/api/tenants -d'{"id":"test","name":"testtenant","authenticationToken":"123","authorizedUserIds":["admin"],"metadata": {}}'
+
+
+
+用户：
+curl-X GET http://47.95.254.34:5122/iot/api/users
+
+
+
+curl-X GET http://47.95.254.34:5122/iot/api/users/atm
+
+
+
+curl-X POST http://47.95.254.34:5122/iot/api/users -d'{"username":"atm","hashedPassword":"123456","metadata":{}}'
+
+
+
+curl-X DELET http://47.95.254.34:5122/iot/api/users/atm006
+
+
+
+curl-X PUT http://47.95.254.34:5122/iot/api/users -d'{"username":"atm","hashedPassword":"1234561","metadata":{}}'
+
+
+
+设备：
+curl-X GET http://47.95.254.34:5122/iot/api/devices
+
+curl-X GET http://47.95.254.34:5122/iot/api/devices/
+
+curl-X GET http://47.95.254.34:5122/iot/api/devices/test1234560
+
+
+
+curl-X POST http://47.95.254.34:5122/iot/api/devices -d'{"hardwareId":"test123456","siteToken":"","comments":"","metadata":{}}'
+
+
+
+curl-X DELET http://47.95.254.34:5122/iot/api/devices/test1234560
+
+
+
+curl-X PUT http://47.95.254.34:5122/iot/api/devices -d'{"hardwareId":"test123456","siteToken":"1234","comments":"","metadata":{}}'
+
+
+
+
+
+数据接口
+
+
+curl-X POST http://47.95.254.34:5211/iot/api/devices/test123456/events/-d'{"eventType":"DevicesData","siteToken":"testtoken","hardwareId":"test123456","metadata":{},"eventbody":{}}'
+
+
+
+curl-X GEThttp://127.0.0.1:5121/iot/api/devices/test1234560/events/DevicesData/
+
+
+
+curl-X POST http://47.95.254.34:5211/iot/api/devices/test1234560/events/-d'{"eventType":"UserCommands","siteToken":"testtoken","hardwareId":"test1234560","metadata":{"test":"456"},"eventbody":{}}'
+
+
+
+curl-X GEThttp://47.95.254.34:5211/iot/api/devices/test1234560/events/DevicesData/
+
+
+
+MQTT接口
+
+1、接入Topic：/iot/input/json
+json消息：
+
+{"eventType":"DevicesData","siteToken":"testtoken","eventDate":"xx","receivedDate":"xx","hardwareId":"test1234560z","metadata":{"xyx":"zzz"},"eventbody":[]}
+
+
+2、订阅Topic：/iot/output/json
+
+json消息：
+
+{"eventType":"DevicesData","siteToken":"testtoken","eventDate":"xx","receivedDate":"xx","hardwareId":"test1234560z","metadata":{"xyx":"zzz"},"eventbody":[]}
 
 

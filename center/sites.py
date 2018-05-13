@@ -11,6 +11,7 @@ exp = '{\
 "token":"",\
 "name":"",\
 "description":"",\
+"ext":{},\
 "metadata": {}\
 }'
 
@@ -24,7 +25,7 @@ def site_get_all(mongo):
 		print(item)
 		out.append(item)
 	
-	return jsonify({'result':out})
+	return jsonify({'result':out,'code':200})
 
 
 def site_get(mongo,token):
@@ -32,11 +33,11 @@ def site_get(mongo,token):
 	ex = json.loads(exp)
 	res = sites.find_one({"token" : token})
 	if res == None:
-		return jsonify({'result': ex})
+		return jsonify({'result': ex,'code':404})
 	else:
 		res.pop("_id")
 		print(res)
-		return jsonify({'result':res})
+		return jsonify({'result':res,'code':200})
 	#return "site test"
 
 def site_post(mongo,data):
@@ -51,13 +52,14 @@ def site_post(mongo,data):
 		ex["name"] = data["name"]
 		ex["description"] = data["description"]
 		ex["metadata"] = data["metadata"]
+		ex["ext"] = data["ext"]
+
 	else:
-		#return '{"site":"exist"}'
-		return jsonify({'result':ex})
+		return jsonify({'result':ex,'code':403})
 	print(ex)
 	sites.insert(ex)
 	ex.pop("_id")
-	return jsonify({'result':ex})
+	return jsonify({'result':ex,'code':200})
 
 #更新站点操作
 def site_put(mongo,data):
@@ -75,12 +77,14 @@ def site_put(mongo,data):
 		res["name"] = data["name"]
 		res["description"] = data["description"]
 		res["metadata"] = data["metadata"]
+		ex["ext"] = data["ext"]
+
 		print(res)
 		sites.insert(res)
 		res.pop("_id")
-		return jsonify({'result': res})
+		return jsonify({'result': res,'code':200})
 	else:
-		return jsonify({'result': ex})
+		return jsonify({'result': ex,'code':403})
 
 
 
@@ -89,11 +93,11 @@ def site_del(mongo,token):
 	ex = json.loads(exp)
 	res = sites.find_one({"token" : token})
 	if res == None:
-		return jsonify({'result': ex})
+		return jsonify({'result': ex,'code':404})
 	else:
 		sites.remove({"token" : token})
 		res.pop("_id")
 		print(res)
-		return jsonify({'result':res})
+		return jsonify({'result':res,'code':200})
 
 

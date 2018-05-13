@@ -1,5 +1,5 @@
 {% extends "bootstrap/base.html" %}
-{% block title %}物联网服务平台-用户{% endblock %}
+{% block title %}物联网服务平台-租户{% endblock %}
 {% block navbar %}
 <div class="navbar navbar-inverse" role="navigation">
     <div class="container">
@@ -28,17 +28,25 @@
         {% block page_content %}
             <table>
                 <thead>
-                <th>书名</th>
-                <th>作者</th>
-                <th>价钱</th>
+                    <th>租户名&nbsp;</th>
+                    <th>租户ID&nbsp;</th>
+                    <th>验证token&nbsp;</th>
+                    <th>用户列表&nbsp;</th>
+                    <th>租户信息&nbsp;</th>
+                    <th>创建人&nbsp;</th>
+                    <th>创建时间&nbsp;</th>
                 </thead>
                 <tbody>
                   <meta charset="UTF-8">
-                  {% for i in name %}
+                  {% for i in tenants %}
                     <tr>
-                        <td>{{ i.name}}</td>
-                        <td>{{ i.author}}</td>
-                        <td>{{ i.price}}</td>
+                        <td>{{ i.name}}&nbsp;</td>
+                        <td>{{ i.id}}&nbsp;</td>
+                        <td>{{ i.authenticationToken}}&nbsp;</td>
+                        <td>{{ i.authorizedUserIds}}&nbsp;</td>
+                        <td>{{ i.metadata}}&nbsp;</td>
+                        <td>{{ i.createdBy}}&nbsp;</td>
+                        <td>{{ i.createdDate}}&nbsp;</td>
                     </tr>
                   {% endfor %}
                 </tbody>

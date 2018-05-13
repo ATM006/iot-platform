@@ -3,6 +3,7 @@
 import requests,log,json,datetime
 from flask import request,jsonify
 import paho.mqtt.publish as publish
+import time
 
 url = 'http://127.0.0.1:5211/iot/api/devices/test1234560/events/DevicesData/'
 urlt = 'http://127.0.0.1:5211/iot/api/devices/'
@@ -75,7 +76,6 @@ def registration_ack(data):
 topic = "/iot/output/json"
 HOST = "127.0.0.1"
 PORT = 1883
-client_id = "auto"
 
 def on_connect(client, userdata, flags, rc):
     print("Connected with result code "+str(rc))
@@ -87,6 +87,7 @@ def on_message(client, userdata, msg):
 
 def data_publish(data):
     log.logger.info("call : data_publish(data)")
+    client_id = time.strftime('%Y%m%d%H%M%S',time.localtime(time.time()))
     publish.single(topic, json.dumps(data), qos=1, hostname=HOST, port=PORT, client_id=client_id)
 
 

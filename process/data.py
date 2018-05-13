@@ -7,10 +7,9 @@
 #!/usr/bin/python
 #-*- coding:utf8 -*-
 
-from flask import Flask
+
 from flask import request,jsonify
-#from flask_pymongo import PyMongo
-import json,log,rediser
+import log,rediser
 import requests
 
 urlt = 'http://127.0.0.1:5120/iot/spi/devices/'

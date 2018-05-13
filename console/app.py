@@ -27,11 +27,11 @@ def login():
         password = request.form['password']
 
         if auth.authority_user(username,password):
-            return render_template('console.html')
+            #return render_template('tenant.html')
+            return redirect("/tenant")
 
         else:
-            #return jsonify({'status': '-1', 'errmsg': '用户名或密码错误！'})
-            pass
+            return jsonify('404.html')
 
     return render_template('login.html')
 
@@ -46,7 +46,43 @@ def site():
 
 @app.route('/tenant')
 def tenant():
-    return render_template('tenant.html')
+    tenants =[
+        {
+            "authenticationToken": "",
+            "authorizedUserIds": [
+                "admin"
+            ],
+            "createdBy": "admin",
+            "createdDate": "2018-04-20 20:25:53",
+            "id": "test1",
+            "metadata": {},
+            "name": "test tenant"
+        },
+        {
+            "authenticationToken": "",
+            "authorizedUserIds": [
+                "admin"
+            ],
+            "createdBy": "admin",
+            "createdDate": "2018-04-26 11:46:23",
+            "id": "test id",
+            "metadata": {},
+            "name": "test tenant xatu"
+        },
+        {
+            "authenticationToken": "123",
+            "authorizedUserIds": [
+                "admin"
+            ],
+            "createdBy": "admin",
+            "createdDate": "2018-05-04 09:54:48",
+            "id": "test",
+            "metadata": {},
+            "name": "test tenant"
+        }
+    ]
+
+    return render_template('tenant.html',tenants=tenants)
 
 @app.route('/device')
 def device():

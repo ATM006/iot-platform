@@ -2,7 +2,7 @@
 
 from flask import Flask
 from flask import request,jsonify
-from flask_pymongo import PyMongo 
+from flask_pymongo import PyMongo
 import json
 
 import leds
@@ -42,8 +42,14 @@ def api_cate(cate):
 			res = tenants.tenant_get_all(mongo)
 
 		elif cate == 'devices':
-			res = devices.device_get_all(mongo)
+			typetoken = request.args.get('type')
+			if typetoken == 'all':
+				res = devices.device_get_all(mongo)
+			else:
+				res = devices.device_get_by_sitetoken(mongo, typetoken)
 
+		else:
+			res = jsonify({'result':None,'code':403})
 		return res
     
 
@@ -63,6 +69,8 @@ def api_cate(cate):
 
 		elif cate == 'devices':
 			res = devices.device_post(mongo,data)
+		else:
+			res = jsonify({'result':None,'code':403})
 
 		return res
 
@@ -86,6 +94,8 @@ def api_cate(cate):
 
 		elif cate == 'devices':
 			res = devices.device_put(mongo,data)
+		else:
+			res = jsonify({'result':None,'code':403})
 
 		return res
 		
@@ -111,6 +121,8 @@ def api_cate_id(cate,cateid):
 
 		elif cate == 'devices':
 			res = devices.device_get(mongo,cateid)
+		else:
+			res = jsonify({'result':None,'code':403})
 
 		return res
 		
@@ -126,26 +138,29 @@ def api_cate_id(cate,cateid):
 
 		elif cate == 'devices':
 			res = devices.device_del(mongo,cateid)
+		else:
+			res = jsonify({'result': None, 'code': 403})
 
 		return res
 
 
-@app.route('/iot/spi/devices/<string:hardwareId>/events/',methods=['POST','GET'])
-def api_events(hardwareId):
+@app.route('/iot/spi/devices/<string:hardwareId>/events/<string:etype>',methods=['POST','GET'])
+def api_events(hardwareId,etype):
 	if request.method == 'POST':
 		data = json.loads(request.get_data().decode('utf-8'))
+		#MongoDB
+		res = events.event_post(mongo,data,hardwareId,etype)
 
-		'''MongoDB服务接口'''
-		res = events.event_post(mongo,data,hardwareId)
-		return res
 	elif request.method == 'GET':
+		#MongoDB
+		res = events.event_get(mongo,hardwareId,etype)
+	else:
+		res = jsonify({'result': None, 'code': 403})
 
-		'''MongoDB服务接口'''
-		res = events.event_get(mongo,hardwareId)
-		return res
+	return res
 
 
-
-
-if __name__ == '__main__': 
-    app.run(host='0.0.0.0',port=5120,debug=False) 
+if __name__ == '__main__':
+	#from werkzeug.contrib.fixers import ProxyFix
+	#app.wsgi_app = ProxyFix(app.wsgi_app)
+	app.run()

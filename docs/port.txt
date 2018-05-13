@@ -1,17 +1,14 @@
 port
 
 
-mongo	27017
+mongoDB:27017
+center:5120
+admin:5122
+process:5211
+console:8512
+devaccess:1883
 
 
-center
-8088
-
-admin	process		console
-8080	5120		80
-
-devaccess	datapublish
-1883		1883
 
 
 
