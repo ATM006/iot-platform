@@ -77,7 +77,7 @@ def site_put(mongo,data):
 		res["name"] = data["name"]
 		res["description"] = data["description"]
 		res["metadata"] = data["metadata"]
-		ex["ext"] = data["ext"]
+		res["ext"] = data["ext"]
 
 		print(res)
 		sites.insert(res)

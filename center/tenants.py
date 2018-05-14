@@ -84,7 +84,7 @@ def tenant_put(mongo,data):
 		res["authenticationToken"] = data["authenticationToken"]
 		res["authorizedUserIds"] = data["authorizedUserIds"]
 		res["metadata"] = data["metadata"]
-		ex["ext"] = data["ext"]
+		res["ext"] = data["ext"]
 
 		#print(res)
 		log.logger.info(res)

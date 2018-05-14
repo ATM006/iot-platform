@@ -80,7 +80,7 @@ def user_put(mongo,data):
 		res["hashedPassword"] = data["hashedPassword"]
 		res["lastLogin"] = date.strftime("%Y-%m-%d %H:%M:%S")
 		res["status"] = True
-		ex["ext"] = data["ext"]
+		res["ext"] = data["ext"]
 		res["metadata"] = data["metadata"]
 		#print(res)
 		log.logger.info(res)

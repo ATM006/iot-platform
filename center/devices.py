@@ -89,7 +89,7 @@ def device_put(mongo,data):
 		res["siteToken"] 	= data["siteToken"]
 		res["comments"] 	= data["comments"]
 		res["metadata"] 	= data["metadata"]
-		ex["ext"] = data["ext"]
+		res["ext"] = data["ext"]
 
 		print(res)
 		devices.insert(res)
