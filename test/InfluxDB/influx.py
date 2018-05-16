@@ -8,9 +8,11 @@
 #-*- coding:utf8 -*-
 from influxdb import InfluxDBClient
 
+
+
 json_body = [
     {
-        "measurement": "students",
+        "measurement": "stu",
         "tags": {
             "stuid": "s123"
         },
@@ -21,18 +23,23 @@ json_body = [
     }
 ]
 
+
+
+
 def showDBNames(client):
-	result = client.query('show measurements;') # 显示数据库中的表
+	result = client.query('show measurements;') 
 	print("Result: {0}".format(result))
 
 
 
 client = InfluxDBClient('localhost', 8086, 'root', '', 'IoT')
-print(client.get_list_database()) # 显示所有数据库名称
+print(client.get_list_database()) 
 showDBNames(client)
 
-client.write_points(json_body)
+x = client.write_points(json_body)
+print(x)
 showDBNames(client)
+
 
 #client.query("drop measurement students") # 删除表
 #showDBNames(client)
