@@ -1,5 +1,5 @@
 {% extends "bootstrap/base.html" %}
-{% block title %}物联网服务平台-用户{% endblock %}
+{% block title %}物联网服务平台-设备{% endblock %}
 <link rel="stylesheet" href="css/bootstrap.msin.css">
 {% block navbar %}
 <div class="navbar navbar-inverse" role="navigation">
@@ -29,29 +29,29 @@
 
         {% block page_content %}
 
-	<h1>用户列表</h1>
+	<h1>设备列表</h1>
 
 
 	<table class="table">
 	    <thead>
 		<tr>
-			<th>用户名&nbsp;</th>
-			<th>用户数据&nbsp;</th>
-			<th>用户状态&nbsp;</th>
-			<th>上次登录&nbsp;</th>
+			<th>设备ID&nbsp;</th>
+			<th>设备描述&nbsp;</th>
+			<th>站点数据&nbsp;</th>
 			<th>创建者&nbsp;</th>
 			<th>创建日期&nbsp;</th>
+			<th>其他&nbsp;</th>
 		</tr>
 	    </thead>
 	    <tbody>
-		{% for row in users %}
+		{% for row in devices %}
 		    <tr>
-		        <td>{{ row.username }}</td>
-		        <td>{{ row.metdata }}</td>
-				<th>{{ row.status }}</th>
-				<td>{{ row.lastLogin }}</td>
+		        <td>{{ row.hardwareId}}</td>
+		        <td>{{ row.comments}}</td>
+				<th>{{ row.metadata}}</th>
 		        <td>{{ row.createdBy }}</td>
-				<td>{{ row. createdDate }}</td>
+				<td>{{ row.createdDate }}</td>
+				<td>{{ row.ext}}</td>
 
 		        <td clsId="{{ row.class_id }}">{{ row.title }}</td>
 		        <td>

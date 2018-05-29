@@ -4,6 +4,7 @@ from flask import Flask,make_response,redirect,abort
 from flask import render_template,request,jsonify
 from flask.ext.bootstrap import Bootstrap
 
+import requests,json
 import auth
 import log
 
@@ -11,6 +12,7 @@ import log
 app = Flask(__name__)
 bootstrap = Bootstrap(app)
 
+url = 'http://127.0.0.1:5120/iot/spi/'
 
 '''index() 函数注册为程序根地址的处理程序'''
 @app.route('/')
@@ -42,77 +44,32 @@ def console():
 
 @app.route('/site')
 def site():
-    return render_template('site.html')
+    res = requests.get(url + "sites").json()
+    #log.logger.info(res)
+    sites = res["result"]
+    return render_template('site.html',sites=sites)
 
 @app.route('/tenant')
 def tenant():
-    tenants =[
-        {
-            "authenticationToken": "",
-            "authorizedUserIds": [
-                "admin"
-            ],
-            "createdBy": "admin",
-            "createdDate": "2018-04-20 20:25:53",
-            "id": "test1",
-            "metadata": {},
-            "name": "test tenant"
-        },
-        {
-            "authenticationToken": "",
-            "authorizedUserIds": [
-                "admin"
-            ],
-            "createdBy": "admin",
-            "createdDate": "2018-04-26 11:46:23",
-            "id": "test id",
-            "metadata": {},
-            "name": "test tenant xatu"
-        },
-        {
-            "authenticationToken": "123",
-            "authorizedUserIds": [
-                "admin"
-            ],
-            "createdBy": "admin",
-            "createdDate": "2018-05-04 09:54:48",
-            "id": "test",
-            "metadata": {},
-            "name": "test tenant"
-        }
-    ]
+    res = requests.get(url + "tenants").json()
+    #log.logger.info(res)
 
-    return render_template('tenant.html',tenants=tenants)
+    return render_template('tenant.html',tenants=res["result"])
 
 @app.route('/device')
 def device():
-    return render_template('device.html')
+    res = requests.get(url + "devices?type=all").json()
+    #log.logger.info(res)
+
+    return render_template('device.html',devices = res["result"])
 
 @app.route('/user/<name>')
 def get_user(name):
-    name = [
-        {
-            'name': u'红楼梦',
-            'author': u'曹雪芹',
-            'price': 200
-        },
-        {
-            'name': u'水浒传',
-            'author': u'施耐庵',
-            'price': 100
-        },
-        {
-            'name': u'三国演义',
-            'author': u'罗贯中',
-            'price': 120
-        },
-        {
-            'name': u'西游记',
-            'author': u'吴承恩',
-            'price': 230
-        }
-    ]
-    return render_template('user.html', name=name)
+    res = requests.get(url + "users").json()
+    #print(res["result"])
+    users = res["result"]
+
+    return render_template('user.html', name=name,users = users)
 
 @app.route('/logout')
 def logout():

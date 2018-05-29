@@ -13,10 +13,10 @@
             <a class="navbar-brand" href="/">首页</a></div>
         <div class="navbar-collapse collapse">
             <ul class="nav navbar-nav">
-                <li><a href="/">站点</a></li>
-                <li><a href="/user/a">设备</a></li>
-                <li><a href="/">租户</a></li>
-                <li><a href="/">用户</a></li>
+                <li><a href="/site">站点</a></li>
+                <li><a href="/device">设备</a></li>
+                <li><a href="/tenant">租户</a></li>
+                <li><a href="/user/a">用户</a></li>
             </ul>
         </div>
     </div>
@@ -26,31 +26,40 @@
 {% block content %}
     <div class="container">
         {% block page_content %}
-            <table>
-                <thead>
-                    <th>租户名&nbsp;</th>
-                    <th>租户ID&nbsp;</th>
-                    <th>验证token&nbsp;</th>
-                    <th>用户列表&nbsp;</th>
-                    <th>租户信息&nbsp;</th>
-                    <th>创建人&nbsp;</th>
-                    <th>创建时间&nbsp;</th>
-                </thead>
-                <tbody>
-                  <meta charset="UTF-8">
-                  {% for i in tenants %}
-                    <tr>
-                        <td>{{ i.name}}&nbsp;</td>
-                        <td>{{ i.id}}&nbsp;</td>
-                        <td>{{ i.authenticationToken}}&nbsp;</td>
-                        <td>{{ i.authorizedUserIds}}&nbsp;</td>
-                        <td>{{ i.metadata}}&nbsp;</td>
-                        <td>{{ i.createdBy}}&nbsp;</td>
-                        <td>{{ i.createdDate}}&nbsp;</td>
-                    </tr>
-                  {% endfor %}
-                </tbody>
-            </table>
+           <h1>租户列表</h1>
+
+
+	<table class="table">
+	    <thead>
+		<tr>
+			<th>租户名&nbsp;</th>
+			<th>租户ID&nbsp;</th>
+            <th>租户数据&nbsp;</th>
+			<th>用户组&nbsp;</th>
+			<th>创建者&nbsp;</th>
+			<th>创建日期&nbsp;</th>
+		</tr>
+	    </thead>
+	    <tbody>
+		{% for row in tenants %}
+		    <tr>
+		        <td>{{ row.name }}</td>
+		        <td>{{ row.id }}</td>
+				<th>{{ row.metadata }}</th>
+				<td>{{ row.authorizedUserIds }}</td>
+		        <td>{{ row.createdBy }}</td>
+				<td>{{ row. createdDate }}</td>
+
+		        <td clsId="{{ row.class_id }}">{{ row.title }}</td>
+		        <td>
+		            <button class="btn-edit btn-primary">编辑</button>
+		            <button class="btn-edit btn-danger">删除</button>
+		        </td>
+		    </tr>
+		{% endfor %}
+	    </tbody>
+	</table>
+
         {% endblock %}
     </div>
 {% endblock %}

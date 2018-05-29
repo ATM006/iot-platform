@@ -81,7 +81,7 @@ def event_post(mongo,data,devId,etype):
 			ex["eventbody"] = data["eventbody"]
 			ex["ext"] = data["ext"]
 
-			'''InfluxDB'''
+			'''InfluxDB
 			json_body = [
 				{
 					"measurement": "DevicesData",
@@ -102,6 +102,7 @@ def event_post(mongo,data,devId,etype):
 			]
 			client = InfluxDBClient('localhost', 8086, 'root', '', 'IoT')
 			client.write_points(json_body)
+			'''
 			print(ex)
 			edata.insert(ex)
 			ex.pop("_id")
