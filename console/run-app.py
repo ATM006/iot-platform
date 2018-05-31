@@ -14,7 +14,7 @@ bootstrap = Bootstrap(app)
 
 url = 'http://127.0.0.1:5120/iot/spi/'
 
-'''index() 函数注册为程序根地址的处理程序'''
+
 @app.route('/')
 def index():
     return render_template('index.html')
