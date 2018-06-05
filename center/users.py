@@ -17,6 +17,9 @@ exp = '{\
 "metadata": {}\
 }'
 
+def te():
+	print ("13089u74\n")
+
 
 def user_get(mongo,name):
 	users = mongo.db.users

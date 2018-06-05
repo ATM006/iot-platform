@@ -38,8 +38,18 @@ def login():
     return render_template('login.html')
 
 
-@app.route('/console')
+@app.route('/console',methods=['GET', 'POST'])
 def console():
+
+    if request.method == 'POST':
+
+        username = request.form['username']
+        password = request.form['password']
+
+        print(username,password)
+
+
+
     return render_template('console.html')
 
 @app.route('/site')
@@ -63,8 +73,16 @@ def device():
 
     return render_template('device.html',devices = res["result"])
 
-@app.route('/user/<name>')
+@app.route('/user/<name>',methods=['GET', 'POST'])
 def get_user(name):
+
+    if request.method == 'POST':
+
+        username = request.form['username']
+        password = request.form['metadata']
+
+        print(username,password)
+
     res = requests.get(url + "users").json()
     #print(res["result"])
     users = res["result"]
@@ -82,4 +100,7 @@ def logout():
 
 
 if __name__ == '__main__':
-    app.run(host='0.0.0.0',port=8512,debug=False)
+    #app.run(host='0.0.0.0',port=8512,debug=False)
+    from werkzeug.contrib.fixers import ProxyFix
+    app.wsgi_app = ProxyFix(app.wsgi_app)
+    app.run()

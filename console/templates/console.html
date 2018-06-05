@@ -1,5 +1,10 @@
 {% extends "bootstrap/base.html" %}
 {% block title %}物联网服务平台-控制台{% endblock %}
+
+<link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<script src="https://cdn.bootcss.com/jquery/2.1.1/jquery.min.js"></script>
+<script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
 {% block navbar %}
 <div class="navbar navbar-inverse" role="navigation">
     <div class="container">
@@ -29,7 +34,50 @@
 {% endblock %}
 
 {% block content %}
-    <div class="container">
-        {% block page_content %}{% endblock %}
-    </div>
+
+<h2>创建模态框（Modal）</h2>
+<!-- 按钮触发模态框 -->
+<button class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal1">开始演示模态框</button>
+<button class="btn btn-primary" data-toggle="modal" data-target="#myModal">编辑</button>
+
+<!-- 模态框（Modal） -->
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-header">
+				<h4 class="modal-title" id="myModalLabel">标题</h4>
+			</div>
+
+			<div id="cd-login">
+				<form id="login-form" class="form-horizontal" style="padding-top: 20px; padding-left: 20px;" method="POST" action="">
+					<div class="control-group">
+						<label class="control-label" for="login-username" data-i18n="public.Username">Username</label>
+						<div class="controls">
+							<input type="text" id="login-username" name="username" class="input-large" title="Username">
+						</div>
+					</div>
+					<div class="control-group">
+						<label class="control-label" for="login-password" data-i18n="public.Password">Password</label>
+						<div class="controls">
+							<input type="password" id="login-password" name="password" class="input-large" title="Password">
+						</div>
+					</div>
+					<div class="control-group">
+						<label class="control-label"></label>
+						<div class="controls">
+							<button class="btn btn-primary margin-right" type="submit" id="login-button">提交</button>
+
+						</div>
+					</div>
+					<div style="text-align: center; font-size: 16pt; color: #c00">
+
+					</div>
+				</form>
+			</div>
+
+		</div><!-- /.modal-content -->
+	</div><!-- /.modal -->
+</div>
+
+
 {% endblock %}
