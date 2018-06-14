@@ -1,0 +1,431 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "version": "1.0.0",
+    "title": "IoT REST APIs",
+    "description": "智能家居物联网服务平台 REST APIs"
+  },
+  "schemes": [
+    "http"
+  ],
+  "host": "127.0.0.1:5120",
+  "basePath": "/iot",
+  "paths": {
+    "/spi/users": {
+      "get": {
+        "tags": [
+          "users"
+        ],
+        "summary": "获取用户列表",
+        "description": "获取所有用户的列表",
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "users"
+        ],
+        "summary": "创建用户",
+        "description": "创建一个用户",
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "users"
+        ],
+        "summary": "更新用户",
+        "description": "更新一个用户",
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/spi/users/{username}": {
+      "get": {
+        "tags": [
+          "users"
+        ],
+        "summary": "查看用户",
+        "description": "查看一个用户",
+        "parameters": [
+          {
+            "name": "username",
+            "in": "path",
+            "required": true,
+            "description": "填写用户名",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "users"
+        ],
+        "summary": "删除用户",
+        "description": "删除一个用户",
+        "parameters": [
+          {
+            "name": "username",
+            "in": "path",
+            "required": true,
+            "description": "填写用户名",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/spi/tenants": {
+      "get": {
+        "tags": [
+          "tenants"
+        ],
+        "summary": "获取租户列表",
+        "description": "获取所以租户列表",
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "tenants"
+        ],
+        "summary": "创建租户",
+        "description": "创建一个租户",
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "tenants"
+        ],
+        "summary": "更新租户",
+        "description": "更新一个租户",
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/spi/tenants/{tenantId}": {
+      "get": {
+        "tags": [
+          "tenants"
+        ],
+        "summary": "查看租户",
+        "description": "查看一个租户",
+        "parameters": [
+          {
+            "name": "tenantId",
+            "in": "path",
+            "required": true,
+            "description": "填写租户名",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "tenants"
+        ],
+        "summary": "删除租户",
+        "description": "删除一个租户",
+        "parameters": [
+          {
+            "name": "tenantId",
+            "in": "path",
+            "required": true,
+            "description": "填写租户名",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/spi/sites": {
+      "get": {
+        "tags": [
+          "sites"
+        ],
+        "summary": "查看区域列表",
+        "description": "查看所有区域列表",
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "sites"
+        ],
+        "summary": "创建区域",
+        "description": "创建一个区域",
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "sites"
+        ],
+        "summary": "更新区域",
+        "description": "更新一个区域",
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/spi/sites/{token}": {
+      "get": {
+        "tags": [
+          "sites"
+        ],
+        "summary": "查看区域",
+        "description": "查看一个区域",
+        "parameters": [
+          {
+            "name": "token",
+            "in": "path",
+            "required": true,
+            "description": "填写区域token",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "sites"
+        ],
+        "summary": "删除区域",
+        "description": "删除一个区域",
+        "parameters": [
+          {
+            "name": "token",
+            "in": "path",
+            "required": true,
+            "description": "填写区域token",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/spi/devices": {
+      "get": {
+        "tags": [
+          "devices"
+        ],
+        "summary": "查询设列表",
+        "description": "查询设备列表",
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "devices"
+        ],
+        "summary": "注册设备",
+        "description": "注册一个设备",
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "devices"
+        ],
+        "summary": "更新设备",
+        "description": "更新一个设备",
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/spi/devices/{hardwareId}": {
+      "get": {
+        "tags": [
+          "devices"
+        ],
+        "summary": "查看设备",
+        "description": "查看一个设备的信息",
+        "parameters": [
+          {
+            "name": "hardwareId",
+            "in": "path",
+            "required": true,
+            "description": "填写设备Id",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "devices"
+        ],
+        "summary": "删除设备",
+        "description": "删除一个设备",
+        "parameters": [
+          {
+            "name": "hardwareId",
+            "in": "path",
+            "required": true,
+            "description": "填写设备Id",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/spi/devices/{hardwareId}/events/DevicesData": {
+      "get": {
+        "tags": [
+          "data"
+        ],
+        "summary": "查看设备数据",
+        "description": "查看设备历史数据",
+        "parameters": [
+          {
+            "name": "hardwareId",
+            "in": "path",
+            "required": true,
+            "description": "填写设备Id",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "data"
+        ],
+        "summary": "存储设备数据",
+        "description": "实时存储设备数据",
+        "parameters": [
+          {
+            "name": "hardwareId",
+            "in": "path",
+            "required": true,
+            "description": "填写设备Id",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/spi/devices/{hardwareId}/events/UserCommands": {
+      "get": {
+        "tags": [
+          "commands"
+        ],
+        "summary": "查看用户命令",
+        "description": "查看用户历史命令",
+        "parameters": [
+          {
+            "name": "hardwareId",
+            "in": "path",
+            "required": true,
+            "description": "填写设备Id",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "commands"
+        ],
+        "summary": "存储用户命令",
+        "description": "实时存储用户命令",
+        "parameters": [
+          {
+            "name": "hardwareId",
+            "in": "path",
+            "required": true,
+            "description": "填写设备Id",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    }
+  }
+}

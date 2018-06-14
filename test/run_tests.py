@@ -17,7 +17,7 @@ if __name__ == "__main__":
     filename = './report/' + now + '_result.html'
     fp = open(filename, 'wb')
     runner = HTMLTestRunner(stream=fp,
-                            title='智能家居物联网服务平台接口测试报告',
+                            title='智能家居物联网服务平台单元测试报告',
                             description='详细测试用例: ')
     runner.run(discover)
     fp.close()

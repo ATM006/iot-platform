@@ -27,7 +27,7 @@ if __name__ == '__main__':
 	#data = '{"led":"true"}'
 	
 	data = '{\
-"eventType":"UserCommand",\
+"eventType":"DevicesData",\
 "siteToken":"testtoken",\
 "eventDate":"xx",\
 "receivedDate":"xx",\

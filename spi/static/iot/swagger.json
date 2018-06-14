@@ -1,0 +1,427 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "title": "IoT REST APIs",
+    "version": "1.0.0",
+    "description": "\u667a\u80fd\u5bb6\u5c45\u7269\u8054\u7f51\u670d\u52a1\u5e73\u53f0 REST APIs"
+  },
+  "paths": {
+    "/spi/devices/{hardwareId}/events/UserCommands": {
+      "post": {
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        },
+        "description": "\u5b9e\u65f6\u5b58\u50a8\u7528\u6237\u547d\u4ee4",
+        "tags": [
+          "commands"
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "hardwareId",
+            "required": true,
+            "type": "string",
+            "description": "\u586b\u5199\u8bbe\u5907Id"
+          }
+        ],
+        "summary": "\u5b58\u50a8\u7528\u6237\u547d\u4ee4"
+      },
+      "get": {
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        },
+        "description": "\u67e5\u770b\u7528\u6237\u5386\u53f2\u547d\u4ee4",
+        "tags": [
+          "commands"
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "hardwareId",
+            "required": true,
+            "type": "string",
+            "description": "\u586b\u5199\u8bbe\u5907Id"
+          }
+        ],
+        "summary": "\u67e5\u770b\u7528\u6237\u547d\u4ee4"
+      }
+    },
+    "/spi/devices/{hardwareId}/events/DevicesData": {
+      "post": {
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        },
+        "description": "\u5b9e\u65f6\u5b58\u50a8\u8bbe\u5907\u6570\u636e",
+        "tags": [
+          "data"
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "hardwareId",
+            "required": true,
+            "type": "string",
+            "description": "\u586b\u5199\u8bbe\u5907Id"
+          }
+        ],
+        "summary": "\u5b58\u50a8\u8bbe\u5907\u6570\u636e"
+      },
+      "get": {
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        },
+        "description": "\u67e5\u770b\u8bbe\u5907\u5386\u53f2\u6570\u636e",
+        "tags": [
+          "data"
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "hardwareId",
+            "required": true,
+            "type": "string",
+            "description": "\u586b\u5199\u8bbe\u5907Id"
+          }
+        ],
+        "summary": "\u67e5\u770b\u8bbe\u5907\u6570\u636e"
+      }
+    },
+    "/spi/tenants/{tenantId}": {
+      "delete": {
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        },
+        "description": "\u5220\u9664\u4e00\u4e2a\u79df\u6237",
+        "tags": [
+          "tenants"
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "tenantId",
+            "required": true,
+            "type": "string",
+            "description": "\u586b\u5199\u79df\u6237\u540d"
+          }
+        ],
+        "summary": "\u5220\u9664\u79df\u6237"
+      },
+      "get": {
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        },
+        "description": "\u67e5\u770b\u4e00\u4e2a\u79df\u6237",
+        "tags": [
+          "tenants"
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "tenantId",
+            "required": true,
+            "type": "string",
+            "description": "\u586b\u5199\u79df\u6237\u540d"
+          }
+        ],
+        "summary": "\u67e5\u770b\u79df\u6237"
+      }
+    },
+    "/spi/users/{username}": {
+      "delete": {
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        },
+        "description": "\u5220\u9664\u4e00\u4e2a\u7528\u6237",
+        "tags": [
+          "users"
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "username",
+            "required": true,
+            "type": "string",
+            "description": "\u586b\u5199\u7528\u6237\u540d"
+          }
+        ],
+        "summary": "\u5220\u9664\u7528\u6237"
+      },
+      "get": {
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        },
+        "description": "\u67e5\u770b\u4e00\u4e2a\u7528\u6237",
+        "tags": [
+          "users"
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "username",
+            "required": true,
+            "type": "string",
+            "description": "\u586b\u5199\u7528\u6237\u540d"
+          }
+        ],
+        "summary": "\u67e5\u770b\u7528\u6237"
+      }
+    },
+    "/spi/sites": {
+      "put": {
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        },
+        "description": "\u66f4\u65b0\u4e00\u4e2a\u533a\u57df",
+        "tags": [
+          "sites"
+        ],
+        "summary": "\u66f4\u65b0\u533a\u57df"
+      },
+      "post": {
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        },
+        "description": "\u521b\u5efa\u4e00\u4e2a\u533a\u57df",
+        "tags": [
+          "sites"
+        ],
+        "summary": "\u521b\u5efa\u533a\u57df"
+      },
+      "get": {
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        },
+        "description": "\u67e5\u770b\u6240\u6709\u533a\u57df\u5217\u8868",
+        "tags": [
+          "sites"
+        ],
+        "summary": "\u67e5\u770b\u533a\u57df\u5217\u8868"
+      }
+    },
+    "/spi/devices/{hardwareId}": {
+      "delete": {
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        },
+        "description": "\u5220\u9664\u4e00\u4e2a\u8bbe\u5907",
+        "tags": [
+          "devices"
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "hardwareId",
+            "required": true,
+            "type": "string",
+            "description": "\u586b\u5199\u8bbe\u5907Id"
+          }
+        ],
+        "summary": "\u5220\u9664\u8bbe\u5907"
+      },
+      "get": {
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        },
+        "description": "\u67e5\u770b\u4e00\u4e2a\u8bbe\u5907\u7684\u4fe1\u606f",
+        "tags": [
+          "devices"
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "hardwareId",
+            "required": true,
+            "type": "string",
+            "description": "\u586b\u5199\u8bbe\u5907Id"
+          }
+        ],
+        "summary": "\u67e5\u770b\u8bbe\u5907"
+      }
+    },
+    "/spi/devices": {
+      "put": {
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        },
+        "description": "\u66f4\u65b0\u4e00\u4e2a\u8bbe\u5907",
+        "tags": [
+          "devices"
+        ],
+        "summary": "\u66f4\u65b0\u8bbe\u5907"
+      },
+      "post": {
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        },
+        "description": "\u6ce8\u518c\u4e00\u4e2a\u8bbe\u5907",
+        "tags": [
+          "devices"
+        ],
+        "summary": "\u6ce8\u518c\u8bbe\u5907"
+      },
+      "get": {
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        },
+        "description": "\u67e5\u8be2\u8bbe\u5907\u5217\u8868",
+        "tags": [
+          "devices"
+        ],
+        "summary": "\u67e5\u8be2\u8bbe\u5217\u8868"
+      }
+    },
+    "/spi/sites/{token}": {
+      "delete": {
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        },
+        "description": "\u5220\u9664\u4e00\u4e2a\u533a\u57df",
+        "tags": [
+          "sites"
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "token",
+            "required": true,
+            "type": "string",
+            "description": "\u586b\u5199\u533a\u57dftoken"
+          }
+        ],
+        "summary": "\u5220\u9664\u533a\u57df"
+      },
+      "get": {
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        },
+        "description": "\u67e5\u770b\u4e00\u4e2a\u533a\u57df",
+        "tags": [
+          "sites"
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "token",
+            "required": true,
+            "type": "string",
+            "description": "\u586b\u5199\u533a\u57dftoken"
+          }
+        ],
+        "summary": "\u67e5\u770b\u533a\u57df"
+      }
+    },
+    "/spi/tenants": {
+      "put": {
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        },
+        "description": "\u66f4\u65b0\u4e00\u4e2a\u79df\u6237",
+        "tags": [
+          "tenants"
+        ],
+        "summary": "\u66f4\u65b0\u79df\u6237"
+      },
+      "post": {
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        },
+        "description": "\u521b\u5efa\u4e00\u4e2a\u79df\u6237",
+        "tags": [
+          "tenants"
+        ],
+        "summary": "\u521b\u5efa\u79df\u6237"
+      },
+      "get": {
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        },
+        "description": "\u83b7\u53d6\u6240\u4ee5\u79df\u6237\u5217\u8868",
+        "tags": [
+          "tenants"
+        ],
+        "summary": "\u83b7\u53d6\u79df\u6237\u5217\u8868"
+      }
+    },
+    "/spi/users": {
+      "put": {
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        },
+        "description": "\u66f4\u65b0\u4e00\u4e2a\u7528\u6237",
+        "tags": [
+          "users"
+        ],
+        "summary": "\u66f4\u65b0\u7528\u6237"
+      },
+      "post": {
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        },
+        "description": "\u521b\u5efa\u4e00\u4e2a\u7528\u6237",
+        "tags": [
+          "users"
+        ],
+        "summary": "\u521b\u5efa\u7528\u6237"
+      },
+      "get": {
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        },
+        "description": "\u83b7\u53d6\u6240\u6709\u7528\u6237\u7684\u5217\u8868",
+        "tags": [
+          "users"
+        ],
+        "summary": "\u83b7\u53d6\u7528\u6237\u5217\u8868"
+      }
+    }
+  },
+  "basePath": "/iot"
+}

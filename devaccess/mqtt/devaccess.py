@@ -19,6 +19,7 @@ exp = '{\
 "siteToken":"",\
 "comments":"",\
 "metadata": {}\
+"ext":{}\
 }'
 
 def register_device(data):

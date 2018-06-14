@@ -1,0 +1,17 @@
+
+	Swagger is ...
+
+
+使用swagger 生成 Flask RESTful API
+https://segmentfault.com/a/1190000010144742
+
+安装依赖：
+sudo pip3 install flask-restful
+sudo pip3 install swagger-py-codegen
+sudo pip3 install jsonschema
+
+
+使用：
+swagger_py_codegen --swagger-doc api.yml example-app --ui --spec
+
+http://127.0.0.1:5000/static/swagger-ui/index.html#!/default/get_users
