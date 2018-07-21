@@ -1,5 +1,11 @@
-[2018-06-14 14:03:00 +0800] [16584] [INFO] Starting gunicorn 19.8.1
-[2018-06-14 14:03:00 +0800] [16584] [INFO] Listening at: http://0.0.0.0:8512 (16584)
-[2018-06-14 14:03:00 +0800] [16584] [INFO] Using worker: sync
-[2018-06-14 14:03:00 +0800] [16599] [INFO] Booting worker with pid: 16599
-[2018-06-14 14:03:00 +0800] [16600] [INFO] Booting worker with pid: 16600
+[2018-06-15 08:23:39 +0800] [5434] [INFO] Starting gunicorn 19.8.1
+[2018-06-15 08:23:39 +0800] [5434] [INFO] Listening at: http://0.0.0.0:8512 (5434)
+[2018-06-15 08:23:39 +0800] [5434] [INFO] Using worker: sync
+[2018-06-15 08:23:40 +0800] [5448] [INFO] Booting worker with pid: 5448
+[2018-06-15 08:23:40 +0800] [5452] [INFO] Booting worker with pid: 5452
+[2018-06-15 08:24:50 +0800] [5434] [INFO] Handling signal: hup
+[2018-06-15 08:24:51 +0800] [5434] [INFO] Hang up: Master
+[2018-06-15 08:24:51 +0800] [5434] [INFO] Handling signal: term
+[2018-06-15 08:24:51 +0800] [5694] [INFO] Booting worker with pid: 5694
+[2018-06-15 08:24:51 +0800] [5696] [INFO] Booting worker with pid: 5696
+[2018-06-15 08:25:21 +0800] [5434] [INFO] Shutting down: Master
