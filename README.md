@@ -22,7 +22,9 @@ Keywords：Smart Home; IoT Platform; MQTT; Web Service; REST
 ![IoT Architecture](https://github.com/ATM006/iot/blob/origin/dev/docs/image/%E7%B3%BB%E7%BB%9F%E6%95%B4%E4%BD%93%E6%9E%B6%E6%9E%84.png "System overall architecture")
 
 智能家居物联网服务平台软件架构分层设计，包括数据存储系统、数据访问层、接口访问层、设备适配层。智能家居物联网服务平台的体系架构如图所示。
+
 ![IoT Platform](https://github.com/ATM006/iot/blob/origin/dev/docs/image/%E5%B9%B3%E5%8F%B0%E6%9E%B6%E6%9E%84.png "The architecture diagram of the Internet of things service platform")
+
 系统体架构构图
 
 数据存储系统，实现设备数据的持久化存储，利用MongoDB数据和InfluxDB实现对数据的持久化存储。
