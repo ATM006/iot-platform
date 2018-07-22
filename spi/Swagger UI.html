@@ -1,0 +1,2300 @@
+<!DOCTYPE html>
+<!-- saved from url=(0053)http://47.95.254.34:8081/static/swagger-ui/index.html -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  
+  <title>Swagger UI</title>
+  <link rel="icon" type="image/png" href="http://47.95.254.34:8081/static/swagger-ui/images/favicon-32x32.png" sizes="32x32">
+  <link rel="icon" type="image/png" href="http://47.95.254.34:8081/static/swagger-ui/images/favicon-16x16.png" sizes="16x16">
+  <link href="./Swagger UI_files/typography.css" media="screen" rel="stylesheet" type="text/css">
+  <link href="./Swagger UI_files/reset.css" media="screen" rel="stylesheet" type="text/css">
+  <link href="./Swagger UI_files/screen.css" media="screen" rel="stylesheet" type="text/css">
+  <link href="./Swagger UI_files/reset.css" media="print" rel="stylesheet" type="text/css">
+  <link href="./Swagger UI_files/print.css" media="print" rel="stylesheet" type="text/css">
+  <script src="./Swagger UI_files/jquery-1.8.0.min.js" type="text/javascript"></script>
+  <script src="./Swagger UI_files/jquery.slideto.min.js" type="text/javascript"></script>
+  <script src="./Swagger UI_files/jquery.wiggle.min.js" type="text/javascript"></script>
+  <script src="./Swagger UI_files/jquery.ba-bbq.min.js" type="text/javascript"></script>
+  <script src="./Swagger UI_files/handlebars-2.0.0.js" type="text/javascript"></script>
+  <script src="./Swagger UI_files/underscore-min.js" type="text/javascript"></script>
+  <script src="./Swagger UI_files/backbone-min.js" type="text/javascript"></script>
+  <script src="./Swagger UI_files/swagger-ui.js" type="text/javascript"></script>
+  <script src="./Swagger UI_files/highlight.7.3.pack.js" type="text/javascript"></script>
+  <script src="./Swagger UI_files/jsoneditor.min.js" type="text/javascript"></script>
+  <script src="./Swagger UI_files/marked.js" type="text/javascript"></script>
+  <script src="./Swagger UI_files/swagger-oauth.js" type="text/javascript"></script>
+
+  <!-- Some basic translations -->
+  <!-- <script src='lang/translator.js' type='text/javascript'></script> -->
+  <!-- <script src='lang/ru.js' type='text/javascript'></script> -->
+  <!-- <script src='lang/en.js' type='text/javascript'></script> -->
+
+  <script type="text/javascript">
+    $(function () {
+      var url = window.location.search.match(/url=([^&]+)/);
+      if (url && url.length > 1) {
+        url = decodeURIComponent(url[1]);
+      } else {
+        url = "/static/iot/spi/spi.json";
+      }
+
+      // Pre load translate...
+      if(window.SwaggerTranslator) {
+        window.SwaggerTranslator.translate();
+      }
+      window.swaggerUi = new SwaggerUi({
+        url: url,
+        dom_id: "swagger-ui-container",
+        supportedSubmitMethods: ['get', 'post', 'put', 'delete', 'patch'],
+        onComplete: function(swaggerApi, swaggerUi){
+          if(typeof initOAuth == "function") {
+            initOAuth({
+              clientId: "your-client-id",
+              clientSecret: "your-client-secret-if-required",
+              realm: "your-realms",
+              appName: "your-app-name", 
+              scopeSeparator: ",",
+              additionalQueryStringParams: {}
+            });
+          }
+
+          if(window.SwaggerTranslator) {
+            window.SwaggerTranslator.translate();
+          }
+
+          $('pre code').each(function(i, e) {
+            hljs.highlightBlock(e)
+          });
+
+          addApiKeyAuthorization();
+        },
+        onFailure: function(data) {
+          log("Unable to Load SwaggerUI");
+        },
+        docExpansion: "none",
+        jsonEditor: false,
+        apisSorter: "alpha",
+        defaultModelRendering: 'schema',
+        showRequestHeaders: false
+      });
+
+      function addApiKeyAuthorization(){
+        var key = encodeURIComponent($('#input_apiKey')[0].value);
+        if(key && key.trim() != "") {
+            var apiKeyAuth = new SwaggerClient.ApiKeyAuthorization("api_key", key, "query");
+            window.swaggerUi.api.clientAuthorizations.add("api_key", apiKeyAuth);
+            log("added key " + key);
+        }
+      }
+
+      $('#input_apiKey').change(addApiKeyAuthorization);
+
+      // if you have an apiKey you would like to pre-populate on the page for demonstration purposes...
+      /*
+        var apiKey = "myApiKeyXXXX123456789";
+        $('#input_apiKey').val(apiKey);
+      */
+
+      window.swaggerUi.load();
+
+      function log() {
+        if ('console' in window) {
+          console.log.apply(console, arguments);
+        }
+      }
+  });
+  </script>
+</head>
+
+<body class="swagger-section">
+<div id="header">
+  <div class="swagger-ui-wrap">
+    <a id="logo" href="http://swagger.io/">swagger</a>
+    <form id="api_selector">
+      <div class="input"><input placeholder="http://example.com/api" id="input_baseUrl" name="baseUrl" type="text"></div>
+      <div class="input"><input placeholder="api_key" id="input_apiKey" name="apiKey" type="text"></div>
+      <div class="input"><a id="explore" href="http://47.95.254.34:8081/static/swagger-ui/index.html#" data-sw-translate="">Explore</a></div>
+    </form>
+  </div>
+</div>
+
+<div id="message-bar" class="swagger-ui-wrap message-success" data-sw-translate=""></div>
+<div id="swagger-ui-container" class="swagger-ui-wrap"><div class="info" id="api_info">
+  <div class="info_title">IoT REST APIs</div>
+  <div class="info_description markdown"><p>智能家居物联网服务平台 REST APIs</p>
+</div>
+  
+  
+  
+  
+  
+</div>
+<div class="container" id="resources_container">
+  <ul id="resources"><li id="resource_commands" class="resource"><div class="heading">
+  <h2>
+    <a href="http://47.95.254.34:8081/static/swagger-ui/index.html#!/commands" class="toggleEndpointList" data-id="commands">commands</a> 
+  </h2>
+  <ul class="options">
+    <li>
+      <a href="http://47.95.254.34:8081/static/swagger-ui/index.html#!/commands" id="endpointListTogger_commands" class="toggleEndpointList" data-id="commands" data-sw-translate="">Show/Hide</a>
+    </li>
+    <li>
+      <a href="http://47.95.254.34:8081/static/swagger-ui/index.html#" class="collapseResource" data-id="commands" data-sw-translate="">
+        List Operations
+      </a>
+    </li>
+    <li>
+      <a href="http://47.95.254.34:8081/static/swagger-ui/index.html#" class="expandResource" data-id="commands" data-sw-translate="">
+        Expand Operations
+      </a>
+    </li>
+  </ul>
+</div>
+<ul class="endpoints" id="commands_endpoint_list" style="display:none">
+
+<li class="endpoint">
+  <ul class="operations">
+    <li class="get operation" id="commands_get_spi_devices_hardwareId_events_UserCommands">
+      <div class="heading">
+        <h3>
+          <span class="http_method">
+          <a href="http://47.95.254.34:8081/static/swagger-ui/index.html#!/commands/get_spi_devices_hardwareId_events_UserCommands" class="toggleOperation">get</a>
+          </span>
+          <span class="path">
+          <a href="http://47.95.254.34:8081/static/swagger-ui/index.html#!/commands/get_spi_devices_hardwareId_events_UserCommands" class="toggleOperation ">/spi/devices/{hardwareId}/events/UserCommands</a>
+          </span>
+        </h3>
+        <ul class="options">
+          <li>
+          <a href="http://47.95.254.34:8081/static/swagger-ui/index.html#!/commands/get_spi_devices_hardwareId_events_UserCommands" class="toggleOperation">查看用户命令</a>
+          </li>
+        </ul>
+      </div>
+      <div class="content" id="commands_get_spi_devices_hardwareId_events_UserCommands_content" style="display:none">
+        <h4><span data-sw-translate="">Implementation Notes</span></h4>
+        <div class="markdown"><p>查看用户历史命令</p>
+</div>
+
+        
+
+
+        <form accept-charset="UTF-8" class="sandbox">
+          <div style="margin:0;padding:0;display:inline"></div>
+          <h4 data-sw-translate="">Parameters</h4>
+          <table class="fullwidth">
+          <thead>
+            <tr>
+            <th style="width: 100px; max-width: 100px" data-sw-translate="">Parameter</th>
+            <th style="width: 310px; max-width: 310px" data-sw-translate="">Value</th>
+            <th style="width: 200px; max-width: 200px" data-sw-translate="">Description</th>
+            <th style="width: 100px; max-width: 100px" data-sw-translate="">Parameter Type</th>
+            <th style="width: 220px; max-width: 230px" data-sw-translate="">Data Type</th>
+            </tr>
+          </thead>
+          <tbody class="operation-params">
+
+          <tr><td class="code required"><label for="mhardwareId0.09306344756231133">hardwareId</label></td>
+<td>
+<input class="parameter required" minlength="1" name="hardwareId" placeholder="(required)" id="mhardwareId0.09306344756231133" type="text" value=""></td>
+<td>
+	<strong><span class="markdown"><p>填写设备Id</p>
+</span></strong>
+</td>
+<td>path</td>
+<td><span class="model-signature">string</span></td>
+</tr></tbody>
+          </table>
+          <div style="margin:0;padding:0;display:inline"></div>
+          <h4 data-sw-translate="">Response Messages</h4>
+          <table class="fullwidth">
+            <thead>
+            <tr>
+              <th data-sw-translate="">HTTP Status Code</th>
+              <th data-sw-translate="">Reason</th>
+              <th data-sw-translate="">Response Model</th>
+              <th data-sw-translate="">Headers</th>
+            </tr>
+            </thead>
+            <tbody class="operation-status">
+            <tr><td width="15%" class="code">200</td>
+<td class="markdown"><p>OK</p>
+</td>
+<td width="50%"><span class="model-signature"></span></td>
+<td class="headers">
+  <table>
+    <tbody>
+    </tbody>
+  </table>
+</td></tr></tbody>
+          </table>
+          <div class="sandbox_header">
+            <input class="submit" type="submit" value="Try it out!" data-sw-translate="">
+            <a href="http://47.95.254.34:8081/static/swagger-ui/index.html#" class="response_hider" style="display:none" data-sw-translate="">Hide Response</a>
+            <span class="response_throbber" style="display:none"></span>
+          </div>
+        </form>
+        <div class="response" style="display:none">
+          <h4 class="curl">Curl</h4>
+          <div class="block curl"></div>
+          <h4 data-sw-translate="">Request URL</h4>
+          <div class="block request_url"></div>
+          <h4 data-sw-translate="">Response Body</h4>
+          <div class="block response_body"></div>
+          <h4 data-sw-translate="">Response Code</h4>
+          <div class="block response_code"></div>
+          <h4 data-sw-translate="">Response Headers</h4>
+          <div class="block response_headers"></div>
+        </div>
+      </div>
+    </li>
+  </ul>
+</li><li class="endpoint">
+  <ul class="operations">
+    <li class="post operation" id="commands_post_spi_devices_hardwareId_events_UserCommands">
+      <div class="heading">
+        <h3>
+          <span class="http_method">
+          <a href="http://47.95.254.34:8081/static/swagger-ui/index.html#!/commands/post_spi_devices_hardwareId_events_UserCommands" class="toggleOperation">post</a>
+          </span>
+          <span class="path">
+          <a href="http://47.95.254.34:8081/static/swagger-ui/index.html#!/commands/post_spi_devices_hardwareId_events_UserCommands" class="toggleOperation ">/spi/devices/{hardwareId}/events/UserCommands</a>
+          </span>
+        </h3>
+        <ul class="options">
+          <li>
+          <a href="http://47.95.254.34:8081/static/swagger-ui/index.html#!/commands/post_spi_devices_hardwareId_events_UserCommands" class="toggleOperation">存储用户命令</a>
+          </li>
+        </ul>
+      </div>
+      <div class="content" id="commands_post_spi_devices_hardwareId_events_UserCommands_content" style="display:none">
+        <h4><span data-sw-translate="">Implementation Notes</span></h4>
+        <div class="markdown"><p>实时存储用户命令</p>
+</div>
+
+        
+
+
+        <form accept-charset="UTF-8" class="sandbox">
+          <div style="margin:0;padding:0;display:inline"></div>
+          <h4 data-sw-translate="">Parameters</h4>
+          <table class="fullwidth">
+          <thead>
+            <tr>
+            <th style="width: 100px; max-width: 100px" data-sw-translate="">Parameter</th>
+            <th style="width: 310px; max-width: 310px" data-sw-translate="">Value</th>
+            <th style="width: 200px; max-width: 200px" data-sw-translate="">Description</th>
+            <th style="width: 100px; max-width: 100px" data-sw-translate="">Parameter Type</th>
+            <th style="width: 220px; max-width: 230px" data-sw-translate="">Data Type</th>
+            </tr>
+          </thead>
+          <tbody class="operation-params">
+
+          <tr><td class="code required"><label for="mhardwareId0.5229174723071028">hardwareId</label></td>
+<td>
+<input class="parameter required" minlength="1" name="hardwareId" placeholder="(required)" id="mhardwareId0.5229174723071028" type="text" value=""></td>
+<td>
+	<strong><span class="markdown"><p>填写设备Id</p>
+</span></strong>
+</td>
+<td>path</td>
+<td><span class="model-signature">string</span></td>
+</tr></tbody>
+          </table>
+          <div style="margin:0;padding:0;display:inline"></div>
+          <h4 data-sw-translate="">Response Messages</h4>
+          <table class="fullwidth">
+            <thead>
+            <tr>
+              <th data-sw-translate="">HTTP Status Code</th>
+              <th data-sw-translate="">Reason</th>
+              <th data-sw-translate="">Response Model</th>
+              <th data-sw-translate="">Headers</th>
+            </tr>
+            </thead>
+            <tbody class="operation-status">
+            <tr><td width="15%" class="code">200</td>
+<td class="markdown"><p>OK</p>
+</td>
+<td width="50%"><span class="model-signature"></span></td>
+<td class="headers">
+  <table>
+    <tbody>
+    </tbody>
+  </table>
+</td></tr></tbody>
+          </table>
+          <div class="sandbox_header">
+            <input class="submit" type="submit" value="Try it out!" data-sw-translate="">
+            <a href="http://47.95.254.34:8081/static/swagger-ui/index.html#" class="response_hider" style="display:none" data-sw-translate="">Hide Response</a>
+            <span class="response_throbber" style="display:none"></span>
+          </div>
+        </form>
+        <div class="response" style="display:none">
+          <h4 class="curl">Curl</h4>
+          <div class="block curl"></div>
+          <h4 data-sw-translate="">Request URL</h4>
+          <div class="block request_url"></div>
+          <h4 data-sw-translate="">Response Body</h4>
+          <div class="block response_body"></div>
+          <h4 data-sw-translate="">Response Code</h4>
+          <div class="block response_code"></div>
+          <h4 data-sw-translate="">Response Headers</h4>
+          <div class="block response_headers"></div>
+        </div>
+      </div>
+    </li>
+  </ul>
+</li></ul>
+</li><li id="resource_data" class="resource"><div class="heading">
+  <h2>
+    <a href="http://47.95.254.34:8081/static/swagger-ui/index.html#!/data" class="toggleEndpointList" data-id="data">data</a> 
+  </h2>
+  <ul class="options">
+    <li>
+      <a href="http://47.95.254.34:8081/static/swagger-ui/index.html#!/data" id="endpointListTogger_data" class="toggleEndpointList" data-id="data" data-sw-translate="">Show/Hide</a>
+    </li>
+    <li>
+      <a href="http://47.95.254.34:8081/static/swagger-ui/index.html#" class="collapseResource" data-id="data" data-sw-translate="">
+        List Operations
+      </a>
+    </li>
+    <li>
+      <a href="http://47.95.254.34:8081/static/swagger-ui/index.html#" class="expandResource" data-id="data" data-sw-translate="">
+        Expand Operations
+      </a>
+    </li>
+  </ul>
+</div>
+<ul class="endpoints" id="data_endpoint_list" style="display:none">
+
+<li class="endpoint">
+  <ul class="operations">
+    <li class="get operation" id="data_get_spi_devices_hardwareId_events_DevicesData">
+      <div class="heading">
+        <h3>
+          <span class="http_method">
+          <a href="http://47.95.254.34:8081/static/swagger-ui/index.html#!/data/get_spi_devices_hardwareId_events_DevicesData" class="toggleOperation">get</a>
+          </span>
+          <span class="path">
+          <a href="http://47.95.254.34:8081/static/swagger-ui/index.html#!/data/get_spi_devices_hardwareId_events_DevicesData" class="toggleOperation ">/spi/devices/{hardwareId}/events/DevicesData</a>
+          </span>
+        </h3>
+        <ul class="options">
+          <li>
+          <a href="http://47.95.254.34:8081/static/swagger-ui/index.html#!/data/get_spi_devices_hardwareId_events_DevicesData" class="toggleOperation">查看设备数据</a>
+          </li>
+        </ul>
+      </div>
+      <div class="content" id="data_get_spi_devices_hardwareId_events_DevicesData_content" style="display:none">
+        <h4><span data-sw-translate="">Implementation Notes</span></h4>
+        <div class="markdown"><p>查看设备历史数据</p>
+</div>
+
+        
+
+
+        <form accept-charset="UTF-8" class="sandbox">
+          <div style="margin:0;padding:0;display:inline"></div>
+          <h4 data-sw-translate="">Parameters</h4>
+          <table class="fullwidth">
+          <thead>
+            <tr>
+            <th style="width: 100px; max-width: 100px" data-sw-translate="">Parameter</th>
+            <th style="width: 310px; max-width: 310px" data-sw-translate="">Value</th>
+            <th style="width: 200px; max-width: 200px" data-sw-translate="">Description</th>
+            <th style="width: 100px; max-width: 100px" data-sw-translate="">Parameter Type</th>
+            <th style="width: 220px; max-width: 230px" data-sw-translate="">Data Type</th>
+            </tr>
+          </thead>
+          <tbody class="operation-params">
+
+          <tr><td class="code required"><label for="mhardwareId0.4234990758790922">hardwareId</label></td>
+<td>
+<input class="parameter required" minlength="1" name="hardwareId" placeholder="(required)" id="mhardwareId0.4234990758790922" type="text" value=""></td>
+<td>
+	<strong><span class="markdown"><p>填写设备Id</p>
+</span></strong>
+</td>
+<td>path</td>
+<td><span class="model-signature">string</span></td>
+</tr></tbody>
+          </table>
+          <div style="margin:0;padding:0;display:inline"></div>
+          <h4 data-sw-translate="">Response Messages</h4>
+          <table class="fullwidth">
+            <thead>
+            <tr>
+              <th data-sw-translate="">HTTP Status Code</th>
+              <th data-sw-translate="">Reason</th>
+              <th data-sw-translate="">Response Model</th>
+              <th data-sw-translate="">Headers</th>
+            </tr>
+            </thead>
+            <tbody class="operation-status">
+            <tr><td width="15%" class="code">200</td>
+<td class="markdown"><p>OK</p>
+</td>
+<td width="50%"><span class="model-signature"></span></td>
+<td class="headers">
+  <table>
+    <tbody>
+    </tbody>
+  </table>
+</td></tr></tbody>
+          </table>
+          <div class="sandbox_header">
+            <input class="submit" type="submit" value="Try it out!" data-sw-translate="">
+            <a href="http://47.95.254.34:8081/static/swagger-ui/index.html#" class="response_hider" style="display:none" data-sw-translate="">Hide Response</a>
+            <span class="response_throbber" style="display:none"></span>
+          </div>
+        </form>
+        <div class="response" style="display:none">
+          <h4 class="curl">Curl</h4>
+          <div class="block curl"></div>
+          <h4 data-sw-translate="">Request URL</h4>
+          <div class="block request_url"></div>
+          <h4 data-sw-translate="">Response Body</h4>
+          <div class="block response_body"></div>
+          <h4 data-sw-translate="">Response Code</h4>
+          <div class="block response_code"></div>
+          <h4 data-sw-translate="">Response Headers</h4>
+          <div class="block response_headers"></div>
+        </div>
+      </div>
+    </li>
+  </ul>
+</li><li class="endpoint">
+  <ul class="operations">
+    <li class="post operation" id="data_post_spi_devices_hardwareId_events_DevicesData">
+      <div class="heading">
+        <h3>
+          <span class="http_method">
+          <a href="http://47.95.254.34:8081/static/swagger-ui/index.html#!/data/post_spi_devices_hardwareId_events_DevicesData" class="toggleOperation">post</a>
+          </span>
+          <span class="path">
+          <a href="http://47.95.254.34:8081/static/swagger-ui/index.html#!/data/post_spi_devices_hardwareId_events_DevicesData" class="toggleOperation ">/spi/devices/{hardwareId}/events/DevicesData</a>
+          </span>
+        </h3>
+        <ul class="options">
+          <li>
+          <a href="http://47.95.254.34:8081/static/swagger-ui/index.html#!/data/post_spi_devices_hardwareId_events_DevicesData" class="toggleOperation">存储设备数据</a>
+          </li>
+        </ul>
+      </div>
+      <div class="content" id="data_post_spi_devices_hardwareId_events_DevicesData_content" style="display:none">
+        <h4><span data-sw-translate="">Implementation Notes</span></h4>
+        <div class="markdown"><p>实时存储设备数据</p>
+</div>
+
+        
+
+
+        <form accept-charset="UTF-8" class="sandbox">
+          <div style="margin:0;padding:0;display:inline"></div>
+          <h4 data-sw-translate="">Parameters</h4>
+          <table class="fullwidth">
+          <thead>
+            <tr>
+            <th style="width: 100px; max-width: 100px" data-sw-translate="">Parameter</th>
+            <th style="width: 310px; max-width: 310px" data-sw-translate="">Value</th>
+            <th style="width: 200px; max-width: 200px" data-sw-translate="">Description</th>
+            <th style="width: 100px; max-width: 100px" data-sw-translate="">Parameter Type</th>
+            <th style="width: 220px; max-width: 230px" data-sw-translate="">Data Type</th>
+            </tr>
+          </thead>
+          <tbody class="operation-params">
+
+          <tr><td class="code required"><label for="mhardwareId0.02278024068266804">hardwareId</label></td>
+<td>
+<input class="parameter required" minlength="1" name="hardwareId" placeholder="(required)" id="mhardwareId0.02278024068266804" type="text" value=""></td>
+<td>
+	<strong><span class="markdown"><p>填写设备Id</p>
+</span></strong>
+</td>
+<td>path</td>
+<td><span class="model-signature">string</span></td>
+</tr></tbody>
+          </table>
+          <div style="margin:0;padding:0;display:inline"></div>
+          <h4 data-sw-translate="">Response Messages</h4>
+          <table class="fullwidth">
+            <thead>
+            <tr>
+              <th data-sw-translate="">HTTP Status Code</th>
+              <th data-sw-translate="">Reason</th>
+              <th data-sw-translate="">Response Model</th>
+              <th data-sw-translate="">Headers</th>
+            </tr>
+            </thead>
+            <tbody class="operation-status">
+            <tr><td width="15%" class="code">200</td>
+<td class="markdown"><p>OK</p>
+</td>
+<td width="50%"><span class="model-signature"></span></td>
+<td class="headers">
+  <table>
+    <tbody>
+    </tbody>
+  </table>
+</td></tr></tbody>
+          </table>
+          <div class="sandbox_header">
+            <input class="submit" type="submit" value="Try it out!" data-sw-translate="">
+            <a href="http://47.95.254.34:8081/static/swagger-ui/index.html#" class="response_hider" style="display:none" data-sw-translate="">Hide Response</a>
+            <span class="response_throbber" style="display:none"></span>
+          </div>
+        </form>
+        <div class="response" style="display:none">
+          <h4 class="curl">Curl</h4>
+          <div class="block curl"></div>
+          <h4 data-sw-translate="">Request URL</h4>
+          <div class="block request_url"></div>
+          <h4 data-sw-translate="">Response Body</h4>
+          <div class="block response_body"></div>
+          <h4 data-sw-translate="">Response Code</h4>
+          <div class="block response_code"></div>
+          <h4 data-sw-translate="">Response Headers</h4>
+          <div class="block response_headers"></div>
+        </div>
+      </div>
+    </li>
+  </ul>
+</li></ul>
+</li><li id="resource_devices" class="resource"><div class="heading">
+  <h2>
+    <a href="http://47.95.254.34:8081/static/swagger-ui/index.html#!/devices" class="toggleEndpointList" data-id="devices">devices</a> 
+  </h2>
+  <ul class="options">
+    <li>
+      <a href="http://47.95.254.34:8081/static/swagger-ui/index.html#!/devices" id="endpointListTogger_devices" class="toggleEndpointList" data-id="devices" data-sw-translate="">Show/Hide</a>
+    </li>
+    <li>
+      <a href="http://47.95.254.34:8081/static/swagger-ui/index.html#" class="collapseResource" data-id="devices" data-sw-translate="">
+        List Operations
+      </a>
+    </li>
+    <li>
+      <a href="http://47.95.254.34:8081/static/swagger-ui/index.html#" class="expandResource" data-id="devices" data-sw-translate="">
+        Expand Operations
+      </a>
+    </li>
+  </ul>
+</div>
+<ul class="endpoints" id="devices_endpoint_list" style="display:none">
+
+<li class="endpoint">
+  <ul class="operations">
+    <li class="get operation" id="devices_get_spi_devices">
+      <div class="heading">
+        <h3>
+          <span class="http_method">
+          <a href="http://47.95.254.34:8081/static/swagger-ui/index.html#!/devices/get_spi_devices" class="toggleOperation">get</a>
+          </span>
+          <span class="path">
+          <a href="http://47.95.254.34:8081/static/swagger-ui/index.html#!/devices/get_spi_devices" class="toggleOperation ">/spi/devices</a>
+          </span>
+        </h3>
+        <ul class="options">
+          <li>
+          <a href="http://47.95.254.34:8081/static/swagger-ui/index.html#!/devices/get_spi_devices" class="toggleOperation">查询设列表</a>
+          </li>
+        </ul>
+      </div>
+      <div class="content" id="devices_get_spi_devices_content" style="display:none">
+        <h4><span data-sw-translate="">Implementation Notes</span></h4>
+        <div class="markdown"><p>查询设备列表</p>
+</div>
+
+        
+
+
+        <form accept-charset="UTF-8" class="sandbox">
+          <div style="margin:0;padding:0;display:inline"></div>
+          <div style="margin:0;padding:0;display:inline"></div>
+          <h4 data-sw-translate="">Response Messages</h4>
+          <table class="fullwidth">
+            <thead>
+            <tr>
+              <th data-sw-translate="">HTTP Status Code</th>
+              <th data-sw-translate="">Reason</th>
+              <th data-sw-translate="">Response Model</th>
+              <th data-sw-translate="">Headers</th>
+            </tr>
+            </thead>
+            <tbody class="operation-status">
+            <tr><td width="15%" class="code">200</td>
+<td class="markdown"><p>OK</p>
+</td>
+<td width="50%"><span class="model-signature"></span></td>
+<td class="headers">
+  <table>
+    <tbody>
+    </tbody>
+  </table>
+</td></tr></tbody>
+          </table>
+          <div class="sandbox_header">
+            <input class="submit" type="submit" value="Try it out!" data-sw-translate="">
+            <a href="http://47.95.254.34:8081/static/swagger-ui/index.html#" class="response_hider" style="display:none" data-sw-translate="">Hide Response</a>
+            <span class="response_throbber" style="display:none"></span>
+          </div>
+        </form>
+        <div class="response" style="display:none">
+          <h4 class="curl">Curl</h4>
+          <div class="block curl"></div>
+          <h4 data-sw-translate="">Request URL</h4>
+          <div class="block request_url"></div>
+          <h4 data-sw-translate="">Response Body</h4>
+          <div class="block response_body"></div>
+          <h4 data-sw-translate="">Response Code</h4>
+          <div class="block response_code"></div>
+          <h4 data-sw-translate="">Response Headers</h4>
+          <div class="block response_headers"></div>
+        </div>
+      </div>
+    </li>
+  </ul>
+</li><li class="endpoint">
+  <ul class="operations">
+    <li class="post operation" id="devices_post_spi_devices">
+      <div class="heading">
+        <h3>
+          <span class="http_method">
+          <a href="http://47.95.254.34:8081/static/swagger-ui/index.html#!/devices/post_spi_devices" class="toggleOperation">post</a>
+          </span>
+          <span class="path">
+          <a href="http://47.95.254.34:8081/static/swagger-ui/index.html#!/devices/post_spi_devices" class="toggleOperation ">/spi/devices</a>
+          </span>
+        </h3>
+        <ul class="options">
+          <li>
+          <a href="http://47.95.254.34:8081/static/swagger-ui/index.html#!/devices/post_spi_devices" class="toggleOperation">注册设备</a>
+          </li>
+        </ul>
+      </div>
+      <div class="content" id="devices_post_spi_devices_content" style="display:none">
+        <h4><span data-sw-translate="">Implementation Notes</span></h4>
+        <div class="markdown"><p>注册一个设备</p>
+</div>
+
+        
+
+
+        <form accept-charset="UTF-8" class="sandbox">
+          <div style="margin:0;padding:0;display:inline"></div>
+          <div style="margin:0;padding:0;display:inline"></div>
+          <h4 data-sw-translate="">Response Messages</h4>
+          <table class="fullwidth">
+            <thead>
+            <tr>
+              <th data-sw-translate="">HTTP Status Code</th>
+              <th data-sw-translate="">Reason</th>
+              <th data-sw-translate="">Response Model</th>
+              <th data-sw-translate="">Headers</th>
+            </tr>
+            </thead>
+            <tbody class="operation-status">
+            <tr><td width="15%" class="code">200</td>
+<td class="markdown"><p>OK</p>
+</td>
+<td width="50%"><span class="model-signature"></span></td>
+<td class="headers">
+  <table>
+    <tbody>
+    </tbody>
+  </table>
+</td></tr></tbody>
+          </table>
+          <div class="sandbox_header">
+            <input class="submit" type="submit" value="Try it out!" data-sw-translate="">
+            <a href="http://47.95.254.34:8081/static/swagger-ui/index.html#" class="response_hider" style="display:none" data-sw-translate="">Hide Response</a>
+            <span class="response_throbber" style="display:none"></span>
+          </div>
+        </form>
+        <div class="response" style="display:none">
+          <h4 class="curl">Curl</h4>
+          <div class="block curl"></div>
+          <h4 data-sw-translate="">Request URL</h4>
+          <div class="block request_url"></div>
+          <h4 data-sw-translate="">Response Body</h4>
+          <div class="block response_body"></div>
+          <h4 data-sw-translate="">Response Code</h4>
+          <div class="block response_code"></div>
+          <h4 data-sw-translate="">Response Headers</h4>
+          <div class="block response_headers"></div>
+        </div>
+      </div>
+    </li>
+  </ul>
+</li><li class="endpoint">
+  <ul class="operations">
+    <li class="put operation" id="devices_put_spi_devices">
+      <div class="heading">
+        <h3>
+          <span class="http_method">
+          <a href="http://47.95.254.34:8081/static/swagger-ui/index.html#!/devices/put_spi_devices" class="toggleOperation">put</a>
+          </span>
+          <span class="path">
+          <a href="http://47.95.254.34:8081/static/swagger-ui/index.html#!/devices/put_spi_devices" class="toggleOperation ">/spi/devices</a>
+          </span>
+        </h3>
+        <ul class="options">
+          <li>
+          <a href="http://47.95.254.34:8081/static/swagger-ui/index.html#!/devices/put_spi_devices" class="toggleOperation">更新设备</a>
+          </li>
+        </ul>
+      </div>
+      <div class="content" id="devices_put_spi_devices_content" style="display:none">
+        <h4><span data-sw-translate="">Implementation Notes</span></h4>
+        <div class="markdown"><p>更新一个设备</p>
+</div>
+
+        
+
+
+        <form accept-charset="UTF-8" class="sandbox">
+          <div style="margin:0;padding:0;display:inline"></div>
+          <div style="margin:0;padding:0;display:inline"></div>
+          <h4 data-sw-translate="">Response Messages</h4>
+          <table class="fullwidth">
+            <thead>
+            <tr>
+              <th data-sw-translate="">HTTP Status Code</th>
+              <th data-sw-translate="">Reason</th>
+              <th data-sw-translate="">Response Model</th>
+              <th data-sw-translate="">Headers</th>
+            </tr>
+            </thead>
+            <tbody class="operation-status">
+            <tr><td width="15%" class="code">200</td>
+<td class="markdown"><p>OK</p>
+</td>
+<td width="50%"><span class="model-signature"></span></td>
+<td class="headers">
+  <table>
+    <tbody>
+    </tbody>
+  </table>
+</td></tr></tbody>
+          </table>
+          <div class="sandbox_header">
+            <input class="submit" type="submit" value="Try it out!" data-sw-translate="">
+            <a href="http://47.95.254.34:8081/static/swagger-ui/index.html#" class="response_hider" style="display:none" data-sw-translate="">Hide Response</a>
+            <span class="response_throbber" style="display:none"></span>
+          </div>
+        </form>
+        <div class="response" style="display:none">
+          <h4 class="curl">Curl</h4>
+          <div class="block curl"></div>
+          <h4 data-sw-translate="">Request URL</h4>
+          <div class="block request_url"></div>
+          <h4 data-sw-translate="">Response Body</h4>
+          <div class="block response_body"></div>
+          <h4 data-sw-translate="">Response Code</h4>
+          <div class="block response_code"></div>
+          <h4 data-sw-translate="">Response Headers</h4>
+          <div class="block response_headers"></div>
+        </div>
+      </div>
+    </li>
+  </ul>
+</li><li class="endpoint">
+  <ul class="operations">
+    <li class="delete operation" id="devices_delete_spi_devices_hardwareId">
+      <div class="heading">
+        <h3>
+          <span class="http_method">
+          <a href="http://47.95.254.34:8081/static/swagger-ui/index.html#!/devices/delete_spi_devices_hardwareId" class="toggleOperation">delete</a>
+          </span>
+          <span class="path">
+          <a href="http://47.95.254.34:8081/static/swagger-ui/index.html#!/devices/delete_spi_devices_hardwareId" class="toggleOperation ">/spi/devices/{hardwareId}</a>
+          </span>
+        </h3>
+        <ul class="options">
+          <li>
+          <a href="http://47.95.254.34:8081/static/swagger-ui/index.html#!/devices/delete_spi_devices_hardwareId" class="toggleOperation">删除设备</a>
+          </li>
+        </ul>
+      </div>
+      <div class="content" id="devices_delete_spi_devices_hardwareId_content" style="display:none">
+        <h4><span data-sw-translate="">Implementation Notes</span></h4>
+        <div class="markdown"><p>删除一个设备</p>
+</div>
+
+        
+
+
+        <form accept-charset="UTF-8" class="sandbox">
+          <div style="margin:0;padding:0;display:inline"></div>
+          <h4 data-sw-translate="">Parameters</h4>
+          <table class="fullwidth">
+          <thead>
+            <tr>
+            <th style="width: 100px; max-width: 100px" data-sw-translate="">Parameter</th>
+            <th style="width: 310px; max-width: 310px" data-sw-translate="">Value</th>
+            <th style="width: 200px; max-width: 200px" data-sw-translate="">Description</th>
+            <th style="width: 100px; max-width: 100px" data-sw-translate="">Parameter Type</th>
+            <th style="width: 220px; max-width: 230px" data-sw-translate="">Data Type</th>
+            </tr>
+          </thead>
+          <tbody class="operation-params">
+
+          <tr><td class="code required"><label for="mhardwareId0.42108211797865325">hardwareId</label></td>
+<td>
+<input class="parameter required" minlength="1" name="hardwareId" placeholder="(required)" id="mhardwareId0.42108211797865325" type="text" value=""></td>
+<td>
+	<strong><span class="markdown"><p>填写设备Id</p>
+</span></strong>
+</td>
+<td>path</td>
+<td><span class="model-signature">string</span></td>
+</tr></tbody>
+          </table>
+          <div style="margin:0;padding:0;display:inline"></div>
+          <h4 data-sw-translate="">Response Messages</h4>
+          <table class="fullwidth">
+            <thead>
+            <tr>
+              <th data-sw-translate="">HTTP Status Code</th>
+              <th data-sw-translate="">Reason</th>
+              <th data-sw-translate="">Response Model</th>
+              <th data-sw-translate="">Headers</th>
+            </tr>
+            </thead>
+            <tbody class="operation-status">
+            <tr><td width="15%" class="code">200</td>
+<td class="markdown"><p>OK</p>
+</td>
+<td width="50%"><span class="model-signature"></span></td>
+<td class="headers">
+  <table>
+    <tbody>
+    </tbody>
+  </table>
+</td></tr></tbody>
+          </table>
+          <div class="sandbox_header">
+            <input class="submit" type="submit" value="Try it out!" data-sw-translate="">
+            <a href="http://47.95.254.34:8081/static/swagger-ui/index.html#" class="response_hider" style="display:none" data-sw-translate="">Hide Response</a>
+            <span class="response_throbber" style="display:none"></span>
+          </div>
+        </form>
+        <div class="response" style="display:none">
+          <h4 class="curl">Curl</h4>
+          <div class="block curl"></div>
+          <h4 data-sw-translate="">Request URL</h4>
+          <div class="block request_url"></div>
+          <h4 data-sw-translate="">Response Body</h4>
+          <div class="block response_body"></div>
+          <h4 data-sw-translate="">Response Code</h4>
+          <div class="block response_code"></div>
+          <h4 data-sw-translate="">Response Headers</h4>
+          <div class="block response_headers"></div>
+        </div>
+      </div>
+    </li>
+  </ul>
+</li><li class="endpoint">
+  <ul class="operations">
+    <li class="get operation" id="devices_get_spi_devices_hardwareId">
+      <div class="heading">
+        <h3>
+          <span class="http_method">
+          <a href="http://47.95.254.34:8081/static/swagger-ui/index.html#!/devices/get_spi_devices_hardwareId" class="toggleOperation">get</a>
+          </span>
+          <span class="path">
+          <a href="http://47.95.254.34:8081/static/swagger-ui/index.html#!/devices/get_spi_devices_hardwareId" class="toggleOperation ">/spi/devices/{hardwareId}</a>
+          </span>
+        </h3>
+        <ul class="options">
+          <li>
+          <a href="http://47.95.254.34:8081/static/swagger-ui/index.html#!/devices/get_spi_devices_hardwareId" class="toggleOperation">查看设备</a>
+          </li>
+        </ul>
+      </div>
+      <div class="content" id="devices_get_spi_devices_hardwareId_content" style="display:none">
+        <h4><span data-sw-translate="">Implementation Notes</span></h4>
+        <div class="markdown"><p>查看一个设备的信息</p>
+</div>
+
+        
+
+
+        <form accept-charset="UTF-8" class="sandbox">
+          <div style="margin:0;padding:0;display:inline"></div>
+          <h4 data-sw-translate="">Parameters</h4>
+          <table class="fullwidth">
+          <thead>
+            <tr>
+            <th style="width: 100px; max-width: 100px" data-sw-translate="">Parameter</th>
+            <th style="width: 310px; max-width: 310px" data-sw-translate="">Value</th>
+            <th style="width: 200px; max-width: 200px" data-sw-translate="">Description</th>
+            <th style="width: 100px; max-width: 100px" data-sw-translate="">Parameter Type</th>
+            <th style="width: 220px; max-width: 230px" data-sw-translate="">Data Type</th>
+            </tr>
+          </thead>
+          <tbody class="operation-params">
+
+          <tr><td class="code required"><label for="mhardwareId0.8460674700657236">hardwareId</label></td>
+<td>
+<input class="parameter required" minlength="1" name="hardwareId" placeholder="(required)" id="mhardwareId0.8460674700657236" type="text" value=""></td>
+<td>
+	<strong><span class="markdown"><p>填写设备Id</p>
+</span></strong>
+</td>
+<td>path</td>
+<td><span class="model-signature">string</span></td>
+</tr></tbody>
+          </table>
+          <div style="margin:0;padding:0;display:inline"></div>
+          <h4 data-sw-translate="">Response Messages</h4>
+          <table class="fullwidth">
+            <thead>
+            <tr>
+              <th data-sw-translate="">HTTP Status Code</th>
+              <th data-sw-translate="">Reason</th>
+              <th data-sw-translate="">Response Model</th>
+              <th data-sw-translate="">Headers</th>
+            </tr>
+            </thead>
+            <tbody class="operation-status">
+            <tr><td width="15%" class="code">200</td>
+<td class="markdown"><p>OK</p>
+</td>
+<td width="50%"><span class="model-signature"></span></td>
+<td class="headers">
+  <table>
+    <tbody>
+    </tbody>
+  </table>
+</td></tr></tbody>
+          </table>
+          <div class="sandbox_header">
+            <input class="submit" type="submit" value="Try it out!" data-sw-translate="">
+            <a href="http://47.95.254.34:8081/static/swagger-ui/index.html#" class="response_hider" style="display:none" data-sw-translate="">Hide Response</a>
+            <span class="response_throbber" style="display:none"></span>
+          </div>
+        </form>
+        <div class="response" style="display:none">
+          <h4 class="curl">Curl</h4>
+          <div class="block curl"></div>
+          <h4 data-sw-translate="">Request URL</h4>
+          <div class="block request_url"></div>
+          <h4 data-sw-translate="">Response Body</h4>
+          <div class="block response_body"></div>
+          <h4 data-sw-translate="">Response Code</h4>
+          <div class="block response_code"></div>
+          <h4 data-sw-translate="">Response Headers</h4>
+          <div class="block response_headers"></div>
+        </div>
+      </div>
+    </li>
+  </ul>
+</li></ul>
+</li><li id="resource_sites" class="resource"><div class="heading">
+  <h2>
+    <a href="http://47.95.254.34:8081/static/swagger-ui/index.html#!/sites" class="toggleEndpointList" data-id="sites">sites</a> 
+  </h2>
+  <ul class="options">
+    <li>
+      <a href="http://47.95.254.34:8081/static/swagger-ui/index.html#!/sites" id="endpointListTogger_sites" class="toggleEndpointList" data-id="sites" data-sw-translate="">Show/Hide</a>
+    </li>
+    <li>
+      <a href="http://47.95.254.34:8081/static/swagger-ui/index.html#" class="collapseResource" data-id="sites" data-sw-translate="">
+        List Operations
+      </a>
+    </li>
+    <li>
+      <a href="http://47.95.254.34:8081/static/swagger-ui/index.html#" class="expandResource" data-id="sites" data-sw-translate="">
+        Expand Operations
+      </a>
+    </li>
+  </ul>
+</div>
+<ul class="endpoints" id="sites_endpoint_list" style="display:none">
+
+<li class="endpoint">
+  <ul class="operations">
+    <li class="get operation" id="sites_get_spi_sites">
+      <div class="heading">
+        <h3>
+          <span class="http_method">
+          <a href="http://47.95.254.34:8081/static/swagger-ui/index.html#!/sites/get_spi_sites" class="toggleOperation">get</a>
+          </span>
+          <span class="path">
+          <a href="http://47.95.254.34:8081/static/swagger-ui/index.html#!/sites/get_spi_sites" class="toggleOperation ">/spi/sites</a>
+          </span>
+        </h3>
+        <ul class="options">
+          <li>
+          <a href="http://47.95.254.34:8081/static/swagger-ui/index.html#!/sites/get_spi_sites" class="toggleOperation">查看区域列表</a>
+          </li>
+        </ul>
+      </div>
+      <div class="content" id="sites_get_spi_sites_content" style="display:none">
+        <h4><span data-sw-translate="">Implementation Notes</span></h4>
+        <div class="markdown"><p>查看所有区域列表</p>
+</div>
+
+        
+
+
+        <form accept-charset="UTF-8" class="sandbox">
+          <div style="margin:0;padding:0;display:inline"></div>
+          <div style="margin:0;padding:0;display:inline"></div>
+          <h4 data-sw-translate="">Response Messages</h4>
+          <table class="fullwidth">
+            <thead>
+            <tr>
+              <th data-sw-translate="">HTTP Status Code</th>
+              <th data-sw-translate="">Reason</th>
+              <th data-sw-translate="">Response Model</th>
+              <th data-sw-translate="">Headers</th>
+            </tr>
+            </thead>
+            <tbody class="operation-status">
+            <tr><td width="15%" class="code">200</td>
+<td class="markdown"><p>OK</p>
+</td>
+<td width="50%"><span class="model-signature"></span></td>
+<td class="headers">
+  <table>
+    <tbody>
+    </tbody>
+  </table>
+</td></tr></tbody>
+          </table>
+          <div class="sandbox_header">
+            <input class="submit" type="submit" value="Try it out!" data-sw-translate="">
+            <a href="http://47.95.254.34:8081/static/swagger-ui/index.html#" class="response_hider" style="display:none" data-sw-translate="">Hide Response</a>
+            <span class="response_throbber" style="display:none"></span>
+          </div>
+        </form>
+        <div class="response" style="display:none">
+          <h4 class="curl">Curl</h4>
+          <div class="block curl"></div>
+          <h4 data-sw-translate="">Request URL</h4>
+          <div class="block request_url"></div>
+          <h4 data-sw-translate="">Response Body</h4>
+          <div class="block response_body"></div>
+          <h4 data-sw-translate="">Response Code</h4>
+          <div class="block response_code"></div>
+          <h4 data-sw-translate="">Response Headers</h4>
+          <div class="block response_headers"></div>
+        </div>
+      </div>
+    </li>
+  </ul>
+</li><li class="endpoint">
+  <ul class="operations">
+    <li class="post operation" id="sites_post_spi_sites">
+      <div class="heading">
+        <h3>
+          <span class="http_method">
+          <a href="http://47.95.254.34:8081/static/swagger-ui/index.html#!/sites/post_spi_sites" class="toggleOperation">post</a>
+          </span>
+          <span class="path">
+          <a href="http://47.95.254.34:8081/static/swagger-ui/index.html#!/sites/post_spi_sites" class="toggleOperation ">/spi/sites</a>
+          </span>
+        </h3>
+        <ul class="options">
+          <li>
+          <a href="http://47.95.254.34:8081/static/swagger-ui/index.html#!/sites/post_spi_sites" class="toggleOperation">创建区域</a>
+          </li>
+        </ul>
+      </div>
+      <div class="content" id="sites_post_spi_sites_content" style="display:none">
+        <h4><span data-sw-translate="">Implementation Notes</span></h4>
+        <div class="markdown"><p>创建一个区域</p>
+</div>
+
+        
+
+
+        <form accept-charset="UTF-8" class="sandbox">
+          <div style="margin:0;padding:0;display:inline"></div>
+          <div style="margin:0;padding:0;display:inline"></div>
+          <h4 data-sw-translate="">Response Messages</h4>
+          <table class="fullwidth">
+            <thead>
+            <tr>
+              <th data-sw-translate="">HTTP Status Code</th>
+              <th data-sw-translate="">Reason</th>
+              <th data-sw-translate="">Response Model</th>
+              <th data-sw-translate="">Headers</th>
+            </tr>
+            </thead>
+            <tbody class="operation-status">
+            <tr><td width="15%" class="code">200</td>
+<td class="markdown"><p>OK</p>
+</td>
+<td width="50%"><span class="model-signature"></span></td>
+<td class="headers">
+  <table>
+    <tbody>
+    </tbody>
+  </table>
+</td></tr></tbody>
+          </table>
+          <div class="sandbox_header">
+            <input class="submit" type="submit" value="Try it out!" data-sw-translate="">
+            <a href="http://47.95.254.34:8081/static/swagger-ui/index.html#" class="response_hider" style="display:none" data-sw-translate="">Hide Response</a>
+            <span class="response_throbber" style="display:none"></span>
+          </div>
+        </form>
+        <div class="response" style="display:none">
+          <h4 class="curl">Curl</h4>
+          <div class="block curl"></div>
+          <h4 data-sw-translate="">Request URL</h4>
+          <div class="block request_url"></div>
+          <h4 data-sw-translate="">Response Body</h4>
+          <div class="block response_body"></div>
+          <h4 data-sw-translate="">Response Code</h4>
+          <div class="block response_code"></div>
+          <h4 data-sw-translate="">Response Headers</h4>
+          <div class="block response_headers"></div>
+        </div>
+      </div>
+    </li>
+  </ul>
+</li><li class="endpoint">
+  <ul class="operations">
+    <li class="put operation" id="sites_put_spi_sites">
+      <div class="heading">
+        <h3>
+          <span class="http_method">
+          <a href="http://47.95.254.34:8081/static/swagger-ui/index.html#!/sites/put_spi_sites" class="toggleOperation">put</a>
+          </span>
+          <span class="path">
+          <a href="http://47.95.254.34:8081/static/swagger-ui/index.html#!/sites/put_spi_sites" class="toggleOperation ">/spi/sites</a>
+          </span>
+        </h3>
+        <ul class="options">
+          <li>
+          <a href="http://47.95.254.34:8081/static/swagger-ui/index.html#!/sites/put_spi_sites" class="toggleOperation">更新区域</a>
+          </li>
+        </ul>
+      </div>
+      <div class="content" id="sites_put_spi_sites_content" style="display:none">
+        <h4><span data-sw-translate="">Implementation Notes</span></h4>
+        <div class="markdown"><p>更新一个区域</p>
+</div>
+
+        
+
+
+        <form accept-charset="UTF-8" class="sandbox">
+          <div style="margin:0;padding:0;display:inline"></div>
+          <div style="margin:0;padding:0;display:inline"></div>
+          <h4 data-sw-translate="">Response Messages</h4>
+          <table class="fullwidth">
+            <thead>
+            <tr>
+              <th data-sw-translate="">HTTP Status Code</th>
+              <th data-sw-translate="">Reason</th>
+              <th data-sw-translate="">Response Model</th>
+              <th data-sw-translate="">Headers</th>
+            </tr>
+            </thead>
+            <tbody class="operation-status">
+            <tr><td width="15%" class="code">200</td>
+<td class="markdown"><p>OK</p>
+</td>
+<td width="50%"><span class="model-signature"></span></td>
+<td class="headers">
+  <table>
+    <tbody>
+    </tbody>
+  </table>
+</td></tr></tbody>
+          </table>
+          <div class="sandbox_header">
+            <input class="submit" type="submit" value="Try it out!" data-sw-translate="">
+            <a href="http://47.95.254.34:8081/static/swagger-ui/index.html#" class="response_hider" style="display:none" data-sw-translate="">Hide Response</a>
+            <span class="response_throbber" style="display:none"></span>
+          </div>
+        </form>
+        <div class="response" style="display:none">
+          <h4 class="curl">Curl</h4>
+          <div class="block curl"></div>
+          <h4 data-sw-translate="">Request URL</h4>
+          <div class="block request_url"></div>
+          <h4 data-sw-translate="">Response Body</h4>
+          <div class="block response_body"></div>
+          <h4 data-sw-translate="">Response Code</h4>
+          <div class="block response_code"></div>
+          <h4 data-sw-translate="">Response Headers</h4>
+          <div class="block response_headers"></div>
+        </div>
+      </div>
+    </li>
+  </ul>
+</li><li class="endpoint">
+  <ul class="operations">
+    <li class="delete operation" id="sites_delete_spi_sites_token">
+      <div class="heading">
+        <h3>
+          <span class="http_method">
+          <a href="http://47.95.254.34:8081/static/swagger-ui/index.html#!/sites/delete_spi_sites_token" class="toggleOperation">delete</a>
+          </span>
+          <span class="path">
+          <a href="http://47.95.254.34:8081/static/swagger-ui/index.html#!/sites/delete_spi_sites_token" class="toggleOperation ">/spi/sites/{token}</a>
+          </span>
+        </h3>
+        <ul class="options">
+          <li>
+          <a href="http://47.95.254.34:8081/static/swagger-ui/index.html#!/sites/delete_spi_sites_token" class="toggleOperation">删除区域</a>
+          </li>
+        </ul>
+      </div>
+      <div class="content" id="sites_delete_spi_sites_token_content" style="display:none">
+        <h4><span data-sw-translate="">Implementation Notes</span></h4>
+        <div class="markdown"><p>删除一个区域</p>
+</div>
+
+        
+
+
+        <form accept-charset="UTF-8" class="sandbox">
+          <div style="margin:0;padding:0;display:inline"></div>
+          <h4 data-sw-translate="">Parameters</h4>
+          <table class="fullwidth">
+          <thead>
+            <tr>
+            <th style="width: 100px; max-width: 100px" data-sw-translate="">Parameter</th>
+            <th style="width: 310px; max-width: 310px" data-sw-translate="">Value</th>
+            <th style="width: 200px; max-width: 200px" data-sw-translate="">Description</th>
+            <th style="width: 100px; max-width: 100px" data-sw-translate="">Parameter Type</th>
+            <th style="width: 220px; max-width: 230px" data-sw-translate="">Data Type</th>
+            </tr>
+          </thead>
+          <tbody class="operation-params">
+
+          <tr><td class="code required"><label for="mtoken0.05769158223377491">token</label></td>
+<td>
+<input class="parameter required" minlength="1" name="token" placeholder="(required)" id="mtoken0.05769158223377491" type="text" value=""></td>
+<td>
+	<strong><span class="markdown"><p>填写区域token</p>
+</span></strong>
+</td>
+<td>path</td>
+<td><span class="model-signature">string</span></td>
+</tr></tbody>
+          </table>
+          <div style="margin:0;padding:0;display:inline"></div>
+          <h4 data-sw-translate="">Response Messages</h4>
+          <table class="fullwidth">
+            <thead>
+            <tr>
+              <th data-sw-translate="">HTTP Status Code</th>
+              <th data-sw-translate="">Reason</th>
+              <th data-sw-translate="">Response Model</th>
+              <th data-sw-translate="">Headers</th>
+            </tr>
+            </thead>
+            <tbody class="operation-status">
+            <tr><td width="15%" class="code">200</td>
+<td class="markdown"><p>OK</p>
+</td>
+<td width="50%"><span class="model-signature"></span></td>
+<td class="headers">
+  <table>
+    <tbody>
+    </tbody>
+  </table>
+</td></tr></tbody>
+          </table>
+          <div class="sandbox_header">
+            <input class="submit" type="submit" value="Try it out!" data-sw-translate="">
+            <a href="http://47.95.254.34:8081/static/swagger-ui/index.html#" class="response_hider" style="display:none" data-sw-translate="">Hide Response</a>
+            <span class="response_throbber" style="display:none"></span>
+          </div>
+        </form>
+        <div class="response" style="display:none">
+          <h4 class="curl">Curl</h4>
+          <div class="block curl"></div>
+          <h4 data-sw-translate="">Request URL</h4>
+          <div class="block request_url"></div>
+          <h4 data-sw-translate="">Response Body</h4>
+          <div class="block response_body"></div>
+          <h4 data-sw-translate="">Response Code</h4>
+          <div class="block response_code"></div>
+          <h4 data-sw-translate="">Response Headers</h4>
+          <div class="block response_headers"></div>
+        </div>
+      </div>
+    </li>
+  </ul>
+</li><li class="endpoint">
+  <ul class="operations">
+    <li class="get operation" id="sites_get_spi_sites_token">
+      <div class="heading">
+        <h3>
+          <span class="http_method">
+          <a href="http://47.95.254.34:8081/static/swagger-ui/index.html#!/sites/get_spi_sites_token" class="toggleOperation">get</a>
+          </span>
+          <span class="path">
+          <a href="http://47.95.254.34:8081/static/swagger-ui/index.html#!/sites/get_spi_sites_token" class="toggleOperation ">/spi/sites/{token}</a>
+          </span>
+        </h3>
+        <ul class="options">
+          <li>
+          <a href="http://47.95.254.34:8081/static/swagger-ui/index.html#!/sites/get_spi_sites_token" class="toggleOperation">查看区域</a>
+          </li>
+        </ul>
+      </div>
+      <div class="content" id="sites_get_spi_sites_token_content" style="display:none">
+        <h4><span data-sw-translate="">Implementation Notes</span></h4>
+        <div class="markdown"><p>查看一个区域</p>
+</div>
+
+        
+
+
+        <form accept-charset="UTF-8" class="sandbox">
+          <div style="margin:0;padding:0;display:inline"></div>
+          <h4 data-sw-translate="">Parameters</h4>
+          <table class="fullwidth">
+          <thead>
+            <tr>
+            <th style="width: 100px; max-width: 100px" data-sw-translate="">Parameter</th>
+            <th style="width: 310px; max-width: 310px" data-sw-translate="">Value</th>
+            <th style="width: 200px; max-width: 200px" data-sw-translate="">Description</th>
+            <th style="width: 100px; max-width: 100px" data-sw-translate="">Parameter Type</th>
+            <th style="width: 220px; max-width: 230px" data-sw-translate="">Data Type</th>
+            </tr>
+          </thead>
+          <tbody class="operation-params">
+
+          <tr><td class="code required"><label for="mtoken0.5774085008738854">token</label></td>
+<td>
+<input class="parameter required" minlength="1" name="token" placeholder="(required)" id="mtoken0.5774085008738854" type="text" value=""></td>
+<td>
+	<strong><span class="markdown"><p>填写区域token</p>
+</span></strong>
+</td>
+<td>path</td>
+<td><span class="model-signature">string</span></td>
+</tr></tbody>
+          </table>
+          <div style="margin:0;padding:0;display:inline"></div>
+          <h4 data-sw-translate="">Response Messages</h4>
+          <table class="fullwidth">
+            <thead>
+            <tr>
+              <th data-sw-translate="">HTTP Status Code</th>
+              <th data-sw-translate="">Reason</th>
+              <th data-sw-translate="">Response Model</th>
+              <th data-sw-translate="">Headers</th>
+            </tr>
+            </thead>
+            <tbody class="operation-status">
+            <tr><td width="15%" class="code">200</td>
+<td class="markdown"><p>OK</p>
+</td>
+<td width="50%"><span class="model-signature"></span></td>
+<td class="headers">
+  <table>
+    <tbody>
+    </tbody>
+  </table>
+</td></tr></tbody>
+          </table>
+          <div class="sandbox_header">
+            <input class="submit" type="submit" value="Try it out!" data-sw-translate="">
+            <a href="http://47.95.254.34:8081/static/swagger-ui/index.html#" class="response_hider" style="display:none" data-sw-translate="">Hide Response</a>
+            <span class="response_throbber" style="display:none"></span>
+          </div>
+        </form>
+        <div class="response" style="display:none">
+          <h4 class="curl">Curl</h4>
+          <div class="block curl"></div>
+          <h4 data-sw-translate="">Request URL</h4>
+          <div class="block request_url"></div>
+          <h4 data-sw-translate="">Response Body</h4>
+          <div class="block response_body"></div>
+          <h4 data-sw-translate="">Response Code</h4>
+          <div class="block response_code"></div>
+          <h4 data-sw-translate="">Response Headers</h4>
+          <div class="block response_headers"></div>
+        </div>
+      </div>
+    </li>
+  </ul>
+</li></ul>
+</li><li id="resource_tenants" class="resource"><div class="heading">
+  <h2>
+    <a href="http://47.95.254.34:8081/static/swagger-ui/index.html#!/tenants" class="toggleEndpointList" data-id="tenants">tenants</a> 
+  </h2>
+  <ul class="options">
+    <li>
+      <a href="http://47.95.254.34:8081/static/swagger-ui/index.html#!/tenants" id="endpointListTogger_tenants" class="toggleEndpointList" data-id="tenants" data-sw-translate="">Show/Hide</a>
+    </li>
+    <li>
+      <a href="http://47.95.254.34:8081/static/swagger-ui/index.html#" class="collapseResource" data-id="tenants" data-sw-translate="">
+        List Operations
+      </a>
+    </li>
+    <li>
+      <a href="http://47.95.254.34:8081/static/swagger-ui/index.html#" class="expandResource" data-id="tenants" data-sw-translate="">
+        Expand Operations
+      </a>
+    </li>
+  </ul>
+</div>
+<ul class="endpoints" id="tenants_endpoint_list" style="display:none">
+
+<li class="endpoint">
+  <ul class="operations">
+    <li class="get operation" id="tenants_get_spi_tenants">
+      <div class="heading">
+        <h3>
+          <span class="http_method">
+          <a href="http://47.95.254.34:8081/static/swagger-ui/index.html#!/tenants/get_spi_tenants" class="toggleOperation">get</a>
+          </span>
+          <span class="path">
+          <a href="http://47.95.254.34:8081/static/swagger-ui/index.html#!/tenants/get_spi_tenants" class="toggleOperation ">/spi/tenants</a>
+          </span>
+        </h3>
+        <ul class="options">
+          <li>
+          <a href="http://47.95.254.34:8081/static/swagger-ui/index.html#!/tenants/get_spi_tenants" class="toggleOperation">获取租户列表</a>
+          </li>
+        </ul>
+      </div>
+      <div class="content" id="tenants_get_spi_tenants_content" style="display:none">
+        <h4><span data-sw-translate="">Implementation Notes</span></h4>
+        <div class="markdown"><p>获取所以租户列表</p>
+</div>
+
+        
+
+
+        <form accept-charset="UTF-8" class="sandbox">
+          <div style="margin:0;padding:0;display:inline"></div>
+          <div style="margin:0;padding:0;display:inline"></div>
+          <h4 data-sw-translate="">Response Messages</h4>
+          <table class="fullwidth">
+            <thead>
+            <tr>
+              <th data-sw-translate="">HTTP Status Code</th>
+              <th data-sw-translate="">Reason</th>
+              <th data-sw-translate="">Response Model</th>
+              <th data-sw-translate="">Headers</th>
+            </tr>
+            </thead>
+            <tbody class="operation-status">
+            <tr><td width="15%" class="code">200</td>
+<td class="markdown"><p>OK</p>
+</td>
+<td width="50%"><span class="model-signature"></span></td>
+<td class="headers">
+  <table>
+    <tbody>
+    </tbody>
+  </table>
+</td></tr></tbody>
+          </table>
+          <div class="sandbox_header">
+            <input class="submit" type="submit" value="Try it out!" data-sw-translate="">
+            <a href="http://47.95.254.34:8081/static/swagger-ui/index.html#" class="response_hider" style="display:none" data-sw-translate="">Hide Response</a>
+            <span class="response_throbber" style="display:none"></span>
+          </div>
+        </form>
+        <div class="response" style="display:none">
+          <h4 class="curl">Curl</h4>
+          <div class="block curl"></div>
+          <h4 data-sw-translate="">Request URL</h4>
+          <div class="block request_url"></div>
+          <h4 data-sw-translate="">Response Body</h4>
+          <div class="block response_body"></div>
+          <h4 data-sw-translate="">Response Code</h4>
+          <div class="block response_code"></div>
+          <h4 data-sw-translate="">Response Headers</h4>
+          <div class="block response_headers"></div>
+        </div>
+      </div>
+    </li>
+  </ul>
+</li><li class="endpoint">
+  <ul class="operations">
+    <li class="post operation" id="tenants_post_spi_tenants">
+      <div class="heading">
+        <h3>
+          <span class="http_method">
+          <a href="http://47.95.254.34:8081/static/swagger-ui/index.html#!/tenants/post_spi_tenants" class="toggleOperation">post</a>
+          </span>
+          <span class="path">
+          <a href="http://47.95.254.34:8081/static/swagger-ui/index.html#!/tenants/post_spi_tenants" class="toggleOperation ">/spi/tenants</a>
+          </span>
+        </h3>
+        <ul class="options">
+          <li>
+          <a href="http://47.95.254.34:8081/static/swagger-ui/index.html#!/tenants/post_spi_tenants" class="toggleOperation">创建租户</a>
+          </li>
+        </ul>
+      </div>
+      <div class="content" id="tenants_post_spi_tenants_content" style="display:none">
+        <h4><span data-sw-translate="">Implementation Notes</span></h4>
+        <div class="markdown"><p>创建一个租户</p>
+</div>
+
+        
+
+
+        <form accept-charset="UTF-8" class="sandbox">
+          <div style="margin:0;padding:0;display:inline"></div>
+          <div style="margin:0;padding:0;display:inline"></div>
+          <h4 data-sw-translate="">Response Messages</h4>
+          <table class="fullwidth">
+            <thead>
+            <tr>
+              <th data-sw-translate="">HTTP Status Code</th>
+              <th data-sw-translate="">Reason</th>
+              <th data-sw-translate="">Response Model</th>
+              <th data-sw-translate="">Headers</th>
+            </tr>
+            </thead>
+            <tbody class="operation-status">
+            <tr><td width="15%" class="code">200</td>
+<td class="markdown"><p>OK</p>
+</td>
+<td width="50%"><span class="model-signature"></span></td>
+<td class="headers">
+  <table>
+    <tbody>
+    </tbody>
+  </table>
+</td></tr></tbody>
+          </table>
+          <div class="sandbox_header">
+            <input class="submit" type="submit" value="Try it out!" data-sw-translate="">
+            <a href="http://47.95.254.34:8081/static/swagger-ui/index.html#" class="response_hider" style="display:none" data-sw-translate="">Hide Response</a>
+            <span class="response_throbber" style="display:none"></span>
+          </div>
+        </form>
+        <div class="response" style="display:none">
+          <h4 class="curl">Curl</h4>
+          <div class="block curl"></div>
+          <h4 data-sw-translate="">Request URL</h4>
+          <div class="block request_url"></div>
+          <h4 data-sw-translate="">Response Body</h4>
+          <div class="block response_body"></div>
+          <h4 data-sw-translate="">Response Code</h4>
+          <div class="block response_code"></div>
+          <h4 data-sw-translate="">Response Headers</h4>
+          <div class="block response_headers"></div>
+        </div>
+      </div>
+    </li>
+  </ul>
+</li><li class="endpoint">
+  <ul class="operations">
+    <li class="put operation" id="tenants_put_spi_tenants">
+      <div class="heading">
+        <h3>
+          <span class="http_method">
+          <a href="http://47.95.254.34:8081/static/swagger-ui/index.html#!/tenants/put_spi_tenants" class="toggleOperation">put</a>
+          </span>
+          <span class="path">
+          <a href="http://47.95.254.34:8081/static/swagger-ui/index.html#!/tenants/put_spi_tenants" class="toggleOperation ">/spi/tenants</a>
+          </span>
+        </h3>
+        <ul class="options">
+          <li>
+          <a href="http://47.95.254.34:8081/static/swagger-ui/index.html#!/tenants/put_spi_tenants" class="toggleOperation">更新租户</a>
+          </li>
+        </ul>
+      </div>
+      <div class="content" id="tenants_put_spi_tenants_content" style="display:none">
+        <h4><span data-sw-translate="">Implementation Notes</span></h4>
+        <div class="markdown"><p>更新一个租户</p>
+</div>
+
+        
+
+
+        <form accept-charset="UTF-8" class="sandbox">
+          <div style="margin:0;padding:0;display:inline"></div>
+          <div style="margin:0;padding:0;display:inline"></div>
+          <h4 data-sw-translate="">Response Messages</h4>
+          <table class="fullwidth">
+            <thead>
+            <tr>
+              <th data-sw-translate="">HTTP Status Code</th>
+              <th data-sw-translate="">Reason</th>
+              <th data-sw-translate="">Response Model</th>
+              <th data-sw-translate="">Headers</th>
+            </tr>
+            </thead>
+            <tbody class="operation-status">
+            <tr><td width="15%" class="code">200</td>
+<td class="markdown"><p>OK</p>
+</td>
+<td width="50%"><span class="model-signature"></span></td>
+<td class="headers">
+  <table>
+    <tbody>
+    </tbody>
+  </table>
+</td></tr></tbody>
+          </table>
+          <div class="sandbox_header">
+            <input class="submit" type="submit" value="Try it out!" data-sw-translate="">
+            <a href="http://47.95.254.34:8081/static/swagger-ui/index.html#" class="response_hider" style="display:none" data-sw-translate="">Hide Response</a>
+            <span class="response_throbber" style="display:none"></span>
+          </div>
+        </form>
+        <div class="response" style="display:none">
+          <h4 class="curl">Curl</h4>
+          <div class="block curl"></div>
+          <h4 data-sw-translate="">Request URL</h4>
+          <div class="block request_url"></div>
+          <h4 data-sw-translate="">Response Body</h4>
+          <div class="block response_body"></div>
+          <h4 data-sw-translate="">Response Code</h4>
+          <div class="block response_code"></div>
+          <h4 data-sw-translate="">Response Headers</h4>
+          <div class="block response_headers"></div>
+        </div>
+      </div>
+    </li>
+  </ul>
+</li><li class="endpoint">
+  <ul class="operations">
+    <li class="delete operation" id="tenants_delete_spi_tenants_tenantId">
+      <div class="heading">
+        <h3>
+          <span class="http_method">
+          <a href="http://47.95.254.34:8081/static/swagger-ui/index.html#!/tenants/delete_spi_tenants_tenantId" class="toggleOperation">delete</a>
+          </span>
+          <span class="path">
+          <a href="http://47.95.254.34:8081/static/swagger-ui/index.html#!/tenants/delete_spi_tenants_tenantId" class="toggleOperation ">/spi/tenants/{tenantId}</a>
+          </span>
+        </h3>
+        <ul class="options">
+          <li>
+          <a href="http://47.95.254.34:8081/static/swagger-ui/index.html#!/tenants/delete_spi_tenants_tenantId" class="toggleOperation">删除租户</a>
+          </li>
+        </ul>
+      </div>
+      <div class="content" id="tenants_delete_spi_tenants_tenantId_content" style="display:none">
+        <h4><span data-sw-translate="">Implementation Notes</span></h4>
+        <div class="markdown"><p>删除一个租户</p>
+</div>
+
+        
+
+
+        <form accept-charset="UTF-8" class="sandbox">
+          <div style="margin:0;padding:0;display:inline"></div>
+          <h4 data-sw-translate="">Parameters</h4>
+          <table class="fullwidth">
+          <thead>
+            <tr>
+            <th style="width: 100px; max-width: 100px" data-sw-translate="">Parameter</th>
+            <th style="width: 310px; max-width: 310px" data-sw-translate="">Value</th>
+            <th style="width: 200px; max-width: 200px" data-sw-translate="">Description</th>
+            <th style="width: 100px; max-width: 100px" data-sw-translate="">Parameter Type</th>
+            <th style="width: 220px; max-width: 230px" data-sw-translate="">Data Type</th>
+            </tr>
+          </thead>
+          <tbody class="operation-params">
+
+          <tr><td class="code required"><label for="mtenantId0.0990377108248468">tenantId</label></td>
+<td>
+<input class="parameter required" minlength="1" name="tenantId" placeholder="(required)" id="mtenantId0.0990377108248468" type="text" value=""></td>
+<td>
+	<strong><span class="markdown"><p>填写租户名</p>
+</span></strong>
+</td>
+<td>path</td>
+<td><span class="model-signature">string</span></td>
+</tr></tbody>
+          </table>
+          <div style="margin:0;padding:0;display:inline"></div>
+          <h4 data-sw-translate="">Response Messages</h4>
+          <table class="fullwidth">
+            <thead>
+            <tr>
+              <th data-sw-translate="">HTTP Status Code</th>
+              <th data-sw-translate="">Reason</th>
+              <th data-sw-translate="">Response Model</th>
+              <th data-sw-translate="">Headers</th>
+            </tr>
+            </thead>
+            <tbody class="operation-status">
+            <tr><td width="15%" class="code">200</td>
+<td class="markdown"><p>OK</p>
+</td>
+<td width="50%"><span class="model-signature"></span></td>
+<td class="headers">
+  <table>
+    <tbody>
+    </tbody>
+  </table>
+</td></tr></tbody>
+          </table>
+          <div class="sandbox_header">
+            <input class="submit" type="submit" value="Try it out!" data-sw-translate="">
+            <a href="http://47.95.254.34:8081/static/swagger-ui/index.html#" class="response_hider" style="display:none" data-sw-translate="">Hide Response</a>
+            <span class="response_throbber" style="display:none"></span>
+          </div>
+        </form>
+        <div class="response" style="display:none">
+          <h4 class="curl">Curl</h4>
+          <div class="block curl"></div>
+          <h4 data-sw-translate="">Request URL</h4>
+          <div class="block request_url"></div>
+          <h4 data-sw-translate="">Response Body</h4>
+          <div class="block response_body"></div>
+          <h4 data-sw-translate="">Response Code</h4>
+          <div class="block response_code"></div>
+          <h4 data-sw-translate="">Response Headers</h4>
+          <div class="block response_headers"></div>
+        </div>
+      </div>
+    </li>
+  </ul>
+</li><li class="endpoint">
+  <ul class="operations">
+    <li class="get operation" id="tenants_get_spi_tenants_tenantId">
+      <div class="heading">
+        <h3>
+          <span class="http_method">
+          <a href="http://47.95.254.34:8081/static/swagger-ui/index.html#!/tenants/get_spi_tenants_tenantId" class="toggleOperation">get</a>
+          </span>
+          <span class="path">
+          <a href="http://47.95.254.34:8081/static/swagger-ui/index.html#!/tenants/get_spi_tenants_tenantId" class="toggleOperation ">/spi/tenants/{tenantId}</a>
+          </span>
+        </h3>
+        <ul class="options">
+          <li>
+          <a href="http://47.95.254.34:8081/static/swagger-ui/index.html#!/tenants/get_spi_tenants_tenantId" class="toggleOperation">查看租户</a>
+          </li>
+        </ul>
+      </div>
+      <div class="content" id="tenants_get_spi_tenants_tenantId_content" style="display:none">
+        <h4><span data-sw-translate="">Implementation Notes</span></h4>
+        <div class="markdown"><p>查看一个租户</p>
+</div>
+
+        
+
+
+        <form accept-charset="UTF-8" class="sandbox">
+          <div style="margin:0;padding:0;display:inline"></div>
+          <h4 data-sw-translate="">Parameters</h4>
+          <table class="fullwidth">
+          <thead>
+            <tr>
+            <th style="width: 100px; max-width: 100px" data-sw-translate="">Parameter</th>
+            <th style="width: 310px; max-width: 310px" data-sw-translate="">Value</th>
+            <th style="width: 200px; max-width: 200px" data-sw-translate="">Description</th>
+            <th style="width: 100px; max-width: 100px" data-sw-translate="">Parameter Type</th>
+            <th style="width: 220px; max-width: 230px" data-sw-translate="">Data Type</th>
+            </tr>
+          </thead>
+          <tbody class="operation-params">
+
+          <tr><td class="code required"><label for="mtenantId0.29879933390729096">tenantId</label></td>
+<td>
+<input class="parameter required" minlength="1" name="tenantId" placeholder="(required)" id="mtenantId0.29879933390729096" type="text" value=""></td>
+<td>
+	<strong><span class="markdown"><p>填写租户名</p>
+</span></strong>
+</td>
+<td>path</td>
+<td><span class="model-signature">string</span></td>
+</tr></tbody>
+          </table>
+          <div style="margin:0;padding:0;display:inline"></div>
+          <h4 data-sw-translate="">Response Messages</h4>
+          <table class="fullwidth">
+            <thead>
+            <tr>
+              <th data-sw-translate="">HTTP Status Code</th>
+              <th data-sw-translate="">Reason</th>
+              <th data-sw-translate="">Response Model</th>
+              <th data-sw-translate="">Headers</th>
+            </tr>
+            </thead>
+            <tbody class="operation-status">
+            <tr><td width="15%" class="code">200</td>
+<td class="markdown"><p>OK</p>
+</td>
+<td width="50%"><span class="model-signature"></span></td>
+<td class="headers">
+  <table>
+    <tbody>
+    </tbody>
+  </table>
+</td></tr></tbody>
+          </table>
+          <div class="sandbox_header">
+            <input class="submit" type="submit" value="Try it out!" data-sw-translate="">
+            <a href="http://47.95.254.34:8081/static/swagger-ui/index.html#" class="response_hider" style="display:none" data-sw-translate="">Hide Response</a>
+            <span class="response_throbber" style="display:none"></span>
+          </div>
+        </form>
+        <div class="response" style="display:none">
+          <h4 class="curl">Curl</h4>
+          <div class="block curl"></div>
+          <h4 data-sw-translate="">Request URL</h4>
+          <div class="block request_url"></div>
+          <h4 data-sw-translate="">Response Body</h4>
+          <div class="block response_body"></div>
+          <h4 data-sw-translate="">Response Code</h4>
+          <div class="block response_code"></div>
+          <h4 data-sw-translate="">Response Headers</h4>
+          <div class="block response_headers"></div>
+        </div>
+      </div>
+    </li>
+  </ul>
+</li></ul>
+</li><li id="resource_users" class="resource"><div class="heading">
+  <h2>
+    <a href="http://47.95.254.34:8081/static/swagger-ui/index.html#!/users" class="toggleEndpointList" data-id="users">users</a> 
+  </h2>
+  <ul class="options">
+    <li>
+      <a href="http://47.95.254.34:8081/static/swagger-ui/index.html#!/users" id="endpointListTogger_users" class="toggleEndpointList" data-id="users" data-sw-translate="">Show/Hide</a>
+    </li>
+    <li>
+      <a href="http://47.95.254.34:8081/static/swagger-ui/index.html#" class="collapseResource" data-id="users" data-sw-translate="">
+        List Operations
+      </a>
+    </li>
+    <li>
+      <a href="http://47.95.254.34:8081/static/swagger-ui/index.html#" class="expandResource" data-id="users" data-sw-translate="">
+        Expand Operations
+      </a>
+    </li>
+  </ul>
+</div>
+<ul class="endpoints" id="users_endpoint_list" style="display:none">
+
+<li class="endpoint">
+  <ul class="operations">
+    <li class="get operation" id="users_get_spi_users">
+      <div class="heading">
+        <h3>
+          <span class="http_method">
+          <a href="http://47.95.254.34:8081/static/swagger-ui/index.html#!/users/get_spi_users" class="toggleOperation">get</a>
+          </span>
+          <span class="path">
+          <a href="http://47.95.254.34:8081/static/swagger-ui/index.html#!/users/get_spi_users" class="toggleOperation ">/spi/users</a>
+          </span>
+        </h3>
+        <ul class="options">
+          <li>
+          <a href="http://47.95.254.34:8081/static/swagger-ui/index.html#!/users/get_spi_users" class="toggleOperation">获取用户列表</a>
+          </li>
+        </ul>
+      </div>
+      <div class="content" id="users_get_spi_users_content" style="display:none">
+        <h4><span data-sw-translate="">Implementation Notes</span></h4>
+        <div class="markdown"><p>获取所有用户的列表</p>
+</div>
+
+        
+
+
+        <form accept-charset="UTF-8" class="sandbox">
+          <div style="margin:0;padding:0;display:inline"></div>
+          <div style="margin:0;padding:0;display:inline"></div>
+          <h4 data-sw-translate="">Response Messages</h4>
+          <table class="fullwidth">
+            <thead>
+            <tr>
+              <th data-sw-translate="">HTTP Status Code</th>
+              <th data-sw-translate="">Reason</th>
+              <th data-sw-translate="">Response Model</th>
+              <th data-sw-translate="">Headers</th>
+            </tr>
+            </thead>
+            <tbody class="operation-status">
+            <tr><td width="15%" class="code">200</td>
+<td class="markdown"><p>OK</p>
+</td>
+<td width="50%"><span class="model-signature"></span></td>
+<td class="headers">
+  <table>
+    <tbody>
+    </tbody>
+  </table>
+</td></tr></tbody>
+          </table>
+          <div class="sandbox_header">
+            <input class="submit" type="submit" value="Try it out!" data-sw-translate="">
+            <a href="http://47.95.254.34:8081/static/swagger-ui/index.html#" class="response_hider" style="display:none" data-sw-translate="">Hide Response</a>
+            <span class="response_throbber" style="display:none"></span>
+          </div>
+        </form>
+        <div class="response" style="display:none">
+          <h4 class="curl">Curl</h4>
+          <div class="block curl"></div>
+          <h4 data-sw-translate="">Request URL</h4>
+          <div class="block request_url"></div>
+          <h4 data-sw-translate="">Response Body</h4>
+          <div class="block response_body"></div>
+          <h4 data-sw-translate="">Response Code</h4>
+          <div class="block response_code"></div>
+          <h4 data-sw-translate="">Response Headers</h4>
+          <div class="block response_headers"></div>
+        </div>
+      </div>
+    </li>
+  </ul>
+</li><li class="endpoint">
+  <ul class="operations">
+    <li class="post operation" id="users_post_spi_users">
+      <div class="heading">
+        <h3>
+          <span class="http_method">
+          <a href="http://47.95.254.34:8081/static/swagger-ui/index.html#!/users/post_spi_users" class="toggleOperation">post</a>
+          </span>
+          <span class="path">
+          <a href="http://47.95.254.34:8081/static/swagger-ui/index.html#!/users/post_spi_users" class="toggleOperation ">/spi/users</a>
+          </span>
+        </h3>
+        <ul class="options">
+          <li>
+          <a href="http://47.95.254.34:8081/static/swagger-ui/index.html#!/users/post_spi_users" class="toggleOperation">创建用户</a>
+          </li>
+        </ul>
+      </div>
+      <div class="content" id="users_post_spi_users_content" style="display:none">
+        <h4><span data-sw-translate="">Implementation Notes</span></h4>
+        <div class="markdown"><p>创建一个用户</p>
+</div>
+
+        
+
+
+        <form accept-charset="UTF-8" class="sandbox">
+          <div style="margin:0;padding:0;display:inline"></div>
+          <div style="margin:0;padding:0;display:inline"></div>
+          <h4 data-sw-translate="">Response Messages</h4>
+          <table class="fullwidth">
+            <thead>
+            <tr>
+              <th data-sw-translate="">HTTP Status Code</th>
+              <th data-sw-translate="">Reason</th>
+              <th data-sw-translate="">Response Model</th>
+              <th data-sw-translate="">Headers</th>
+            </tr>
+            </thead>
+            <tbody class="operation-status">
+            <tr><td width="15%" class="code">200</td>
+<td class="markdown"><p>OK</p>
+</td>
+<td width="50%"><span class="model-signature"></span></td>
+<td class="headers">
+  <table>
+    <tbody>
+    </tbody>
+  </table>
+</td></tr></tbody>
+          </table>
+          <div class="sandbox_header">
+            <input class="submit" type="submit" value="Try it out!" data-sw-translate="">
+            <a href="http://47.95.254.34:8081/static/swagger-ui/index.html#" class="response_hider" style="display:none" data-sw-translate="">Hide Response</a>
+            <span class="response_throbber" style="display:none"></span>
+          </div>
+        </form>
+        <div class="response" style="display:none">
+          <h4 class="curl">Curl</h4>
+          <div class="block curl"></div>
+          <h4 data-sw-translate="">Request URL</h4>
+          <div class="block request_url"></div>
+          <h4 data-sw-translate="">Response Body</h4>
+          <div class="block response_body"></div>
+          <h4 data-sw-translate="">Response Code</h4>
+          <div class="block response_code"></div>
+          <h4 data-sw-translate="">Response Headers</h4>
+          <div class="block response_headers"></div>
+        </div>
+      </div>
+    </li>
+  </ul>
+</li><li class="endpoint">
+  <ul class="operations">
+    <li class="put operation" id="users_put_spi_users">
+      <div class="heading">
+        <h3>
+          <span class="http_method">
+          <a href="http://47.95.254.34:8081/static/swagger-ui/index.html#!/users/put_spi_users" class="toggleOperation">put</a>
+          </span>
+          <span class="path">
+          <a href="http://47.95.254.34:8081/static/swagger-ui/index.html#!/users/put_spi_users" class="toggleOperation ">/spi/users</a>
+          </span>
+        </h3>
+        <ul class="options">
+          <li>
+          <a href="http://47.95.254.34:8081/static/swagger-ui/index.html#!/users/put_spi_users" class="toggleOperation">更新用户</a>
+          </li>
+        </ul>
+      </div>
+      <div class="content" id="users_put_spi_users_content" style="display:none">
+        <h4><span data-sw-translate="">Implementation Notes</span></h4>
+        <div class="markdown"><p>更新一个用户</p>
+</div>
+
+        
+
+
+        <form accept-charset="UTF-8" class="sandbox">
+          <div style="margin:0;padding:0;display:inline"></div>
+          <div style="margin:0;padding:0;display:inline"></div>
+          <h4 data-sw-translate="">Response Messages</h4>
+          <table class="fullwidth">
+            <thead>
+            <tr>
+              <th data-sw-translate="">HTTP Status Code</th>
+              <th data-sw-translate="">Reason</th>
+              <th data-sw-translate="">Response Model</th>
+              <th data-sw-translate="">Headers</th>
+            </tr>
+            </thead>
+            <tbody class="operation-status">
+            <tr><td width="15%" class="code">200</td>
+<td class="markdown"><p>OK</p>
+</td>
+<td width="50%"><span class="model-signature"></span></td>
+<td class="headers">
+  <table>
+    <tbody>
+    </tbody>
+  </table>
+</td></tr></tbody>
+          </table>
+          <div class="sandbox_header">
+            <input class="submit" type="submit" value="Try it out!" data-sw-translate="">
+            <a href="http://47.95.254.34:8081/static/swagger-ui/index.html#" class="response_hider" style="display:none" data-sw-translate="">Hide Response</a>
+            <span class="response_throbber" style="display:none"></span>
+          </div>
+        </form>
+        <div class="response" style="display:none">
+          <h4 class="curl">Curl</h4>
+          <div class="block curl"></div>
+          <h4 data-sw-translate="">Request URL</h4>
+          <div class="block request_url"></div>
+          <h4 data-sw-translate="">Response Body</h4>
+          <div class="block response_body"></div>
+          <h4 data-sw-translate="">Response Code</h4>
+          <div class="block response_code"></div>
+          <h4 data-sw-translate="">Response Headers</h4>
+          <div class="block response_headers"></div>
+        </div>
+      </div>
+    </li>
+  </ul>
+</li><li class="endpoint">
+  <ul class="operations">
+    <li class="delete operation" id="users_delete_spi_users_username">
+      <div class="heading">
+        <h3>
+          <span class="http_method">
+          <a href="http://47.95.254.34:8081/static/swagger-ui/index.html#!/users/delete_spi_users_username" class="toggleOperation">delete</a>
+          </span>
+          <span class="path">
+          <a href="http://47.95.254.34:8081/static/swagger-ui/index.html#!/users/delete_spi_users_username" class="toggleOperation ">/spi/users/{username}</a>
+          </span>
+        </h3>
+        <ul class="options">
+          <li>
+          <a href="http://47.95.254.34:8081/static/swagger-ui/index.html#!/users/delete_spi_users_username" class="toggleOperation">删除用户</a>
+          </li>
+        </ul>
+      </div>
+      <div class="content" id="users_delete_spi_users_username_content" style="display:none">
+        <h4><span data-sw-translate="">Implementation Notes</span></h4>
+        <div class="markdown"><p>删除一个用户</p>
+</div>
+
+        
+
+
+        <form accept-charset="UTF-8" class="sandbox">
+          <div style="margin:0;padding:0;display:inline"></div>
+          <h4 data-sw-translate="">Parameters</h4>
+          <table class="fullwidth">
+          <thead>
+            <tr>
+            <th style="width: 100px; max-width: 100px" data-sw-translate="">Parameter</th>
+            <th style="width: 310px; max-width: 310px" data-sw-translate="">Value</th>
+            <th style="width: 200px; max-width: 200px" data-sw-translate="">Description</th>
+            <th style="width: 100px; max-width: 100px" data-sw-translate="">Parameter Type</th>
+            <th style="width: 220px; max-width: 230px" data-sw-translate="">Data Type</th>
+            </tr>
+          </thead>
+          <tbody class="operation-params">
+
+          <tr><td class="code required"><label for="musername0.6884869313225723">username</label></td>
+<td>
+<input class="parameter required" minlength="1" name="username" placeholder="(required)" id="musername0.6884869313225723" type="text" value=""></td>
+<td>
+	<strong><span class="markdown"><p>填写用户名</p>
+</span></strong>
+</td>
+<td>path</td>
+<td><span class="model-signature">string</span></td>
+</tr></tbody>
+          </table>
+          <div style="margin:0;padding:0;display:inline"></div>
+          <h4 data-sw-translate="">Response Messages</h4>
+          <table class="fullwidth">
+            <thead>
+            <tr>
+              <th data-sw-translate="">HTTP Status Code</th>
+              <th data-sw-translate="">Reason</th>
+              <th data-sw-translate="">Response Model</th>
+              <th data-sw-translate="">Headers</th>
+            </tr>
+            </thead>
+            <tbody class="operation-status">
+            <tr><td width="15%" class="code">200</td>
+<td class="markdown"><p>OK</p>
+</td>
+<td width="50%"><span class="model-signature"></span></td>
+<td class="headers">
+  <table>
+    <tbody>
+    </tbody>
+  </table>
+</td></tr></tbody>
+          </table>
+          <div class="sandbox_header">
+            <input class="submit" type="submit" value="Try it out!" data-sw-translate="">
+            <a href="http://47.95.254.34:8081/static/swagger-ui/index.html#" class="response_hider" style="display:none" data-sw-translate="">Hide Response</a>
+            <span class="response_throbber" style="display:none"></span>
+          </div>
+        </form>
+        <div class="response" style="display:none">
+          <h4 class="curl">Curl</h4>
+          <div class="block curl"></div>
+          <h4 data-sw-translate="">Request URL</h4>
+          <div class="block request_url"></div>
+          <h4 data-sw-translate="">Response Body</h4>
+          <div class="block response_body"></div>
+          <h4 data-sw-translate="">Response Code</h4>
+          <div class="block response_code"></div>
+          <h4 data-sw-translate="">Response Headers</h4>
+          <div class="block response_headers"></div>
+        </div>
+      </div>
+    </li>
+  </ul>
+</li><li class="endpoint">
+  <ul class="operations">
+    <li class="get operation" id="users_get_spi_users_username">
+      <div class="heading">
+        <h3>
+          <span class="http_method">
+          <a href="http://47.95.254.34:8081/static/swagger-ui/index.html#!/users/get_spi_users_username" class="toggleOperation">get</a>
+          </span>
+          <span class="path">
+          <a href="http://47.95.254.34:8081/static/swagger-ui/index.html#!/users/get_spi_users_username" class="toggleOperation ">/spi/users/{username}</a>
+          </span>
+        </h3>
+        <ul class="options">
+          <li>
+          <a href="http://47.95.254.34:8081/static/swagger-ui/index.html#!/users/get_spi_users_username" class="toggleOperation">查看用户</a>
+          </li>
+        </ul>
+      </div>
+      <div class="content" id="users_get_spi_users_username_content" style="display:none">
+        <h4><span data-sw-translate="">Implementation Notes</span></h4>
+        <div class="markdown"><p>查看一个用户</p>
+</div>
+
+        
+
+
+        <form accept-charset="UTF-8" class="sandbox">
+          <div style="margin:0;padding:0;display:inline"></div>
+          <h4 data-sw-translate="">Parameters</h4>
+          <table class="fullwidth">
+          <thead>
+            <tr>
+            <th style="width: 100px; max-width: 100px" data-sw-translate="">Parameter</th>
+            <th style="width: 310px; max-width: 310px" data-sw-translate="">Value</th>
+            <th style="width: 200px; max-width: 200px" data-sw-translate="">Description</th>
+            <th style="width: 100px; max-width: 100px" data-sw-translate="">Parameter Type</th>
+            <th style="width: 220px; max-width: 230px" data-sw-translate="">Data Type</th>
+            </tr>
+          </thead>
+          <tbody class="operation-params">
+
+          <tr><td class="code required"><label for="musername0.9746735165704141">username</label></td>
+<td>
+<input class="parameter required" minlength="1" name="username" placeholder="(required)" id="musername0.9746735165704141" type="text" value=""></td>
+<td>
+	<strong><span class="markdown"><p>填写用户名</p>
+</span></strong>
+</td>
+<td>path</td>
+<td><span class="model-signature">string</span></td>
+</tr></tbody>
+          </table>
+          <div style="margin:0;padding:0;display:inline"></div>
+          <h4 data-sw-translate="">Response Messages</h4>
+          <table class="fullwidth">
+            <thead>
+            <tr>
+              <th data-sw-translate="">HTTP Status Code</th>
+              <th data-sw-translate="">Reason</th>
+              <th data-sw-translate="">Response Model</th>
+              <th data-sw-translate="">Headers</th>
+            </tr>
+            </thead>
+            <tbody class="operation-status">
+            <tr><td width="15%" class="code">200</td>
+<td class="markdown"><p>OK</p>
+</td>
+<td width="50%"><span class="model-signature"></span></td>
+<td class="headers">
+  <table>
+    <tbody>
+    </tbody>
+  </table>
+</td></tr></tbody>
+          </table>
+          <div class="sandbox_header">
+            <input class="submit" type="submit" value="Try it out!" data-sw-translate="">
+            <a href="http://47.95.254.34:8081/static/swagger-ui/index.html#" class="response_hider" style="display:none" data-sw-translate="">Hide Response</a>
+            <span class="response_throbber" style="display:none"></span>
+          </div>
+        </form>
+        <div class="response" style="display:none">
+          <h4 class="curl">Curl</h4>
+          <div class="block curl"></div>
+          <h4 data-sw-translate="">Request URL</h4>
+          <div class="block request_url"></div>
+          <h4 data-sw-translate="">Response Body</h4>
+          <div class="block response_body"></div>
+          <h4 data-sw-translate="">Response Code</h4>
+          <div class="block response_code"></div>
+          <h4 data-sw-translate="">Response Headers</h4>
+          <div class="block response_headers"></div>
+        </div>
+      </div>
+    </li>
+  </ul>
+</li></ul>
+</li></ul>
+
+  <div class="footer">
+    <h4 style="color: #999">[ <span style="font-variant: small-caps">base url</span>: /iot
+  , <span style="font-variant: small-caps" data-sw-translate="">api version</span>: 1.0.0
+    ]
+    <span style="float:right"><a href="http://online.swagger.io/validator/debug?url=http://47.95.254.34:8081/static/iot/spi/spi.json"><img id="validator" src="./Swagger UI_files/validator"></a>
+    </span>
+    </h4>
+    </div>
+</div>
+</div>
+
+
+</body></html>
