@@ -1,13 +1,5 @@
 {% extends "bootstrap/base.html" %}
-{% block title %}物联网服务平台-首页22222{% endblock %}
-<script src="https://cdn.bootcss.com/jquery/2.1.1/jquery.min.js"></script>
-<link href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
-<link href="https://cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
-<script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-<link rel="stylesheet" href="css/style.css">
-<p class="bg-primary">强调</p>
-
-
+{% block title %}物联网服务平台-首页{% endblock %}
 {% block navbar %}
 <div class="navbar navbar-inverse" role="navigation">
     <div class="container">
@@ -27,6 +19,10 @@
                     <li><a href="/">平台介绍</a></li>
                 </ul>
             </div>
+            <div class="navbar-collapse collapse" style="height:30; width:50; margin-left:0px; margin-top:0px">
+                <ul class="nav navbar-nav">
+                    <li><a href="http://47.95.254.34">蚂蚁笔记</a></li>
+                </ul>
             <div class="navbar-collapse collapse" style="height:30; width:50; margin-left:0px; margin-top:0px; float:left">
                 <ul class="nav navbar-nav">
                     <li><a href="http://47.95.254.34:8081/iot/spi/static/swagger-ui/index.html">APIs</a></li>
