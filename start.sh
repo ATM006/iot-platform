@@ -5,6 +5,9 @@
 #sudo sh start-env.sh
 #启动服务
 
+echo "更新代码库"
+sh git-pull.sh
+
 echo "启动服务......"
 
 echo "启动【Center Service】：gunicorn -w 3 -b 0.0.0.0:5120 run-center:app 1>x 2>y &"
