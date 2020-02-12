@@ -39,4 +39,4 @@ Keywords：Smart Home; IoT Platform; MQTT; Web Service; REST
 ## Interface
 
 
-
+## [论文](http://bodable.cn:8800/paper/%E8%AE%BA%E6%96%87-%E6%99%BA%E8%83%BD%E5%AE%B6%E5%B1%85%E6%9C%8D%E5%8A%A1%E5%B9%B3%E5%8F%B0%E8%AE%BE%E8%AE%A1.pdf "智能家居物联网服务平台设计.pdf")
